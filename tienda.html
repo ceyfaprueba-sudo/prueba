@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEYFA - Tienda</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon-ceyfa.svg">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tienda.css">
+</head>
+
+<body>
+    <header id="menu-tienda" class="menu-secundario fixed-top py-3">
+        <div class="container flex-nowrap rounded-pill border shadow-lg px-4 py-2">
+            <a class="navbar-brand me-2 me-md-3" href="index.html">
+                <img src="img/logo.png" alt="CEYFA">
+            </a>
+            <div class="d-flex align-items-center gap-2 menu-navbar-nav">
+                <span class="menu-nav-link">SHOP</span>
+            </div>
+            <div class="ms-2 ms-md-3">
+                <a href="index.html" class="btn rounded-pill btn-secondary-custom btn-nav-action text-nowrap">
+                    volver <i class="bi bi-box-arrow-in-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- BANNER -->
+        <section id="banner-tienda" class="banner-secundario">
+            <div class="banner-overlay">
+                <img src="img/productos/banner-tienda.jpg" alt="Equipamiento Profesional de Arqueros CEYFA">
+            </div>
+            <div class="container">
+                <div class="encabezado-section_doble">
+                    <div class="encabezado-section">
+                        <span class="encabezado-section_antetitulo">// RG GLOVES OFFICIAL PARTNER</span>
+                        <h1 class="encabezado-section_titulo">Armate para <span class="text-gradient">ganar</span></h1>
+                    </div>
+                    <div class="encabezado-section_extra">
+                        <p class="text-line-left"><strong>Indumentaria oficial CEYFA</strong> y la colección
+                            completa de guantes profesionales RG con stock inmediato.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TIENDA -->
+        <section id="tienda">
+            <div class="container">
+                <div id="tienda-controles" class="box-column-custom">
+                    <div id="filtro-buscador" class="box-row-custom">
+                        <div id="contenedor-filtro-tienda" class="btn-group-filters shadow-lg">
+                            <div class="filter-scroll-rail">
+                                <button class="btn-filter active" data-filter="all">Todos</button>
+                                <button class="btn-filter" data-filter="ceyfa">Ceyfa</button>
+                                <button class="btn-filter" data-filter="guantes-rg">Guantes</button>
+                                <button class="btn-filter" data-filter="todo-rg">Todo RG</button>
+                            </div>
+                        </div>
+                        <div class="search-shop shadow-lg">
+                            <div class="search-input-inner">
+                                <i class="bi bi-search search-icon-shop"></i>
+                                <input type="text" id="search-product-input"
+                                    placeholder="Buscar guantes, buzos, accesorios...">
+                                <button id="btn-clear-search" class="btn-clear-shop" style="display: none;">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="subfiltro-guia" class="box-row-custom">
+                        <div id="contenedor-subfiltro-tienda" class="btn-group-custom btn-group-subfilters">
+                            <button class="btn-subfilter" data-subfilter="kids">Línea Infantil</button>
+                            <button class="btn-subfilter" data-subfilter="adultos">Línea Adulto</button>
+                            <button class="btn-subfilter btn-clear-subfilter" data-subfilter="all" disabled>
+                                <i class="bi bi-x-lg me-1"></i> Borrar Subfiltro
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-trigger-sizes-global" data-bs-toggle="modal"
+                            data-bs-target="#modal-guia-talles">
+                            Guía de Talles <i class="bi bi-bounding-box ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="grid-productos-tienda" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+                    <!-- PRODUCTO 1: REMERA + SHORT 2026 -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids adultos"
+                        data-precio-rango="$1590 - $1690" data-precio-kids="$1590" data-precio-adultos="$1690">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-remera-short.jpg" alt="REMERA + SHORT NEGRO CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">REMERA + SHORT '26</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">XL</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">12</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$1590 - $1690</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PRODUCTO 2: REMERA + SHORT 2025 -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids"
+                        data-precio-rango="$1192" data-precio-kids="$1192" data-precio-adultos="$1192">
+                        <div class="card-custom card-motion card-product">
+                            <span class="tag-custom tag-secondary-custom tag-oferta tag-percentage">25% OFF</span>
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-remera-short-v2.jpg"
+                                    alt="REMERA + SHORT AZUL CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">REMERA + SHORT '25</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-kids">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">12</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <div class="box-price">
+                                        <p class="product-price">$1192</p>
+                                        <span class="product-price-old">$1590</span>
+                                    </div>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PRODUCTO 3: BUZO MEDIO CIERRE 2026 -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids adultos"
+                        data-precio-rango="$1890 - $1990" data-precio-kids="$1890" data-precio-adultos="$1990">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-buzo.jpg" alt="BUZO MEDIO CIERRE NEGRO CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">BUZO MEDIO CIERRE '26</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">12</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$1890 - $1990</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PRODUCTO 4: BUZO MEDIO CIERRE 2025 -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids"
+                        data-precio-rango="$1420" data-precio-kids="$1420" data-precio-adultos="$1420">
+                        <div class="card-custom card-motion card-product">
+                            <span class="tag-custom tag-secondary-custom tag-oferta tag-percentage">25% OFF</span>
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-buzo-v2.jpg" alt="BUZO MEDIO CIERRE AZUL CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">BUZO MEDIO CIERRE '25</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-kids">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <div class="box-price">
+                                        <p class="product-price">$1420</p>
+                                        <span class="product-price-old">$1890</span>
+                                    </div>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PRODUCTO 5: CAMPERA CORTA VIENTO -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids adultos"
+                        data-precio-rango="$1890 - $1990" data-precio-kids="$1890" data-precio-adultos="$1990">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-campera.jpg" alt="CAMPERA CORTA VIENTO CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">CAMPERA CORTA VIENTO</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">12</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$1890 - $1990</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PRODUCTO 6: PANTALÓN + BUZO -->
+                    <div class="col producto-item" data-category="ceyfa" data-subcategory="kids adultos"
+                        data-precio-rango="$2690 - $2790" data-precio-kids="$2690" data-precio-adultos="$2790">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/ceyfa/ceyfa-pantalon-buzo.jpg" alt="PANTALON + BUZO CEYFA">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">CEYFA</span>
+                                    <h3 class="card-title product-title">PANTALÓN + BUZO</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$2690 - $2790</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GUANTE 1: SAMURAI FUSION 26-27 -->
+                    <div class="col producto-item" data-category="guantes-rg" data-subcategory="kids adultos"
+                        data-precio-rango="$2990" data-precio-kids="$2990" data-precio-adultos="$2990">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/guantes/guantes-SAMURAI-FUSION.jpg" alt="SAMURAI FUSION 26-27">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">GUANTES RG</span>
+                                    <h3 class="card-title product-title">SAMURAI FUSION 26-27</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">9</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">11</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">3</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">4</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">5</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">7</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$2990</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GUANTE 2: TORIDE LIMITED EDITION 26 -->
+                    <div class="col producto-item" data-category="guantes-rg" data-subcategory="adultos">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/guantes/guantes-TORIDE-LIMITED.jpg" alt="TORIDE LIMITED 26">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">GUANTES RG</span>
+                                    <h3 class="card-title product-title">TORIDE LIMITED 26</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-adultos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">11</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$6990</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GUANTE 3: TORIDE KNIT 25 -->
+                    <div class="col producto-item" data-category="guantes-rg" data-subcategory="kids adultos"
+                        data-precio-rango="$4790" data-precio-kids="$4790" data-precio-adultos="$4790">
+                        <div class="card-custom card-motion card-product">
+                            <span class="tag-custom tag-secondary-custom tag-oferta">¡OFERTA!</span>
+                            <div class="product-img">
+                                <img src="img/productos/guantes/guantes-TORIDE-KNIT.jpg" alt="TORIDE KNIT 25">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">GUANTES RG</span>
+                                    <h3 class="card-title product-title">TORIDE KNIT 25</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">9</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">6</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">7</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <div class="box-price">
+                                        <p class="product-price">$4790</p>
+                                        <span class="product-price-old">$5790</span>
+                                    </div>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GUANTE 4: SNAGA GALAXY 25 -->
+                    <div class="col producto-item" data-category="guantes-rg" data-subcategory="kids adultos"
+                        data-precio-rango="$2090" data-precio-kids="$2090" data-precio-adultos="$2090">
+                        <div class="card-custom card-motion card-product">
+                            <span class="tag-custom tag-secondary-custom tag-oferta">¡OFERTA!</span>
+                            <div class="product-img">
+                                <img src="img/productos/guantes/guantes-SNAGA-GALAXY.jpg" alt="SNAGA GALAXY 25">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">GUANTES RG</span>
+                                    <h3 class="card-title product-title">SNAGA GALAXY 25</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">8</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">9</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">10</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">5</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">7</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <div class="box-price">
+                                        <p class="product-price">$2090</p>
+                                        <span class="product-price-old">$2590</span>
+                                    </div>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TODO RG 1: TÉRMICA CELESTE -->
+                    <div class="col producto-item" data-category="todo-rg" data-subcategory="adultos">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/rg/rg-TERMICA-CELESTE.jpg" alt="TÉRMICA CELESTE RG">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">TODO RG</span>
+                                    <h3 class="card-title product-title">TÉRMICA CELESTE</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-adultos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$2290</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TODO RG 2: CALZA CORTA CON PROTECCIÓN EVA -->
+                    <div class="col producto-item" data-category="todo-rg" data-subcategory="kids adultos">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/rg/rg-CALZA-CORTA-PRO-EVA.jpg"
+                                    alt="CALZA CORTA CON PROTECCIÓN EVA RG">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">TODO RG</span>
+                                    <h3 class="card-title product-title">CALZA CORTA CON PROTECCIÓN EVA</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">XL</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">2XS</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$2890</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TODO RG 3: CALZA ¾ CON PROTECCIÓN EVA -->
+                    <div class="col producto-item" data-category="todo-rg" data-subcategory="adultos">
+                        <div class="card-custom card-motion card-product">
+                            <div class="product-img">
+                                <img src="img/productos/rg/rg-CALZA-34.jpg" alt="CALZA ¾ CON PROTECCIÓN EVA RG">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">TODO RG</span>
+                                    <h3 class="card-title product-title">CALZA ¾ CON PROTECCIÓN EVA</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-adultos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">M</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">XL</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$3490</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TODO RG 4: RODILLERAS CON PROTECCIÓN -->
+                    <div class="col producto-item" data-category="todo-rg" data-subcategory="kids adultos"
+                        data-precio-rango="$2290" data-precio-kids="$2290" data-precio-adultos="$2290">
+                        <div class="card-custom card-motion card-product h-100">
+                            <div class="product-img">
+                                <img src="img/productos/rg/rg-RODILLERAS.jpg" alt="RODILLERAS CON PROTECCIÓN RG">
+                            </div>
+                            <div class="product-info">
+                                <div class="box-column-custom">
+                                    <span class="label-custom product-category">TODO RG</span>
+                                    <h3 class="card-title product-title">RODILLERAS CON PROTECCIÓN</h3>
+                                </div>
+                                <div class="box-column-custom">
+                                    <span class="label-custom">Elegí tu talle:</span>
+                                    <div class="value-sizes-custom talles-todos">
+                                        <button type="button" class="btn-form-custom btn-size-item active"
+                                            onclick="seleccionarTalleFijo(this)">TODOS</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-adultos" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">S</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">L</button>
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">XL</button>
+                                    </div>
+                                    <div class="value-sizes-custom talles-kids" style="display: none;">
+                                        <button type="button" class="btn-form-custom btn-size-item"
+                                            onclick="seleccionarTalleFijo(this)">2XS</button>
+                                    </div>
+                                </div>
+                                <div class="box-row-custom mt-2">
+                                    <p class="product-price">$2290</p>
+                                    <button type="button" class="btn btn-form-custom btn-product"
+                                        onclick="derivarCompraWhatsApp(this)" aria-label="Comprar por WhatsApp">
+                                        <i class="bi bi-whatsapp"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contenedor de Paginación Global -->
+                <div id="tienda-paginacion" class="btn-group-custom" style="display: none !important;">
+                    <button id="btn-pag-anterior" class="btn btn-filter" onclick="cambiarPagina(-1)">
+                        <i class="bi bi-chevron-left"></i>
+                        <span class="btn-text">Anterior</span>
+                    </button>
+                    <span id="info-paginacion" class="label-custom">Página 1 de 1</span>
+                    <button id="btn-pag-siguiente" class="btn btn-filter" onclick="cambiarPagina(1)">
+                        <span class="btn-text">Siguiente</span>
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+                <!-- MODAL DE TALLES -->
+                <div class="modal fade" id="modal-guia-talles" tabindex="-1" aria-labelledby="modalTallesLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTallesLabel">// GUIA DE <span class="text-gradient">TALLES</span></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="nav nav-pills nav-justified mb-4" id="filtroTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="opcion1-tab" data-bs-toggle="tab"
+                                            data-bs-target="#opcion1-pane" type="button" role="tab"
+                                            aria-controls="opcion1-pane" aria-selected="true">
+                                            Guantes
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="opcion2-tab" data-bs-toggle="tab"
+                                            data-bs-target="#opcion2-pane" type="button" role="tab"
+                                            aria-controls="opcion2-pane" aria-selected="false">
+                                            Indumentaria RG
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="opcion3-tab" data-bs-toggle="tab"
+                                            data-bs-target="#opcion3-pane" type="button" role="tab"
+                                            aria-controls="opcion3-pane" aria-selected="false">
+                                            Indumentaria Combat
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content border p-3 rounded bg-light" id="filtroTabContent">
+                                    <div class="tab-pane fade show active text-center" id="opcion1-pane" role="tabpanel"
+                                        aria-labelledby="opcion1-tab" tabindex="0">
+                                        <img src="img/productos/guia-talles-guantes.jpg"
+                                            class="img-fluid rounded shadow-sm" alt="Vista Opción A">
+                                    </div>
+                                    <div class="tab-pane fade text-center" id="opcion2-pane" role="tabpanel"
+                                        aria-labelledby="opcion2-tab" tabindex="0">
+                                        <img src="img/productos/guia-talles-rg.jpg" class="img-fluid rounded shadow-sm"
+                                            alt="Vista Opción B">
+                                    </div>
+                                    <div class="tab-pane fade text-center" id="opcion3-pane" role="tabpanel"
+                                        aria-labelledby="opcion3-tab" tabindex="0">
+                                        <img src="img/productos/guia-talles-combat.jpg"
+                                            class="img-fluid rounded shadow-sm" alt="Vista Opción C">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina">
+        <div class="container">
+            <div class="box-row-custom">
+                <div class="box-grid-custom">
+                    <img src="img/logo-black.png" alt="CEYFA" class="img-fluid">
+                    <div class="box-column-custom">
+                        <p>Centro de Entrenamiento y Formación de Arqueros</p>
+                        <p class="copyright-text">&copy; 2026 - Todos los derechos reservados.</p>
+                    </div>
+                </div>
+                <a href="img/ceyfa.pdf" class="link-doc-custom" target="_blank">
+                    <span class="pdf-btn-lbl">Resumen .pdf<i class="bi bi-file-earmark-pdf ms-2"></i></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- FLOTANTE DE WHATSAPP -->
+    <div class="floating-whatsapp-container">
+        <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-floating shadow-lg"
+            aria-label="Chatear con CEYFA por WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/tienda.js"></script>
+</body>
+
+</html>

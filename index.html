@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEYFA</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon-ceyfa.svg">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav id="menu-principal" class="navbar navbar-dark fixed-top py-3">
+        <div class="container flex-nowrap rounded-pill border shadow-lg px-4 py-2">
+            <a class="navbar-brand order-1 me-2 me-md-3" href="#inicio">
+                <img src="img/logo.png" alt="CEYFA">
+            </a>
+            <button class="navbar-toggler border-0 d-md-none order-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+            </button>
+            <div class="collapse navbar-collapse order-3 order-md-2" id="navbarNav">
+                <div class="nav-scroll-container">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link active" href="#escuela-section">Escuela</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#fundamentos-section">¿Por qué CEYFA?</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#equipo-section">Equipo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sedes-section">Sedes & Horarios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#planes-section">Planes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#evento-section">Evento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tienda-section">Tienda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto-section">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-none d-md-block order-md-3 ms-2 ms-md-3">
+                <a href="portal.html" class="btn rounded-pill btn-primary-custom btn-nav-action text-nowrap">
+                    <i class="bi bi-person-circle me-2"></i> Portal Arquero
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!-- BANNER PRINCIPAL -->
+        <section id="inicio" class="box-center-custom">
+            <div class="hero-overlay">
+                <video autoplay loop muted playsinline>
+                    <source src="img/video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="blur-glow-custom"></div>
+            <div class="container">
+                <span class="tag-custom tag-primary-custom">
+                    <i class="bi bi-shield me-1"></i> CEYFA UY
+                </span>
+                <h1>Formación<br><span class="text-gradient">Perfeccionamiento</span><br>Evolución</h1>
+                <p>Innovando a través del entrenamiento integral y la <strong>neurociencia cognitiva</strong> bajo los
+                    tres palos.</p>
+                <a href="#contacto-section" class="btn rounded-pill btn-primary-custom">
+                    <i class="bi bi-calendar-check d-none d-sm-inline-block me-2"></i> AGENDAR CLASE DE PRUEBA
+                </a>
+            </div>
+        </section>
+        <!-- SECCION: ESCUELA -->
+        <section id="escuela-section">
+            <div class="container">
+                <div class="row justify-content-between g-3">
+                    <div class="col-lg-5">
+                        <div class="encabezado-section">
+                            <div class="encabezado-section_grupo-titulos">
+                                <span class="encabezado-section_antetitulo">// NOSOTROS</span>
+                                <h1 class="encabezado-section_titulo">No es solo<br>una academia<br>
+                                    <span class="text-gradient">es una<br>comunidad</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="box-column-custom">
+                            <p>Nuestra metodología combina <strong>entrenamientos técnicos, tácticos y
+                                    neuroentrenamiento</strong> para potenciar la rapidez mental y la toma de decisiones
+                                bajo presión.</p>
+                            <p>Con sedes en distintos puntos de Montevideo y entrenadores altamente capacitados,
+                                brindamos un espacio donde el aprendizaje, la disciplina y la pasión por el arco se
+                                encuentran en cada sesión de entrenamiento.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="carouselEscuela" class="carousel slide card-custom carousel-card-custom"
+                            data-bs-ride="false">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselEscuela" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselEscuela" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselEscuela" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselEscuela" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselEscuela" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="false">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="img/videos/video-01.mp4" type="video/mp4">
+                                        Tu navegador no soporta videos HTML5.
+                                    </video>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="6000">
+                                    <img src="img/fotos/img-02.jpg" alt="Entrenamiento de Arqueros CEYFA">
+                                </div>
+                                <div class="carousel-item" data-bs-interval="false">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="img/videos/video-10.mp4" type="video/mp4">
+                                        Tu navegador no soporta videos HTML5.
+                                    </video>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="6000">
+                                    <img src="img/fotos/img-04.jpg" alt="Entrenamiento de Arqueros CEYFA">
+                                </div>
+                                <div class="carousel-item" data-bs-interval="false">
+                                    <video autoplay loop muted playsinline>
+                                        <source src="img/videos/video-09.mp4" type="video/mp4">
+                                        Tu navegador no soporta videos HTML5.
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-row-custom align-items-center mt-3">
+                            <div class="btn-group-custom">
+                                <a href="https://www.instagram.com/ceyfauy/" target="_blank"
+                                    aria-label="Instagram CEYFA" class="btn-form-custom btn-square-custom"><i
+                                        class="bi bi-instagram"></i></a>
+                                <a href="https://www.threads.com/@ceyfauy" target="_blank" aria-label="Threads CEYFA"
+                                    class="btn-form-custom btn-square-custom"><i class="bi bi-threads"></i></a>
+                                <a href="https://www.facebook.com/CEYFA/" target="_blank" aria-label="Facebook CEYFA"
+                                    class="btn-form-custom btn-square-custom"><i class="bi bi-facebook"></i></a>
+                            </div>
+                            <div class="btn-group-custom">
+                                <button class="btn-form-custom btn-circle-custom" type="button"
+                                    data-bs-target="#carouselEscuela" data-bs-slide="prev" aria-label="Anterior">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                <button class="btn-form-custom btn-circle-custom" type="button"
+                                    data-bs-target="#carouselEscuela" data-bs-slide="next" aria-label="Siguiente">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TIRA INFORMATIVA (PROX. EVENTO) -->
+        <a href="#evento-section" id="tira-marquee" class="text-decoration-none"
+            aria-label="Información sobre la próxima clínica de goleros: Domingo 16 de Agosto">
+            <div class="marquee-track">
+                <div class="marquee-content" id="marquee-texto-real">
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                </div>
+                <div class="marquee-content" id="marquee-texto-espejo" aria-hidden="true">
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                    <i class="bi bi-info-square-fill"></i> PROXIMA CLINICA DE GOLEROS: Domingo 16 de Agosto · 17:30 a
+                    21:15 hs · Sede Carrasco<span></span>
+                </div>
+            </div>
+        </a>
+        <!-- SECCION: FUNDAMENTOS -->
+        <section id="fundamentos-section">
+            <div class="container">
+                <div class="encabezado-section">
+                    <div class="encabezado-section_grupo-titulos">
+                        <span class="encabezado-section_antetitulo">// FUNDAMENTOS</span>
+                        <h1 class="encabezado-section_titulo">¿Por qué <span class="text-gradient">CEYFA?</span></h1>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-shield-shaded"></i>
+                                </div>
+                                <span class="card-number">01</span>
+                            </div>
+                            <h3 class="card-title">Metodología Integral</h3>
+                            <p>Entrenamientos diseñados para mejorar técnica, táctica y habilidades cognitivas del
+                                arquero.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-cpu"></i>
+                                </div>
+                                <span class="card-number">02</span>
+                            </div>
+                            <h3 class="card-title">Neuro-Entrenamiento</h3>
+                            <p>Pioneros en Uruguay en aplicar esta metodología, que mejora la reacción, concentración y
+                                toma de decisiones en el juego.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-bar-chart-line"></i>
+                                </div>
+                                <span class="card-number">03</span>
+                            </div>
+                            <h3 class="card-title">Para todas las edades y niveles</h3>
+                            <p>Desde los 4 años hasta adultos, adaptamos los entrenamientos a cada jugador.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-stopwatch"></i>
+                                </div>
+                                <span class="card-number">04</span>
+                            </div>
+                            <h3 class="card-title">Sedes y horarios flexibles</h3>
+                            <p>Varias opciones en Montevideo para que puedas elegir dónde y cuándo entrenar.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-clipboard2-check"></i>
+                                </div>
+                                <span class="card-number">05</span>
+                            </div>
+                            <h3 class="card-title">Entrenadores profesionales</h3>
+                            <p>Un equipo de especialistas con experiencia en el alto rendimiento and formación de
+                                arqueros.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-fundamentos">
+                            <div class="box-row-custom">
+                                <div class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-person-arms-up"></i>
+                                </div>
+                                <span class="card-number">06</span>
+                            </div>
+                            <h3 class="card-title">Ambiente motivador</h3>
+                            <p>Generamos un entorno de confianza, aprendizaje y crecimiento, donde el arquero no solo
+                                mejora en la cancha, sino también como persona.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="carouselFundamentos" class="container-fluid carousel-fluid-custom">
+                <div class="card-custom card-media first-card">
+                    <img src="img/fotos/img-01.jpg" alt="Entrenamiento de goleros CEYFA UY">
+                </div>
+                <div class="card-custom card-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="img/videos/video-01.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/fotos/img-02.jpg" alt="Entrenamiento de goleros CEYFA UY">
+                </div>
+                <div class="card-custom card-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="img/videos/video-02.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/fotos/img-03.jpg" alt="Entrenamiento de goleros CEYFA UY">
+                </div>
+                <div class="card-custom card-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="img/videos/video-03.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/fotos/img-04.jpg" alt="Entrenamiento de goleros CEYFA UY">
+                </div>
+                <div class="card-custom card-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="img/videos/video-04.mp4" type="video/mp4">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
+                </div>
+                <div class="card-custom card-media last-card">
+                    <img src="img/fotos/img-05.jpg" alt="Entrenamiento de goleros CEYFA UY">
+                </div>
+            </div>
+            <div class="container btn-group-custom">
+                <button class="btn-form-custom btn-circle-custom btn-prev" type="button" aria-label="Anterior"
+                    data-carrusel-id="carouselFundamentos">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="btn-form-custom btn-circle-custom btn-next" type="button" aria-label="Siguiente"
+                    data-carrusel-id="carouselFundamentos">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <div class="container">
+                <div class="encabezado-section">
+                    <div class="encabezado-section_grupo-titulos">
+                        <span class="encabezado-section_antetitulo">// METODOLOGÍA</span>
+                        <h1 class="encabezado-section_titulo">Focos de <span class="text-gradient">Trabajo</span></h1>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 g-3">
+                    <div class="col">
+                        <div class="card-custom card-motion card-metodologia">
+                            <span class="card-number">01</span>
+                            <div class="box-column-custom">
+                                <h3 class="card-title">Enfoque Personalizado</h3>
+                                <p>Cada arquero recibe atención individual para mejorar sus puntos débiles y potenciar
+                                    sus fortalezas específicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-metodologia">
+                            <span class="card-number">02</span>
+                            <div class="box-column-custom">
+                                <h3 class="card-title">Toma de Decisiones y Reflejos</h3>
+                                <p>Implementamos ejercicios complejos que simulan situaciones reales de partido para
+                                    acelerar la velocidad de reacción.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-metodologia">
+                            <span class="card-number">03</span>
+                            <div class="box-column-custom">
+                                <h3 class="card-title">Técnica y Juego Aéreo</h3>
+                                <p>Trabajamos de forma exhaustiva el posicionamiento, los bloqueos corporales, el
+                                    control del área y el dominio preciso del balón con los pies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card-custom card-motion card-metodologia">
+                            <span class="card-number">04</span>
+                            <div class="box-column-custom">
+                                <h3 class="card-title">Condición Física</h3>
+                                <p>Fortalecemos los grupos musculares clave del portero para optimizar la explosividad,
+                                    la agilidad reactiva y la resistencia aeróbica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: EQUIPO -->
+        <section id="equipo-section">
+            <div class="container">
+                <div class="encabezado-section">
+                    <div class="encabezado-section_grupo-titulos">
+                        <span class="encabezado-section_antetitulo">// PROFESIONALES</span>
+                        <h1 class="encabezado-section_titulo">Nuestro <span class="text-gradient">Equipo</span></h1>
+                    </div>
+                </div>
+            </div>
+            <div id="carouselEquipo" class="container-fluid carousel-fluid-custom">
+                <div class="card-custom card-media">
+                    <img src="img/equipo/emanuel-sanchez.jpg" alt="EMANUEL SANCHEZ">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">EMANUEL SANCHEZ</h5>
+                        <span class="tag-custom tag-primary-custom">LIVERPOOL</span>
+                    </div>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/equipo/enzo-ferrari.jpg" alt="ENZO FERRARI">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">ENZO FERRARI</h5>
+                        <span class="tag-custom tag-primary-custom">URUGUAY</span>
+                    </div>
+                </div>
+                <div class="card-custom card-media first-card">
+                    <img src="img/equipo/leandro-idiarte.jpg" alt="LEANDRO IDIARTE">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">LEANDRO IDIARTE</h5>
+                        <span class="tag-custom tag-primary-custom">TORQUE</span>
+                    </div>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/equipo/maikol-migliaccio.jpg" alt="MAIKOL MIGLIACCIO">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">MAIKOL MIGLIACCIO</h5>
+                        <span class="tag-custom tag-primary-custom">DEFENSOR</span>
+                    </div>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/equipo/santiago-dewinne.jpg" alt="SANTIAGO DE WINNE">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">SANTIAGO DE WINNE</h5>
+                        <span class="tag-custom tag-primary-custom">LIVERPOOL</span>
+                    </div>
+                </div>
+
+
+                <div class="card-custom card-media">
+                    <img src="img/equipo/equipo-01.jpg" alt="EQUIPO 01">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">NOMBRE 01</h5>
+                        <span class="tag-custom tag-primary-custom">EQUIPO</span>
+                    </div>
+                </div>
+                <div class="card-custom card-media">
+                    <img src="img/equipo/equipo-02.jpg" alt="EQUIPO 02">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">NOMBRE 02</h5>
+                        <span class="tag-custom tag-primary-custom">EQUIPO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container btn-group-custom">
+                <button class="btn-form-custom btn-circle-custom btn-prev" type="button" aria-label="Anterior"
+                    data-carrusel-id="carouselEquipo">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="btn-form-custom btn-circle-custom btn-next" type="button" aria-label="Siguiente"
+                    data-carrusel-id="carouselEquipo">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+        <!-- SECCION: SEDES & HORARIOS -->
+        <section id="sedes-section">
+            <div class="container">
+                <div class="encabezado-section">
+                    <div class="encabezado-section_grupo-titulos">
+                        <span class="encabezado-section_antetitulo">// MONTEVIDEO - CANELONES</span>
+                        <h1 class="encabezado-section_titulo">Sedes & <span class="text-gradient">horarios</span></h1>
+                    </div>
+                </div>
+                <div class="sede-btns">
+                    <div id="contenedor-filtro" class="shadow-lg btn-group-filters">
+                        <div class="filter-scroll-rail">
+                            <button class="btn-filter active" data-day="all">Todos</button>
+                            <button class="btn-filter" data-day="lunes">Lun</button>
+                            <button class="btn-filter" data-day="martes">Mar</button>
+                            <button class="btn-filter" data-day="miercoles">Mié</button>
+                            <button class="btn-filter" data-day="jueves">Jue</button>
+                            <button class="btn-filter" data-day="viernes">Vie</button>
+                            <button class="btn-filter" data-day="domingo">Dom</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                    <div class="col sede" data-days="lunes,viernes">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Belvedere</h3>
+                                <span class="tag-custom tag-secondary-custom">Montevideo</span>
+                                <p class="card-name">Complejo Neurosport</p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Coronel Bolognesi 11900</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Lunes y Viernes</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">18:30 - 20:00</span>
+                                </div>
+                                <div class="card-row-item relevant">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Lunes y Viernes</span>
+                                        <span class="card-session">
+                                            <i class="bi bi-lightning-charge-fill me-1"></i>Avanzados
+                                        </span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">20:00 - 21:30</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/TNcoiEuHwbUyPCLw9" class="link-action-custom"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col sede" data-days="lunes,miercoles">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Carrasco</h3>
+                                <span class="tag-custom tag-secondary-custom">Montevideo</span>
+                                <p class="card-name">Nogales Ciudad Deportiva</p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Servando Gomez 2850</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Lunes y Miércoles</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">18:40 - 20:10</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/uFP765Jy2UoWuEKL7" class="link-action-custom"
+                                    target="_blank">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col sede" data-days="martes,jueves">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Cuidad de la costa</h3>
+                                <span class="tag-custom tag-secondary-custom">Canelones</span>
+                                <p class="card-name">Zona Lab</p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Leopolis 7133</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Martes y Jueves</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">18:30 - 20:00</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/CrtLiqwMN4DLZwsz8" class="link-action-custom"
+                                    target="_blank">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col sede" data-days="martes">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Brazo Oriental</h3>
+                                <span class="tag-custom tag-secondary-custom">Montevideo</span>
+                                <p class="card-name">Cancha Carabelas</p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Pablo Ehrlich 3974</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Martes</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">19:00 - 20:30</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/LcPucHXkgVP45yut5" class="link-action-custom"
+                                    target="_blank">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col sede" data-days="jueves">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Antel Arena</h3>
+                                <span class="tag-custom tag-secondary-custom">Montevideo</span>
+                                <p class="card-name">Club Deportivo Oriental
+                                </p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Valladolid 3835</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Jueves</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">19:30 - 21:00</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/7bgSGaV8SnVweTMx6" class="link-action-custom"
+                                    target="_blank">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col sede" data-days="domingo">
+                        <div class="card-custom card-motion card-layout-custom card-sede">
+                            <div class="card-header-grid sede-holder">
+                                <h3 class="card-title">Nuevo Centro</h3>
+                                <span class="tag-custom tag-secondary-custom">Montevideo</span>
+                                <p class="card-name">Futvolt</p>
+                                <p class="card-address"><i class="bi bi-geo-alt me-1"></i> Andrés Lamas 3419</p>
+                            </div>
+                            <div class="box-custom box-column-custom">
+                                <div class="card-row-item">
+                                    <div class="box-column-custom">
+                                        <span class="card-day">Domingo</span>
+                                        <span class="card-session">Estándar</span>
+                                    </div>
+                                    <span class="tag-custom tag-primary-custom">09:30 - 11:00</span>
+                                </div>
+                                <a href="https://maps.app.goo.gl/yvAr993CjMvjr2G37" class="link-action-custom"
+                                    target="_blank">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: PLANES -->
+        <section id="planes-section">
+            <div class="container">
+                <div class="encabezado-section_doble">
+                    <div class="encabezado-section">
+                        <span class="encabezado-section_antetitulo">// MEMBRESÍAS</span>
+                        <h1 class="encabezado-section_titulo">Planes de<br><span
+                                class="text-gradient">Entrenamiento</span></h1>
+                    </div>
+                    <div class="encabezado-section_extra">
+                        <p class="text-line-left"><strong>Podés combinar</strong> entrenamientos en <strong>distintas
+                                sedes</strong>. Consultá disponibilidad.</p>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 grid-planes-pc">
+                    <div class="col">
+                        <div class="plan" data-category="Básico">
+                            <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+                                <div class="card-header-grid plan-holder">
+                                    <span class="tag-custom tag-secondary-custom">Básico</span>
+                                    <div class="btn-form-custom">
+                                        <i class="bi bi-shield icon-line"></i>
+                                        <i class="bi bi-shield-fill icon-fill"></i>
+                                    </div>
+                                    <p class="price-unit">POR CLASE</p>
+                                    <h3 class="price-day">$800</h3>
+                                </div>
+                                <div class="box-custom box-column-custom">
+                                    <div class="card-row-item">
+                                        <h6>1 VEZ <span>x semana</span></h6>
+                                        <p>4 · 5 CLASES <span>x mes</span></p>
+                                    </div>
+                                    <p class="price-month">Total: $3.200/mes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="plan active" data-category="Popular">
+                            <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+                                <div class="card-header-grid plan-holder">
+                                    <span class="tag-custom tag-secondary-custom">Popular</span>
+                                    <div class="btn-form-custom">
+                                        <i class="bi bi-star icon-line"></i>
+                                        <i class="bi bi-star-fill icon-fill"></i>
+                                    </div>
+                                    <p class="price-unit">POR CLASE</p>
+                                    <h3 class="price-day">$750</h3>
+                                </div>
+                                <div class="box-custom box-column-custom">
+                                    <div class="card-row-item">
+                                        <h6>2 VECES <span>x semana</span></h6>
+                                        <p>8 · 9 CLASES <span>x mes</span></p>
+                                    </div>
+                                    <p class="price-month">Total: $6.000/mes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="plan" data-category="Avanzado">
+                            <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+                                <div class="card-header-grid plan-holder">
+                                    <span class="tag-custom tag-secondary-custom">Avanzado</span>
+                                    <div class="btn-form-custom">
+                                        <i class="bi bi-lightning-charge icon-line"></i>
+                                        <i class="bi bi-lightning-charge-fill icon-fill"></i>
+                                    </div>
+                                    <p class="price-unit">POR CLASE</p>
+                                    <h3 class="price-day">$700</h3>
+                                </div>
+                                <div class="box-custom box-column-custom">
+                                    <div class="card-row-item">
+                                        <h6>3 VECES <span>x semana</span></h6>
+                                        <p>12 · 13 CLASES <span>x mes</span></p>
+                                    </div>
+                                    <p class="price-month">Total: $8.400/mes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="plan" data-category="Pro">
+                            <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+                                <div class="card-header-grid plan-holder">
+                                    <span class="tag-custom tag-secondary-custom">Pro</span>
+                                    <div class="btn-form-custom">
+                                        <i class="bi bi-trophy icon-line"></i>
+                                        <i class="bi bi-trophy-fill icon-fill"></i>
+                                    </div>
+                                    <p class="price-unit">POR CLASE</p>
+                                    <h3 class="price-day">$650</h3>
+                                </div>
+                                <div class="box-custom box-column-custom">
+                                    <div class="card-row-item">
+                                        <h6>4 VECES <span>x semana</span></h6>
+                                        <p>16 · 17 CLASES <span>x mes</span></p>
+                                    </div>
+                                    <p class="price-month">Total: $10.400/mes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="plan" data-category="Elite">
+                            <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+                                <div class="card-header-grid plan-holder">
+                                    <span class="tag-custom tag-secondary-custom">Elite</span>
+                                    <div class="btn-form-custom">
+                                        <i class="bi bi-award icon-line"></i>
+                                        <i class="bi bi-award-fill icon-fill"></i>
+                                    </div>
+                                    <p class="price-unit">POR CLASE</p>
+                                    <h3 class="price-day">$600</h3>
+                                </div>
+                                <div class="box-custom box-column-custom">
+                                    <div class="card-row-item">
+                                        <h6>5 VECES <span>x semana</span></h6>
+                                        <p>20 · 22 CLASES <span>x mes</span></p>
+                                    </div>
+                                    <p class="price-month">Total: $12.000/mes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: EVENTOS -->
+        <section id="evento-section">
+            <div class="container">
+                <div class="row justify-content-between align-items-stretch g-3">
+                    <div class="col-lg-5">
+                        <div class="encabezado-section">
+                            <div class="encabezado-section_grupo-titulos">
+                                <span class="encabezado-section_antetitulo">// PRÓXIMA</span>
+                                <h1 class="encabezado-section_titulo">Clínica <span class="text-gradient">x rg</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="box-column-custom">
+                            <p>Viví una jornada de <strong>entrenamiento de alto rendimiento</strong> diseñada para
+                                potenciar tus reflejos bajo los tres palos.</p>
+                            <p>Trabajarás con una metodología profesional mediante estaciones específicas, enfocadas en
+                                mejorar la técnica, la toma de decisiones y el desempeño en situaciones reales de juego.
+                            </p>
+                            <p><i class="bi bi-gift-fill text-gradient me-1"></i><strong> Sorteos, premios y sorpresas
+                                    durante toda la jornada.</strong>
+                            </p>
+                            <div class="box-grid-custom">
+                                <div class="card-row-item">
+                                    <div class="btn-form-custom btn-square-custom">
+                                        <i class="bi bi-calendar-event fs-5"></i>
+                                    </div>
+                                    <div class="box-column-custom">
+                                        <span class="label-custom">Fecha</span>
+                                        <span class="value-custom">Domingo 16 Agosto</span>
+                                    </div>
+                                </div>
+                                <div class="card-row-item">
+                                    <div class="btn-form-custom btn-square-custom">
+                                        <i class="bi bi-clock fs-5"></i>
+                                    </div>
+                                    <div class="box-column-custom">
+                                        <span class="label-custom">Horario</span>
+                                        <span class="value-custom">17:30 a 21:15 hs</span>
+                                    </div>
+                                </div>
+                                <div class="card-row-item">
+                                    <div class="btn-form-custom btn-square-custom">
+                                        <i class="bi bi-geo-alt fs-5"></i>
+                                    </div>
+                                    <div class="box-column-custom">
+                                        <span class="label-custom">Sede / Complejo</span>
+                                        <span class="value-custom">Carrasco — Nogales Ciudad Deportiva</span>
+                                    </div>
+                                </div>
+                                <a href="https://maps.app.goo.gl/uFP765Jy2UoWuEKL7" class="link-action-custom"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Ver mapa <i class="bi bi-arrow-up-right ms-1"></i>
+                                </a>
+                            </div>
+                            <div class="box-row-custom">
+                                <a href="img/evento/ceyfa-rg_clinica.pdf" target="_blank"
+                                    class="btn rounded-pill btn-secondary-custom">
+                                    <i class="bi bi-file-earmark-pdf me-2"></i> INFO. EVENTO
+                                </a>
+                                <a href="https://wa.me/59899449480" target="_blank"
+                                    class="btn rounded-pill btn-primary-custom">
+                                    <i class="bi bi-whatsapp me-2"></i> INSCRIBIRME
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card-custom card-evento shadow-lg">
+                            <video autoplay loop muted playsinline>
+                                <source src="img/evento/video-evento-01.mp4" type="video/mp4">
+                            </video>
+                            <div class="tag-floating">
+                                <span class="tag-custom tag-secondary-custom shadow-lg">Montevideo</span>
+                            </div>
+                            <div class="tag-floating">
+                                <span class="tag-custom tag-primary-custom shadow-lg">
+                                    <span class="pulse-dot-live me-2"></span> ¡Inscripciones Abiertas!
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: TIENDA -->
+        <section id="tienda-section">
+            <div class="container">
+                <div class="encabezado-section_doble">
+                    <div class="encabezado-section">
+                        <span class="encabezado-section_antetitulo">// EQUIPAMIENTO</span>
+                        <h1 class="encabezado-section_titulo">Nuestra <span class="text-gradient">tienda</span></h1>
+                    </div>
+                    <div class="encabezado-section_extra">
+                        <a href="tienda.html" class="btn rounded-pill btn-primary-custom">
+                            ver todo <i class="bi bi-shop-window ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="box-grid-custom">
+                    <a href="tienda.html?categoria=ceyfa" target="_self"
+                        class="card-custom card-tienda area-indumentaria">
+                        <div class="card-media">
+                            <img src="img/fotos/img-05.jpg" alt="Indumentaria Oficial CEYFA">
+                        </div>
+                        <span class="tag-custom tag-secondary-custom">6 PRODUCTOS</span>
+                        <div class="box-column-custom">
+                            <h3 class="card-title">Indumentaria <span class="text-gradient">CEYFA</span></h3>
+                            <span class="link-action-custom">Ver productos <i class="bi bi-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="tienda.html?categoria=guantes-rg" target="_self"
+                        class="card-custom card-tienda area-guantes">
+                        <div class="card-media">
+                            <img src="img/productos/banner-guantes.jpeg" alt="Guantes Profesionales RG">
+                        </div>
+                        <span class="tag-custom tag-secondary-custom">4 PRODUCTOS</span>
+                        <div class="box-column-custom">
+                            <h3 class="card-title">Guantes</h3>
+                            <span class="link-action-custom">Ver productos <i class="bi bi-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <a href="tienda.html?categoria=todo-rg" target="_self"
+                        class="card-custom card-tienda area-accesorios">
+                        <div class="card-media">
+                            <img src="img/productos/banner-accesorios.jpg" alt="Accesorios y Protección RG">
+                        </div>
+                        <span class="tag-custom tag-secondary-custom">4 PRODUCTOS</span>
+                        <div class="box-column-custom">
+                            <h3 class="card-title">Todo RG</h3>
+                            <span class="link-action-custom">Ver productos <i class="bi bi-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: CONTACTO -->
+        <section id="contacto-section">
+            <div class="container">
+                <div class="row justify-content-between g-3">
+                    <div class="col-lg-5 box-column-custom">
+                        <div class="encabezado-section">
+                            <div class="encabezado-section_grupo-titulos">
+                                <span class="encabezado-section_antetitulo">// ESCRIBINOS</span>
+                                <h1 class="encabezado-section_titulo">Iniciá tu <span
+                                        class="text-gradient">camino</span></h1>
+                            </div>
+                        </div>
+                        <div class="box-column-custom">
+                            <p>Completá el formulario para coordinar tu <strong>clase de prueba</strong><br>en la sede
+                                que
+                                mejor te quede, o despejar cualquier duda<br>sobre nuestros entrenamientos cognitivos
+                                bajo
+                                los tres palos.</p>
+                            <div class="btn-group-custom">
+                                <a href="https://wa.me/59899449480" target="_blank" aria-label="Whatsapp CEYFA"
+                                    class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-whatsapp"></i>
+                                </a>
+                                <a href="https://www.instagram.com/ceyfauy/" target="_blank"
+                                    aria-label="Instagram CEYFA" class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="https://threads.net" target="_blank" aria-label="Threads CEYFA"
+                                    class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-threads"></i>
+                                </a>
+                                <a href="https://www.facebook.com/CEYFA/" target="_blank" aria-label="Facebook CEYFA"
+                                    class="btn-form-custom btn-square-custom">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form id="form-contacto-ceyfa" class="box-column-custom card-custom card-form" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 box-column-custom">
+                                    <label for="input-nombre" class="label-custom">Nombre (*)</label>
+                                    <input type="text" id="input-nombre" class="form-control input-custom"
+                                        placeholder="Ej: Juan Pérez" pattern="^[A-Za-zÑñÁéíóúÁÉÍÓÚüÜ\s]+$" minlength="3"
+                                        required>
+                                </div>
+                                <div class="col-md-6 box-column-custom">
+                                    <label for="select-sede" class="label-custom">Sede de interés (*)</label>
+                                    <select id="select-sede" class="form-select input-custom" required>
+                                        <option value="" disabled selected hidden>Elegí la sede de tu preferencia
+                                        </option>
+                                        <option value="belvedere">Belvedere (Neurosport)</option>
+                                        <option value="carrasco">Carrasco (Nogales)</option>
+                                        <option value="ciudad-costa">Ciudad de la Costa (Zona Lab)</option>
+                                        <option value="brazo-oriental">Brazo Oriental (Carabelas)</option>
+                                        <option value="antel-arena">Antel Arena (Oriental)</option>
+                                        <option value="nuevo-centro">Nuevo Centro (Futvolt)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 box-column-custom">
+                                    <label for="input-telefono" class="label-custom">Teléfono (*)</label>
+                                    <input type="tel" id="input-telefono" class="form-control input-custom"
+                                        placeholder="Ej: 099123456" pattern="[0-9]*" minlength="9" required>
+                                </div>
+                                <div class="col-md-6 box-column-custom">
+                                    <label for="input-email" class="label-custom">Correo</label>
+                                    <input type="email" id="input-email" class="form-control input-custom"
+                                        placeholder="Ej: nombre@correo.com"
+                                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                                </div>
+                            </div>
+                            <div class="box-column-custom">
+                                <label for="input-mensaje" class="label-custom">Mensaje o Consulta</label>
+                                <textarea id="input-mensaje" class="form-control input-custom" rows="5"
+                                    placeholder="Contanos tu edad o experiencia previa..."></textarea>
+                            </div>
+                            <button type="submit" class="btn rounded-pill btn-primary-custom btn-contact">
+                                enviar solicitud<i class="bi bi-envelope-paper icon-line ms-2"></i><i
+                                    class="bi bi-envelope-paper-fill icon-fill ms-2"></i></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCION: SPONSORS -->
+        <section id="sponsors-section">
+            <div class="marquee-wrapper-sponsors">
+                <div class="marquee-track-sponsors">
+                    <div class="marquee-content-sponsors">
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-rg.png"
+                                alt="RG Goalkeeper Gloves Uruguay"></div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-mgr.png" alt="MGR Sport">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-dukita.png" alt="Dukita">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-san-gerardo.png"
+                                alt="San Gerardo Melilla">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-asencio.png"
+                                alt="Asencio">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-huerta-los-patos.png"
+                                alt="Huerta Los Patos">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-rg.png"
+                                alt="RG Goalkeeper Gloves Uruguay"></div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-mgr.png" alt="MGR Sport">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-dukita.png" alt="Dukita">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-san-gerardo.png"
+                                alt="San Gerardo Melilla">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-asencio.png"
+                                alt="Asencio">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-huerta-los-patos.png"
+                                alt="Huerta Los Patos">
+                        </div>
+                    </div>
+                    <div class="marquee-content-sponsors" aria-hidden="true">
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-rg.png"
+                                alt="RG Goalkeeper Gloves Uruguay"></div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-mgr.png" alt="MGR Sport">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-dukita.png" alt="Dukita">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-san-gerardo.png"
+                                alt="San Gerardo Melilla">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-asencio.png"
+                                alt="Asencio">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-huerta-los-patos.png"
+                                alt="Huerta Los Patos">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-rg.png"
+                                alt="RG Goalkeeper Gloves Uruguay"></div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-mgr.png" alt="MGR Sport">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-dukita.png" alt="Dukita">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-san-gerardo.png"
+                                alt="San Gerardo Melilla">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-asencio.png"
+                                alt="Asencio">
+                        </div>
+                        <div class="marquee-item-sponsor"><img src="img/sponsors/logo-huerta-los-patos.png"
+                                alt="Huerta Los Patos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina">
+        <div class="container">
+            <div class="box-row-custom">
+                <div class="box-grid-custom">
+                    <img src="img/logo-black.png" alt="CEYFA" class="img-fluid">
+                    <div class="box-column-custom">
+                        <p>Centro de Entrenamiento y Formación de Arqueros</p>
+                        <p class="copyright-text">&copy; 2026 - Todos los derechos reservados.</p>
+                    </div>
+                </div>
+                <a href="img/ceyfa.pdf" class="link-doc-custom" target="_blank">
+                    <span class="pdf-btn-lbl">Resumen .pdf<i class="bi bi-file-earmark-pdf ms-2"></i></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- FLOTANTE DE WHATSAPP -->
+    <div class="floating-whatsapp-container">
+        <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-floating shadow-lg"
+            aria-label="Chatear con CEYFA por WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dinamico.js"></script>
+</body>
+
+</html>
