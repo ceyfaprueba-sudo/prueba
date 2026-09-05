@@ -95,6 +95,35 @@ strong {
   transform: translate(2px, -2px);
 }
 
+.link-yellow {
+  color: var(--bs-yellow);
+  text-decoration: none;
+  font-weight: 800;
+  transition: var(--transition-smooth);
+}
+
+.link-yellow:hover {
+  color: var(--cyan-custom);
+}
+
+.a-custom .icon-line {
+  display: inline-block !important;
+  transition: var(--transition-smooth);
+}
+
+.a-custom .icon-fill {
+  display: none !important;
+  transition: var(--transition-smooth);
+}
+
+.a-custom:hover .icon-line {
+  display: none !important;
+}
+
+.a-custom:hover .icon-fill {
+  display: inline-block !important;
+}
+
 .label-custom {
   color: var(--bs-gray-500);
   font-size: 0.75rem;
@@ -1332,6 +1361,12 @@ body.menu-abierto-block::before {
 }
 
 /* PLANES */
+@media (min-width: 992px) {
+  #planes-section .encabezado-section_extra {
+    max-width: 275px;
+  }
+}
+
 .plan {
   width: 100%;
   height: 100%;
