@@ -1,81 +1,75 @@
-/* --- 3. CÁPSULA DE ACCESO (Login Form de Cristal) --- */
-.auth-portal-wrapper { perspective: 1000px; }
-.card-form { background-color: rgba(18, 20, 28, 0.65) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.04) !important; padding: 2.25rem !important; border-radius: 1rem !important; transition: border-color 0.4s ease, box-shadow 0.4s ease; }
-.card-form .label-custom { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--bs-gray-600); margin-bottom: 0.4rem; }
-.input-with-icon-wrapper { width: 100%; }
-.input-with-icon-wrapper .field-icon-auth { position: absolute; top: 50%; left: 1.15rem; transform: translateY(-50%); color: var(--bs-gray-600); font-size: 1.05rem; z-index: 4; transition: var(--transition-smooth); pointer-events: none; }
-.card-form .input-custom { background-color: rgba(0, 0, 0, 0.4) !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; color: white !important; font-family: var(--font-textos); font-size: 0.9rem; padding: 0.7rem 1rem; border-radius: 0.5rem; transition: var(--transition-smooth); }
-.card-form .input-custom::placeholder { color: var(--bs-gray-700); font-size: 0.85rem; }
-.card-form .input-custom:focus { background-color: rgba(0, 0, 0, 0.6) !important; border-color: var(--cyan-custom) !important; box-shadow: 0 0 0 4px var(--cyan-custom-10) !important; outline: none; }
-.input-with-icon-wrapper:focus-within .field-icon-auth { color: var(--cyan-custom); }
-.forgot-pass-link-shop { font-family: var(--font-textos); font-weight: 700; color: var(--bs-gray-600); text-decoration: underline; transition: var(--transition-smooth); }
-.forgot-pass-link-shop:hover { color: white !important; }
-.btn-submit-auth { font-family: var(--font-titulos); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; border: 1px solid var(--cyan-custom); display: inline-flex; align-items: center; justify-content: center; transition: var(--transition-smooth); }
-.btn-submit-auth:hover { transform: translateY(-2px); box-shadow: var(--box-shadow-cyan); }
-.btn-submit-auth i { display: inline-block; transition: var(--transition-smooth); will-change: transform; }
-.btn-submit-auth:hover i { transform: translateX(4px); }
-.card-form:hover { border-color: var(--cyan-custom-20) !important; box-shadow: var(--box-shadow-cyan); }
+.contenedor-login {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--cyan-custom-10);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 1.25rem;
+}
 
-/* ==========================================================================
-   4. INTERFAZ OPERATIVA DE DOS COLUMNAS DE ALTA FIDELIDAD
-   ========================================================================== */
-.wrapper-ficha-alumno { background-color: rgba(18, 20, 28, 0.8) !important; }
-.badge-cuota-paga { background-color: rgba(0, 255, 102, 0.08) !important; border: 1px solid rgba(0, 255, 102, 0.25) !important; color: #00ff66 !important; font-family: var(--font-titulos); font-size: 0.65rem; font-weight: 800; letter-spacing: var(--tracking-widest); text-transform: uppercase; }
-.ficha-stats-lbl { font-size: 0.72rem; font-weight: 700; color: var(--bs-gray-600); text-transform: uppercase; letter-spacing: var(--tracking-widest); }
-.ficha-stats-val { font-family: var(--font-titulos); font-size: 1.05rem; font-weight: 900; color: white; }
+.contenedor-disabled {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(11, 12, 16, 0.5);
+    backdrop-filter: blur(4px);
+}
 
-/* --- MATRIZ CROMÁTICA DEL CALENDARIO INTELECTUAL --- */
-.calendar-grid-mini { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.35rem; text-align: center; margin-top: 1rem; }
-.calendar-day-name { font-family: var(--font-titulos); font-size: 0.65rem; font-weight: 800; color: var(--bs-gray-600); text-transform: uppercase; }
-.calendar-day-num { font-family: var(--font-textos); font-size: 0.8rem; font-weight: 700; color: var(--bs-gray-700); padding: 0.45rem 0; border-radius: 0.35rem; border: 1px solid transparent; transition: var(--transition-smooth); }
+.disabled-icon {
+    width: 70px;
+    height: 70px;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+}
 
-/* Días viejos colapsan solos con opacidad nativa */
-.calendar-day-num.day-pasado { opacity: 0.25; cursor: not-allowed; pointer-events: none; }
-.calendar-day-num.day-pasado.state-agendada { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); color: var(--bs-gray-300); }
+.disabled-icon i {
+    font-size: 2rem;
+}
 
-/* Día suspendido por mal tiempo ➡️ ROJO ALERTA */
-.calendar-day-num.state-suspendida { background-color: rgba(255, 71, 87, 0.1) !important; border-color: rgba(255, 71, 87, 0.3) !important; color: #ff4757 !important; opacity: 0.85 !important; }
+.disabled-txt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-align: center;
+    padding: 0.25rem;
+}
 
-/* Día disponible futuro ➡️ CELESTE INTERACTIVO (Clickable) */
-.calendar-day-num.day-futuro.state-disponible { background-color: rgba(0, 168, 255, 0.08); border-color: var(--cyan-custom-30); color: var(--cyan-custom); cursor: pointer; }
-.calendar-day-num.day-futuro.state-disponible:hover { background-color: var(--cyan-custom); color: black; box-shadow: var(--box-shadow-cyan); }
+.auth-portal-wrapper {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
-/* Día agendado futuro ➡️ VERDE COBERTURA */
-.calendar-day-num.day-futuro.state-agendada { background-color: rgba(0, 255, 102, 0.08); border-color: rgba(0, 255, 102, 0.3); color: #00ff66; text-shadow: 0 0 8px rgba(0, 255, 102, 0.2); }
+.card-form {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    align-items: flex-end;
+    padding: 4rem 1.5rem;
+}
 
-/* Casillero seleccionado por el dedo en el momento de la reserva */
-.calendar-day-num.selected-for-booking { border-color: var(--cyan-custom) !important; background-color: var(--cyan-custom) !important; color: black !important; box-shadow: var(--box-shadow-cyan); transform: scale(1.05); }
+.icon-input-custom {
+    position: absolute;
+    top: 50%;
+    left: 1.15rem;
+    transform: translateY(-50%);
+    color: var(--bs-gray-600);
+    font-size: 1.05rem;
+    z-index: 4;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+}
 
-/* --- CONSOLA DE RESERVA PASO 2 (Desplegable elástica) --- */
-.booking-step2-glass-box { background-color: rgba(0, 0, 0, 0.4) !important; border: 1px dashed var(--cyan-custom-30) !important; border-radius: 0.5rem; width: 100%; animation: slideDownFadeBooking 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; will-change: transform, opacity; }
-@keyframes slideDownFadeBooking { 0% { opacity: 0; transform: translateY(-8px); } 100% { opacity: 1; transform: translateY(0); } }
-.card-form .select-sede-portal-custom { background-color: rgba(11, 12, 16, 0.9) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; color: white !important; font-family: var(--font-textos); font-size: 0.85rem; padding: 0.55rem 1rem; border-radius: 0.4rem; cursor: pointer; background-image: url("data:image/svg+xml,%3csvg xmlns='http://w3.org' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300a8ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); }
-.card-form .select-sede-portal-custom:focus { border-color: var(--cyan-custom) !important; box-shadow: 0 0 0 3px var(--cyan-custom-10) !important; }
+.btn-portal {
+    margin: 0.3rem 0;
+}
 
-/* --- SECCIÓN AVISO DE NEÓN SUPERIOR --- */
-.alert-destellante-neon { background-color: rgba(255, 71, 87, 0.08) !important; border: 1px solid rgba(255, 71, 87, 0.25) !important; border-radius: 0.5rem; animation: alertGlowPulse 2s infinite ease-in-out; }
-@keyframes alertGlowPulse { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.05); } 50% { box-shadow: 0 0 15px 0 rgba(255, 71, 87, 0.15); border-color: rgba(255, 71, 87, 0.4) !important; } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.05); } }
 
-/* ==========================================================================
-   5. FILA PANORÁMICA DE LOS 6 COMPLEJOS REALES (Full Width Row)
-   ========================================================================== */
-#panel-lista-sedes-info { width: 100% !important; }
-.panel-sede-card-item { border: 1px solid rgba(255, 255, 255, 0.03) !important; background-color: rgba(0, 0, 0, 0.2) !important; border-radius: 0.5rem !important; transition: var(--transition-smooth); height: 100%; }
-.panel-sede-card-item:hover { border-color: rgba(255, 255, 255, 0.06) !important; background-color: rgba(255, 255, 255, 0.01) !important; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
-.panel-icon-box-geo { width: 38px; height: 38px; color: var(--cyan-custom); background-color: var(--cyan-custom-10); border: 1px solid var(--cyan-custom-20); border-radius: 0.4rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.txt-sede-panel-title { font-family: var(--font-titulos); font-size: 0.85rem; font-weight: 800; letter-spacing: var(--tracking-tight); text-transform: uppercase; }
-.panel-sede-card-item .btn-map-link-panel { width: 34px; height: 34px; border-radius: 0.4rem; background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--bs-gray-500); display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); flex-shrink: 0; }
-.panel-sede-card-item:hover .btn-map-link-panel { background-color: var(--cyan-custom-10); border-color: var(--cyan-custom); color: var(--cyan-custom); box-shadow: 0 0 10px rgba(0, 168, 255, 0.2); }
-
-#pie-pagina .footer-identity-grid { grid-template-columns: auto 1fr; gap: 1rem; align-items: center; }
-#pie-pagina .footer-logo-mini { max-width: 2.2rem; filter: grayscale(100%) opacity(0.2); }
-
-@media (max-width: 991.98px) {
-  #menu-tienda .container { width: calc(100% - 1.5rem) !important; border-radius: 50rem !important; padding-top: 0.45rem !important; padding-bottom: 0.45rem !important; }
-  .shop-campaign-banner { height: 200px; }
-  .shop-campaign-banner .container { padding-top: 4rem; } 
-  .shop-campaign-banner .banner-overlay-glow { background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 100%); }
-  .card-form { padding: 1.5rem !important; } 
-  .calendar-grid-mini { gap: 0.2rem; } 
-  .calendar-day-num { font-size: 0.75rem; }
+@media (max-width: 767.98px) {
+    .auth-portal-wrapper > .box-row-custom {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
 }
