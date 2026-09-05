@@ -43,83 +43,89 @@
             <div class="container">
                 <div class="encabezado-section_doble">
                     <div class="encabezado-section">
-                        <span class="encabezado-section_antetitulo">// PORTAL</span>
-                        <h1 class="encabezado-section_titulo">Agenda <span class="text-gradient">tus clases</span></h1>
+                        <span class="encabezado-section_antetitulo">// PORTAL alumnos</span>
+                        <h1 class="encabezado-section_titulo">En <span class="text-gradient">construcción</span></h1>
                     </div>
                     <div class="encabezado-section_extra">
-                        <p class="text-line-left">Sección digital de goleros y comunidad oficial de alta
-                            competencia de <strong>CEYFA Uruguay</strong>.</p>
+                        <p class="text-line-left">Estamos trabajando para una <strong>mejor experiencia digital</strong>
+                            para nuestra
+                            comunidad de goleros.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- PORTAL -->
+        <!-- PORTAL: EN CONSTRUCCIÓN / LOGIN DESHABILITADO -->
         <section id="login" class="py-5 my-2">
             <div class="container">
-                <div class="row">
-
-                    <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto auth-portal-wrapper">
-                        <form id="form-auth-portal"
-                            class="card-custom card-form box-custom box-column-custom gap-3 shadow-lg" novalidate>
-
-                            <!-- Campo 01: Usuario Cédula (Llavero inteligente blindado) -->
-                            <div class="box-custom box-column-custom input-group-holder w-100">
-                                <label for="input-auth-user" class="label-custom">Cédula o Usuario (*)</label>
-                                <div class="position-relative input-with-icon-wrapper">
-                                    <i class="bi bi-person-badge field-icon-auth"></i>
-                                    <input type="text" id="input-auth-user" class="form-control input-custom ps-5"
-                                        placeholder="Ej: 12345678" minlength="6" autocomplete="username" required>
+                <div class="contenedor-login shadow-lg">
+                    <div class="contenedor-disabled box-column-custom">
+                        <div
+                            class="disabled-icon box-center-custom bg-black border shadow-lg">
+                            <i class="bi bi-lock-fill text-gradient"></i>
+                        </div>
+                        <span class="disabled-txt">
+                            ACCESO TEMPORALMENTE INACTIVO
+                        </span>
+                    </div>
+                    <div class="auth-portal-wrapper">
+                        <form id="form-auth-portal" class="card-custom card-form box-row-custom" disabled>
+                            <div class="box-column-custom w-100">
+                                <label class="label-custom">Usuario (*)</label>
+                                <div class="position-relative">
+                                    <i class="bi bi-person-fill icon-input-custom"></i>
+                                    <input type="text" class="form-control input-custom ps-5"
+                                        placeholder="Ej: Juan Pérez" disabled>
                                 </div>
                             </div>
-
-                            <!-- Campo 02: Contraseña CamelCase (NombreApellido) -->
-                            <div class="box-custom box-column-custom input-group-holder w-100">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <label for="input-auth-pass" class="label-custom m-0">Contraseña (*)</label>
-                                    <a href="https://wa.me" target="_blank" rel="noopener noreferrer"
-                                        class="forgot-pass-link-shop small">¿La olvidaste?</a>
+                            <div class="box-column-custom w-100">
+                                <div class="box-row-custom align-items-center">
+                                    <label class="label-custom">Contraseña (*)</label>
+                                    <span class="small text-muted">¿La olvidaste?</span>
                                 </div>
-                                <div class="position-relative input-with-icon-wrapper">
-                                    <i class="bi bi-lock-fill field-icon-auth"></i>
-                                    <input type="password" id="input-auth-pass" class="form-control input-custom ps-5"
-                                        placeholder="••••••••" minlength="4" autocomplete="current-password" required>
+                                <div class="position-relative">
+                                    <i class="bi bi-lock-fill icon-input-custom"></i>
+                                    <input type="password" class="form-control input-custom ps-5" placeholder="••••••••"
+                                        disabled>
                                 </div>
                             </div>
-
-                            <button type="submit"
-                                class="btn rounded-pill btn-primary-custom w-100 py-2.5 mt-2 btn-submit-auth">
-                                Ingresar al Panel <i class="bi bi-box-arrow-in-right ms-2"></i>
+                            <button type="button" class="btn rounded-pill btn-primary-custom btn-portal w-100" disabled>
+                                ingresar <i class="bi bi-box-arrow-in-right ms-2"></i>
                             </button>
-
                         </form>
                     </div>
-
                 </div>
             </div>
         </section>
-        <!-- PIE DE PÁGINA -->
-        <footer id="pie-pagina">
-            <div class="container">
-                <div class="box-row-custom">
-                    <div class="box-grid-custom">
-                        <img src="img/logo-black.png" alt="CEYFA" class="img-fluid">
-                        <div class="box-column-custom">
-                            <p>Centro de Entrenamiento y Formación de Arqueros</p>
-                            <p class="copyright-text">&copy; 2026 - Todos los derechos reservados.</p>
-                        </div>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina">
+        <div class="container">
+            <div class="box-row-custom">
+                <div class="box-grid-custom">
+                    <img src="img/logo-black.png" alt="CEYFA" class="img-fluid">
+                    <div class="box-column-custom">
+                        <p>Centro de Entrenamiento y Formación de Arqueros</p>
+                        <p class="copyright-text">&copy; 2026 - Todos los derechos reservados.</p>
                     </div>
-                    <a href="img/ceyfa.pdf" class="link-doc-custom" target="_blank">
-                        <span class="pdf-btn-lbl">Resumen .pdf<i class="bi bi-file-earmark-pdf ms-2"></i></span>
-                    </a>
                 </div>
+                <a href="img/ceyfa.pdf" class="link-doc-custom" target="_blank">
+                    <span class="pdf-btn-lbl">Resumen .pdf<i class="bi bi-file-earmark-pdf ms-2"></i></span>
+                </a>
             </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-        <script src="js/script.js"></script>
-        <script src="js/alumnos.js"></script>
-        <script src="js/portal.js"></script>
+        </div>
+    </footer>
+    <!-- FLOTANTE DE WHATSAPP -->
+    <div class="floating-whatsapp-container">
+        <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-floating shadow-lg"
+            aria-label="Chatear con CEYFA por WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dinamico.js"></script>
 </body>
 
 </html>
