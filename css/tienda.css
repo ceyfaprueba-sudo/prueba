@@ -73,8 +73,6 @@
 }
 
 /* SUB FILTRO */
-#subfiltro-guia {}
-
 .btn-subfilter {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid transparent;
@@ -166,10 +164,6 @@
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-}
-
-#modal-guia-talles .nav-link.active {
-
 }
 
 @media (max-width: 767.98px) {
