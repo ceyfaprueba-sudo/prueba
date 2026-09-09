@@ -205,7 +205,7 @@ function derivarCompraWhatsApp(buttonElement) {
   📐 Talle Seleccionado: ${talleElegido}
   💰 Precio: ${precioActual}
   ¿Tienen stock disponible para coordinar el retiro o envío? ¡Gracias!`;
-  window.open(`https://wa.me{numeroWhatsApp}?text=${encodeURIComponent(textoPedido)}`, "_blank");
+  window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoPedido)}`, "_blank");
 }
 document.addEventListener("DOMContentLoaded", function () {
   inicializarPestañasTienda();
