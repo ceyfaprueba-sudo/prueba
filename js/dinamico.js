@@ -373,7 +373,6 @@ function renderizarSedes(sedes) {
   inicializarFiltrosSedesDinamicos();
 }
 
-
 function inicializarFiltrosSedesDinamicos() {
   const botonera = document.getElementById("contenedor-filtro");
   if (!botonera) return;
@@ -482,7 +481,6 @@ function obtenerIconoPlan(nivel, indice) {
 
   return iconos[indice % iconos.length];
 }
-
 
 function renderizarPlanes(planes) {
   const seccion = document.getElementById("planes-section");
@@ -621,6 +619,22 @@ function renderizarEvento(evento) {
     } else {
       botonDocumento.style.display = "none";
     }
+  }
+
+  const botonWhatsapp = seccion. querySelector(".btn-primary-custom");
+
+  if (botonWhatsapp && evento) {
+      const fechaEvento = formatearFechaVisible(evento.fecha) || "Próxima fecha";
+      const horaEvento = limpiarTexto(evento.hora) || "A confirmar";
+      const sedeEvento = limpiarTexto(evento.sede) || "A confirmar";
+
+      const textoMensaje = `¡Hola CEYFA UY!
+      Quiero inscribirme a la próxima Clínica de Goleros:
+      Fecha: ${fechaEvento}
+      Horario: ${horaEvento}
+      Sede: ${sedeEvento}
+      ¿Me podrían pasar los detalles para asegurar mi lugar? ¡Gracias!`;
+        botonWhatsapp.href = `https://wa.me{encodeURIComponent(textoMensaje)}`;
   }
 
   const cardEvento = seccion.querySelector(".card-evento");
