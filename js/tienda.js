@@ -207,6 +207,34 @@ function derivarCompraWhatsApp(buttonElement) {
   ¿Tienen stock disponible para coordinar el retiro o envío? ¡Gracias!`;
   window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoPedido)}`, "_blank");
 }
+function renderizarFooter(footer) {
+  const pie = document.getElementById("pie-pagina");
+  if (!pie) return;
+
+  const enlace = pie.querySelector(".link-doc-custom");
+  if (!enlace) return;
+
+  const documento = footer[0];
+  if (!documento) return;
+
+  const url = obtenerEnlaceDrive(
+    documento.documentoDriveId,
+    documento.documentoUrl
+  );
+
+  if (url) {
+    enlace.href = url;
+  }
+
+  const etiqueta = enlace.querySelector(".pdf-btn-lbl");
+
+  if (etiqueta) {
+    etiqueta.innerHTML = `
+      ${escaparHtml(documento.nombre)}
+      <i class="bi bi-file-earmark-pdf ms-2"></i>
+    `;
+  }
+}
 document.addEventListener("DOMContentLoaded", function () {
   inicializarPestañasTienda();
   inicializarSubfiltrosTalles(); 
@@ -223,4 +251,5 @@ document.addEventListener("DOMContentLoaded", function () {
       ejecutarFiltradoCombinadoTienda();
     }
   }
+  renderizarFooter();
 });
