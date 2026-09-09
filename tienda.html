@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CEYFA - Tienda</title>
+<link href="img/favicon-ceyfa.svg" rel="icon" type="image/x-icon"/>
+<link href="https://googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="css/tienda.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="menu-secundario fixed-top py-3" id="menu-tienda">
+<div class="container flex-nowrap rounded-pill border shadow-lg px-4 py-2">
+<a class="navbar-brand me-2 me-md-3" href="index.html">
+<img alt="CEYFA" src="img/logo.png"/>
+</a>
+<div class="d-flex align-items-center gap-2 menu-navbar-nav">
+<span class="menu-nav-link">SHOP</span>
+</div>
+<div class="ms-2 ms-md-3">
+<a class="btn rounded-pill btn-secondary-custom btn-nav-action text-nowrap" href="index.html">
+                    volver <i class="bi bi-box-arrow-in-right ms-2"></i>
+</a>
+</div>
+</div>
+</header>
+<main>
+<!-- BANNER -->
+<section class="banner-secundario" id="banner-tienda">
+<div class="banner-overlay">
+<img alt="Equipamiento Profesional de Arqueros CEYFA" src="img/productos/banner-tienda.jpg"/>
+</div>
+<div class="container">
+<div class="encabezado-section_doble">
+<div class="encabezado-section">
+<span class="encabezado-section_antetitulo">// RG GLOVES OFFICIAL PARTNER</span>
+<h1 class="encabezado-section_titulo">Armate para <span class="text-gradient">ganar</span></h1>
+</div>
+<div class="encabezado-section_extra">
+<p class="text-line-left"><strong>Indumentaria oficial CEYFA</strong> y la colección
+                            completa de guantes profesionales RG con stock inmediato.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TIENDA -->
+<section id="tienda">
+<div class="container">
+<div class="box-column-custom" id="tienda-controles">
+<div class="box-row-custom" id="filtro-buscador">
+<div class="btn-group-filters shadow-lg" id="contenedor-filtro-tienda">
+<div class="filter-scroll-rail">
+<button class="btn-filter active" data-filter="all">Todos</button>
+<button class="btn-filter" data-filter="ceyfa">Ceyfa</button>
+<button class="btn-filter" data-filter="guantes-rg">Guantes</button>
+<button class="btn-filter" data-filter="todo-rg">Todo RG</button>
+</div>
+</div>
+<div class="search-shop shadow-lg">
+<div class="search-input-inner">
+<i class="bi bi-search search-icon-shop"></i>
+<input id="search-product-input" placeholder="Buscar guantes, buzos, accesorios..." type="text"/>
+<button class="btn-clear-shop" id="btn-clear-search" style="display: none;">
+<i class="bi bi-x-circle-fill"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="box-row-custom" id="subfiltro-guia">
+<div class="btn-group-custom btn-group-subfilters" id="contenedor-subfiltro-tienda">
+<button class="btn-subfilter" data-subfilter="kids">Línea Infantil</button>
+<button class="btn-subfilter" data-subfilter="adultos">Línea Adulto</button>
+<button class="btn-subfilter btn-clear-subfilter" data-subfilter="all" disabled="">
+<i class="bi bi-x-lg me-1"></i> Borrar Subfiltro
+                            </button>
+</div>
+<button class="btn btn-trigger-sizes-global" data-bs-target="#modal-guia-talles" data-bs-toggle="modal" type="button">
+                            Guía de Talles <i class="bi bi-bounding-box ms-1"></i>
+</button>
+</div>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="grid-productos-tienda"><!-- DINÁMICO: productos Tienda --></div>
+<!-- Contenedor de Paginación Global -->
+<div class="btn-group-custom" id="tienda-paginacion" style="display: none !important;">
+<button class="btn btn-filter" id="btn-pag-anterior" onclick="cambiarPagina(-1)">
+<i class="bi bi-chevron-left"></i>
+<span class="btn-text">Anterior</span>
+</button>
+<span class="label-custom" id="info-paginacion"></span>
+<button class="btn btn-filter" id="btn-pag-siguiente" onclick="cambiarPagina(1)">
+<span class="btn-text">Siguiente</span>
+<i class="bi bi-chevron-right"></i>
+</button>
+</div>
+<!-- MODAL DE TALLES -->
+<div aria-hidden="true" aria-labelledby="modalTallesLabel" class="modal fade" id="modal-guia-talles" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="modalTallesLabel">// GUIA DE <span class="text-gradient">TALLES</span></h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body">
+<ul class="nav nav-pills nav-justified mb-4" id="filtroTab" role="tablist">
+<li class="nav-item" role="presentation">
+<button aria-controls="opcion1-pane" aria-selected="true" class="nav-link active" data-bs-target="#opcion1-pane" data-bs-toggle="tab" id="opcion1-tab" role="tab" type="button">
+                                            Guantes
+                                        </button>
+</li>
+<li class="nav-item" role="presentation">
+<button aria-controls="opcion2-pane" aria-selected="false" class="nav-link" data-bs-target="#opcion2-pane" data-bs-toggle="tab" id="opcion2-tab" role="tab" type="button">
+                                            Indumentaria RG
+                                        </button>
+</li>
+<li class="nav-item" role="presentation">
+<button aria-controls="opcion3-pane" aria-selected="false" class="nav-link" data-bs-target="#opcion3-pane" data-bs-toggle="tab" id="opcion3-tab" role="tab" type="button">
+                                            Indumentaria Combat
+                                        </button>
+</li>
+</ul>
+<div class="tab-content border p-3 rounded bg-light" id="filtroTabContent">
+<div aria-labelledby="opcion1-tab" class="tab-pane fade show active text-center" id="opcion1-pane" role="tabpanel" tabindex="0">
+<img alt="Vista Opción A" class="img-fluid rounded shadow-sm" src="img/productos/guia-talles-guantes.jpg"/>
+</div>
+<div aria-labelledby="opcion2-tab" class="tab-pane fade text-center" id="opcion2-pane" role="tabpanel" tabindex="0">
+<img alt="Vista Opción B" class="img-fluid rounded shadow-sm" src="img/productos/guia-talles-rg.jpg"/>
+</div>
+<div aria-labelledby="opcion3-tab" class="tab-pane fade text-center" id="opcion3-pane" role="tabpanel" tabindex="0">
+<img alt="Vista Opción C" class="img-fluid rounded shadow-sm" src="img/productos/guia-talles-combat.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- PIE DE PÁGINA -->
+<footer id="pie-pagina">
+<div class="container">
+<div class="box-row-custom">
+<div class="box-grid-custom">
+<img alt="CEYFA" class="img-fluid" src="img/logo-black.png"/>
+<div class="box-column-custom">
+<p>Centro de Entrenamiento y Formación de Arqueros</p>
+<p class="copyright-text">© 2026 - Todos los derechos reservados.</p>
+</div>
+</div>
+<a class="link-doc-custom" href="#" target="_blank">
+<span class="pdf-btn-lbl"><!-- DINÁMICO: Footer documento --></span>
+</a>
+</div>
+</div>
+</footer>
+<!-- FLOTANTE DE WHATSAPP -->
+<div class="floating-whatsapp-container">
+<a aria-label="Chatear con CEYFA por WhatsApp" class="btn-whatsapp-floating shadow-lg" href="https://wa.me." rel="noopener noreferrer" target="_blank">
+<i class="bi bi-whatsapp"></i>
+</a>
+</div>
+<script crossorigin="anonymous" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/tienda.js"></script>
+<script src="js/tienda-datos.js"></script>
+</body>
+</html>

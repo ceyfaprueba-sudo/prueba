@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEYFA - Portal</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon-ceyfa.svg">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portal.css">
+</head>
+
+<body>
+    <header id="menu-portal" class="menu-secundario fixed-top py-3">
+        <div class="container flex-nowrap rounded-pill border shadow-lg px-4 py-2">
+            <a class="navbar-brand me-2 me-md-3" href="index.html">
+                <img src="img/logo.png" alt="CEYFA">
+            </a>
+            <div class="d-flex align-items-center gap-2 menu-navbar-nav">
+                <span class="menu-nav-link">PORTAL</span>
+            </div>
+            <div class="ms-2 ms-md-3">
+                <a href="index.html" class="btn rounded-pill btn-secondary-custom btn-nav-action text-nowrap">
+                    volver <i class="bi bi-box-arrow-in-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- BANNER -->
+        <section id="banner-portal" class="banner-secundario">
+            <div class="banner-overlay">
+                <img src="img/portal/banner-portal.jpg" alt="Arqueros CEYFA">
+            </div>
+            <div class="container">
+                <div class="encabezado-section_doble">
+                    <div class="encabezado-section">
+                        <span class="encabezado-section_antetitulo">// PORTAL alumnos</span>
+                        <h1 class="encabezado-section_titulo">En <span class="text-gradient">construcción</span></h1>
+                    </div>
+                    <div class="encabezado-section_extra">
+                        <p class="text-line-left">Estamos trabajando para una <strong>mejor experiencia digital</strong>
+                            para nuestra
+                            comunidad de goleros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PORTAL: EN CONSTRUCCIÓN / LOGIN DESHABILITADO -->
+        <section id="login" class="py-5 my-2">
+            <div class="container">
+                <div class="contenedor-login shadow-lg">
+                    <div class="contenedor-disabled box-column-custom">
+                        <div
+                            class="disabled-icon box-center-custom bg-black border shadow-lg">
+                            <i class="bi bi-lock-fill text-gradient"></i>
+                        </div>
+                        <span class="disabled-txt">
+                            ACCESO TEMPORALMENTE INACTIVO
+                        </span>
+                    </div>
+                    <div class="auth-portal-wrapper">
+                        <form id="form-auth-portal" class="card-custom card-form box-row-custom" disabled>
+                            <div class="box-column-custom w-100">
+                                <label class="label-custom">Usuario (*)</label>
+                                <div class="position-relative">
+                                    <i class="bi bi-person-fill icon-input-custom"></i>
+                                    <input type="text" class="form-control input-custom ps-5"
+                                        placeholder="Ej: Juan Pérez" disabled>
+                                </div>
+                            </div>
+                            <div class="box-column-custom w-100">
+                                <div class="box-row-custom align-items-center">
+                                    <label class="label-custom">Contraseña (*)</label>
+                                    <span class="small text-muted">¿La olvidaste?</span>
+                                </div>
+                                <div class="position-relative">
+                                    <i class="bi bi-lock-fill icon-input-custom"></i>
+                                    <input type="password" class="form-control input-custom ps-5" placeholder="••••••••"
+                                        disabled>
+                                </div>
+                            </div>
+                            <button type="button" class="btn rounded-pill btn-primary-custom btn-portal w-100" disabled>
+                                ingresar <i class="bi bi-box-arrow-in-right ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- PIE DE PÁGINA -->
+    <footer id="pie-pagina">
+        <div class="container">
+            <div class="box-row-custom">
+                <div class="box-grid-custom">
+                    <img src="img/logo-black.png" alt="CEYFA" class="img-fluid">
+                    <div class="box-column-custom">
+                        <p>Centro de Entrenamiento y Formación de Arqueros</p>
+                        <p class="copyright-text">&copy; 2026 - Todos los derechos reservados.</p>
+                    </div>
+                </div>
+                <a href="img/ceyfa.pdf" class="link-doc-custom" target="_blank">
+                    <span class="pdf-btn-lbl">Resumen .pdf<i class="bi bi-file-earmark-pdf ms-2"></i></span>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- FLOTANTE DE WHATSAPP -->
+    <div class="floating-whatsapp-container">
+        <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-floating shadow-lg"
+            aria-label="Chatear con CEYFA por WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dinamico.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+.contenedor-login {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--cyan-custom-10);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 1.25rem;
+}
+
+.contenedor-disabled {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(11, 12, 16, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.disabled-icon {
+    width: 70px;
+    height: 70px;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+}
+
+.disabled-icon i {
+    font-size: 2rem;
+}
+
+.disabled-txt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-widest);
+    text-align: center;
+    padding: 0.25rem;
+}
+
+.auth-portal-wrapper {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.card-form {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    align-items: flex-end;
+    padding: 4rem 1.5rem;
+}
+
+.icon-input-custom {
+    position: absolute;
+    top: 50%;
+    left: 1.15rem;
+    transform: translateY(-50%);
+    color: var(--bs-gray-600);
+    font-size: 1.05rem;
+    z-index: 4;
+    transition: var(--transition-smooth);
+    pointer-events: none;
+}
+
+.btn-portal {
+    margin: 0.3rem 0;
+}
+
+
+@media (max-width: 767.98px) {
+    .auth-portal-wrapper > .box-row-custom {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+}
