@@ -182,15 +182,15 @@ function ejecutarDesvioWhatsApp() {
   const email = document.getElementById("input-email").value.trim() || "No especificado";
   const mensaje = document.getElementById("input-mensaje").value.trim() || "Sin comentarios adicionales.";
   const numeroWhatsApp = "59899449480"; 
-  const textoMensaje = `¡Hola CEYFA UY! 🧤⚽
+  const textoMensaje = `¡Hola CEYFA UY!
 Quiero coordinar mi clase de prueba. Dejo mis datos:
 
-👤 Nombre: ${nombre}
-📍 Sede de Interés: ${sedeTexto}
-📱 Teléfono: ${telefono}
-✉️ Correo: ${email}
+Nombre: ${nombre}
+Sede de Interés: ${sedeTexto}
+Teléfono: ${telefono}
+Correo: ${email}
 
-📝 Consulta o Experiencia:
+Consulta o Experiencia:
 ${mensaje}`;
   const urlFinal = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMensaje)}`;
   window.open(urlFinal, "_blank");
