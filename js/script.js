@@ -192,7 +192,7 @@ Quiero coordinar mi clase de prueba. Dejo mis datos:
 
 📝 Consulta o Experiencia:
 ${mensaje}`;
-  const urlFinal = `https://wa.me{numeroWhatsApp}?text=${encodeURIComponent(textoMensaje)}`;
+  const urlFinal = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMensaje)}`;
   window.open(urlFinal, "_blank");
 }
 
