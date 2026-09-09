@@ -627,14 +627,14 @@ function renderizarEvento(evento) {
       const fechaEvento = formatearFechaVisible(evento.fecha) || "Próxima fecha";
       const horaEvento = limpiarTexto(evento.hora) || "A confirmar";
       const sedeEvento = limpiarTexto(evento.sede) || "A confirmar";
-
+      const numeroWhatsApp = "59899449480"; 
       const textoMensaje = `¡Hola CEYFA UY!
       Quiero inscribirme a la próxima Clínica de Goleros:
       Fecha: ${fechaEvento}
       Horario: ${horaEvento}
       Sede: ${sedeEvento}
       ¿Me podrían pasar los detalles para asegurar mi lugar? ¡Gracias!`;
-        botonWhatsapp.href = `https://wa.me{encodeURIComponent(textoMensaje)}`;
+        botonWhatsapp.href = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoMensaje)}`;
   }
 
   const cardEvento = seccion.querySelector(".card-evento");
