@@ -117,12 +117,21 @@ function cambiarPagina(direccion) {
 function inicializarPestañasTienda() {
   const botonera = document.getElementById("contenedor-filtro-tienda");
   if (!botonera) return;
+
   const botones = botonera.querySelectorAll(".btn-filter");
+
   botones.forEach((button) => {
     button.addEventListener("click", () => {
       botones.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
       filtroCategoriaActual = button.getAttribute("data-filter");
+      const url = new URL(window.location.href);
+      if (filtroCategoriaActual === "all") {
+        url.searchParams.delete("categoria");
+      } else {
+        url.searchParams.set("categoria", filtroCategoriaActual);
+      }
+      window.history.replaceState({}, "", url);
       paginaActual = 1;
       ejecutarFiltradoCombinadoTienda();
     });
