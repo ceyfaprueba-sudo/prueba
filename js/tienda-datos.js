@@ -426,7 +426,8 @@ async function cargarDatosTienda() {
     if (!Array.isArray(datos.tienda)) return;
 
     const productos = datos.tienda.filter(producto =>
-      String(producto.nombre ?? "").trim()
+      String(producto.nombre ?? "").trim() &&
+      producto.disponible === true
     );
 
     grid.innerHTML = productos
