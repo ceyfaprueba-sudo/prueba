@@ -494,46 +494,78 @@ function renderizarPlanes(planes) {
   planes.forEach((plan, indice) => {
     const columna = document.createElement("div");
     columna.className = "col";
+  
     const valorDestacado = normalizarTexto(plan.destacado);
     const esDestacado =
       valorDestacado === "si" ||
-      valorDestacado === "sí" ||
       valorDestacado === "true" ||
       valorDestacado === "1";
+  
     let nombrePlan = limpiarTexto(plan.nivel);
-    const esPlanMedio =
+  
+    if (
       normalizarTexto(nombrePlan) === "medio" ||
-      normalizarTexto(nombrePlan) === "popular";
-    if (esPlanMedio) {
+      normalizarTexto(nombrePlan) === "popular"
+    ) {
       nombrePlan = esDestacado ? "Popular" : "Medio";
     }
+  
     const wrapper = document.createElement("div");
     wrapper.className = "plan";
     wrapper.setAttribute("data-category", nombrePlan);
+  
     if (esDestacado) {
       wrapper.classList.add("active");
     }
+  
     const icono = obtenerIconoPlan(nombrePlan, indice);
+    const cantidadSemana = Number(plan.cantidadSemana);
+  
+    const textoVeces = cantidadSemana === 1
+      ? "1 VEZ"
+      : `${cantidadSemana} VECES`;
+  
+    const precioDia = formatearPrecio(plan.precioDia);
+    const precioMes = formatearPrecio(plan.precioMes);
+  
     wrapper.innerHTML = `
-      <div class="card-custom card-layout-custom card-plan" onclick="selectPlan(this)">
+      <div
+        class="card-custom card-layout-custom card-plan"
+        onclick="selectPlan(this)"
+      >
         <div class="card-header-grid plan-holder">
-          <span class="tag-custom tag-secondary-custom">${escaparHtml(nombrePlan)}</span>
+          <span class="tag-custom tag-secondary-custom">
+            ${escaparHtml(nombrePlan)}
+          </span>
           <div class="btn-form-custom">
-            <i class="bi ${icono} icon-line"></i>
-            <i class="bi ${icono}-fill icon-fill"></i>
+            <i class="bi bi-${icono} icon-line"></i>
+            <i class="bi bi-${icono}-fill icon-fill"></i>
           </div>
-          <p class="price-unit">${escaparHtml(plan.unidadPrecio)}</p>
-          <h3 class="price-day">${escaparHtml(plan.precioClase)}</h3>
+          <p class="price-unit">
+            POR CLASE
+          </p>
+          <h3 class="price-day">
+            ${precioDia}
+          </h3>
         </div>
         <div class="box-custom box-column-custom">
           <div class="card-row-item">
-            <h6>${escaparHtml(plan.frecuencia)} <span>x semana</span></h6>
-            <p>${escaparHtml(plan.clasesMes)} <span>x mes</span></p>
+            <h6>
+              ${textoVeces}
+              <span>x semana</span>
+            </h6>
+            <p>
+              ${escaparHtml(plan.cantidadMes)}
+              <span>x mes</span>
+            </p>
           </div>
-          <p class="price-month">${escaparHtml(plan.precioMes)}</p>
+          <p class="price-month">
+            Total: ${precioMes}/mes
+          </p>
         </div>
       </div>
     `;
+  
     columna.appendChild(wrapper);
     contenedor.appendChild(columna);
   });
