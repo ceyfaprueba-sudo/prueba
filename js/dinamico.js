@@ -124,9 +124,9 @@ function renderizarEscuela(escuela) {
           ? obtenerImagenDrive(item.driveId)
           : item.url;
       slide.appendChild(imagen);
-    } 
-    else if (item.tipo === "video") {
+    } else if (item.tipo === "video") {
       slide.setAttribute("data-bs-interval", "false");
+
       const video = document.createElement("video");
       video.muted = true;
       video.defaultMuted = true;
@@ -143,6 +143,8 @@ function renderizarEscuela(escuela) {
       source.type = "video/mp4";
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
+      video.load();
+
       video.addEventListener("ended", () => {
         const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
         instancia.next();
@@ -245,6 +247,7 @@ function renderizarFundamentos(fundamentos) {
       source.type = "video/mp4";
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
+      video.load();
 
       tarjeta.appendChild(video);
     } else {
