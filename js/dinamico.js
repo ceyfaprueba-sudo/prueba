@@ -235,12 +235,12 @@ function renderizarFundamentos(fundamentos) {
       const youtubeId = obtenerIdYoutube(url);
 
       return {
-        tipo: tipo,
-        url: url,
+        tipo,
+        url,
+        driveId,
         youtubeId,
-        driveId: driveId,
         esDrive: item.esDrive === true || Boolean(driveId),
-       esYoutube: Boolean(youtubeId)
+        esYoutube: Boolean(youtubeId)
       };
     })
     .filter(item => item.tipo && item.url);
@@ -268,7 +268,35 @@ function renderizarFundamentos(fundamentos) {
     }
 
     else if (item.tipo === "video") {
-      if (item.esDrive && item.driveId) {
+      if (item.esYoutube && item.youtubeId) {
+        const iframe = document.createElement("iframe");
+
+        iframe.src =
+          `https://www.youtube.com/embed/${item.youtubeId}` +
+          `?autoplay=1` +
+          `&mute=1` +
+          `&loop=1` +
+          `&playlist=${item.youtubeId}` +
+          `&playsinline=1` +
+          `&controls=0` +
+          `&disablekb=1` +
+          `&fs=0` +
+          `&rel=0` +
+          `&modestbranding=1`;
+
+        iframe.setAttribute(
+          "allow",
+          "autoplay; encrypted-media; picture-in-picture; fullscreen"
+        );
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.setAttribute("frameborder", "0");
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+
+        tarjeta.appendChild(iframe);
+      }
+
+      else if (item.esDrive && item.driveId) {
         const iframe = document.createElement("iframe");
 
         iframe.src = obtenerPreviewDrive(item.driveId);
