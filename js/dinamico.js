@@ -56,33 +56,6 @@ async function cargarDatos() {
   }
 }
 
-function obtenerIdYoutube(url) {
-  try {
-    const enlace = new URL(url);
-
-    if (enlace.hostname.includes("youtu.be")) {
-      return enlace.pathname.split("/").filter(Boolean)[0] || "";
-    }
-
-    if (enlace.hostname.includes("youtube.com")) {
-      if (enlace.pathname === "/watch") {
-        return enlace.searchParams.get("v") || "";
-      }
-
-      if (
-        enlace.pathname.startsWith("/embed/") ||
-        enlace.pathname.startsWith("/shorts/")
-      ) {
-        return enlace.pathname.split("/")[2] || "";
-      }
-    }
-  } catch (error) {
-    return "";
-  }
-
-  return "";
-}
-
 function obtenerVideoDrive(driveId) {
   return `https://www.googleapis.com/drive/v3/files/${driveId}?alt=media&key=${DRIVE_API_KEY}`;
 }
@@ -248,6 +221,7 @@ function renderizarFundamentos(fundamentos) {
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
       video.load();
+      video.play().catch(() => {});
 
       tarjeta.appendChild(video);
     } else {
@@ -614,26 +588,13 @@ function renderizarEvento(evento) {
   if (!seccion) return;
 
   const valores = seccion.querySelectorAll(".value-custom");
+  if (valores[0]) valores[0].textContent = formatearFechaVisible(evento.fecha);
+  if (valores[1]) valores[1].textContent = limpiarTexto(evento.hora);
+  if (valores[2]) valores[2].textContent = limpiarTexto(evento.sede);
 
-  if (valores[0]) {
-    valores[0].textContent = formatearFechaVisible(evento.fecha);
-  }
-
-  if (valores[1]) {
-    valores[1].textContent = limpiarTexto(evento.hora);
-  }
-
-  if (valores[2]) {
-    valores[2].textContent = limpiarTexto(evento.sede);
-  }
-
-  const mapa = seccion.querySelector(
-    ".box-grid-custom .link-action-custom"
-  );
-
+  const mapa = seccion.querySelector(".box-grid-custom .link-action-custom");
   if (mapa) {
     const urlMapa = limpiarTexto(evento.mapa);
-
     if (urlMapa) {
       mapa.href = urlMapa;
       mapa.style.display = "";
@@ -642,16 +603,12 @@ function renderizarEvento(evento) {
     }
   }
 
-  const botonDocumento = seccion.querySelector(
-    ".btn-secondary-custom"
-  );
-
+  const botonDocumento = seccion.querySelector(".btn-secondary-custom");
   if (botonDocumento) {
     const enlaceDocumento = obtenerEnlaceDrive(
       evento.documentoDriveId,
       evento.documentoUrl
     );
-
     if (enlaceDocumento) {
       botonDocumento.href = enlaceDocumento;
       botonDocumento.style.display = "";
@@ -660,114 +617,61 @@ function renderizarEvento(evento) {
     }
   }
 
-  const botonWhatsapp = seccion. querySelector(".btn-primary-custom");
-
+  const botonWhatsapp = seccion.querySelector(".btn-primary-custom");
   if (botonWhatsapp && evento) {
-      const fechaEvento = formatearFechaVisible(evento.fecha) || "Próxima fecha";
-      const horaEvento = limpiarTexto(evento.hora) || "A confirmar";
-      const sedeEvento = limpiarTexto(evento.sede) || "A confirmar";
-      const textoMensaje = `¡Hola CEYFA UY!
-      Quiero inscribirme a la próxima Clínica de Goleros:
-      Fecha: ${fechaEvento}
-      Horario: ${horaEvento}
-      Sede: ${sedeEvento}
-      ¿Me podrían pasar los detalles para asegurar mi lugar? ¡Gracias!`;
-        botonWhatsapp.href = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
+    const fechaEvento = formatearFechaVisible(evento.fecha) || "Próxima fecha";
+    const horaEvento = limpiarTexto(evento.hora) || "A confirmar";
+    const sedeEvento = limpiarTexto(evento.sede) || "A confirmar";
+    const textoMensaje = `¡Hola CEYFA UY!
+Quiero inscribirme a la próxima Clínica de Goleros:
+Fecha: ${fechaEvento}
+Horario: ${horaEvento}
+Sede: ${sedeEvento}
+¿Me podrían pasar los detalles para asegurar mi lugar? ¡Gracias!`;
+    botonWhatsapp.href = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
   }
 
   const cardEvento = seccion.querySelector(".card-evento");
-
   if (cardEvento) {
     const videoViejo = cardEvento.querySelector("video");
     const iframeViejo = cardEvento.querySelector("iframe");
-  
     if (videoViejo) videoViejo.remove();
     if (iframeViejo) iframeViejo.remove();
-  
+
     const videoUrl = limpiarTexto(evento.videoUrl);
     const driveId = limpiarTexto(evento.videoDriveId) || obtenerIdDrive(videoUrl);
-    const youtubeId = obtenerIdYoutube(videoUrl);
-  
-    if (youtubeId) {
-      const iframe = document.createElement("iframe");
-  
-      iframe.src =
-        `https://www.youtube.com/embed/${youtubeId}` +
-        `?autoplay=1` +
-        `&mute=1` +
-        `&loop=1` +
-        `&playlist=${youtubeId}` +
-        `&playsinline=1` +
-        `&controls=0` +
-        `&disablekb=1` +
-        `&fs=0` +
-        `&rel=0` +
-        `&modestbranding=1`;
-  
-      iframe.setAttribute(
-        "allow",
-        "autoplay; encrypted-media; picture-in-picture; fullscreen"
-      );
-      iframe.setAttribute("frameborder", "0");
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
-  
-      cardEvento.prepend(iframe);
-    }
-  
-    else if (driveId) {
-      const iframe = document.createElement("iframe");
-  
-      iframe.src = obtenerPreviewDrive(driveId);
-      iframe.setAttribute("allow", "autoplay; fullscreen");
-      iframe.setAttribute("frameborder", "0");
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
-  
-      cardEvento.prepend(iframe);
-    }
-  
-    else if (videoUrl) {
+
+    if (driveId || videoUrl) {
       const video = document.createElement("video");
-  
-      video.src = videoUrl;
-      video.autoplay = true;
-      video.loop = true;
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
-  
-      video.setAttribute("autoplay", "");
-      video.setAttribute("loop", "");
+      video.loop = true;
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
-  
+      video.setAttribute("loop", "");
+
+      const source = document.createElement("source");
+      source.src = driveId ? obtenerVideoDrive(driveId) : videoUrl;
+      source.type = "video/mp4";
+      video.appendChild(source);
+      video.append("Tu navegador no soporta videos HTML5.");
+
       cardEvento.prepend(video);
+      video.load();
+      video.play().catch(() => {});
     }
-  
-    const tags = cardEvento.querySelectorAll(
-      ".tag-floating .tag-custom"
-    );
-  
-    if (tags[0]) {
-      tags[0].textContent = limpiarTexto(
-        evento.departamento
-      );
-    }
-  
+
+    const tags = cardEvento.querySelectorAll(".tag-floating .tag-custom");
+    if (tags[0]) tags[0].textContent = limpiarTexto(evento.departamento);
     if (tags[1]) {
       if (evento.inscripcionesAbiertas) {
         tags[1].innerHTML = `
           <span class="pulse-dot-live me-2"></span>
           ¡Inscripciones Abiertas!
         `;
-  
-        tags[1]
-          .closest(".tag-floating")
-          .style.display = "";
-      }
-  
-      else {
+        tags[1].closest(".tag-floating").style.display = "";
+      } else {
         tags[1].innerHTML = "Inscripciones cerradas";
       }
     }
