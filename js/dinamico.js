@@ -33,6 +33,33 @@ async function cargarDatos() {
   }
 }
 
+function obtenerIdYoutube(url) {
+  try {
+    const enlace = new URL(url);
+
+    if (enlace.hostname.includes("youtu.be")) {
+      return enlace.pathname.split("/").filter(Boolean)[0] || "";
+    }
+
+    if (enlace.hostname.includes("youtube.com")) {
+      if (enlace.pathname === "/watch") {
+        return enlace.searchParams.get("v") || "";
+      }
+
+      if (
+        enlace.pathname.startsWith("/embed/") ||
+        enlace.pathname.startsWith("/shorts/")
+      ) {
+        return enlace.pathname.split("/")[2] || "";
+      }
+    }
+  } catch (error) {
+    return "";
+  }
+
+  return "";
+}
+
 function renderizarEscuela(escuela) {
   const carrusel = document.getElementById("carouselEscuela");
   if (!carrusel) return;
@@ -205,12 +232,15 @@ function renderizarFundamentos(fundamentos) {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
       const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
+      const youtubeId = obtenerIdYoutube(url);
 
       return {
         tipo: tipo,
         url: url,
+        youtubeId,
         driveId: driveId,
-        esDrive: item.esDrive === true || Boolean(driveId)
+        esDrive: item.esDrive === true || Boolean(driveId),
+       esYoutube: Boolean(youtubeId)
       };
     })
     .filter(item => item.tipo && item.url);
