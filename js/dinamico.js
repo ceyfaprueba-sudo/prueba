@@ -919,55 +919,39 @@ function actualizarTiendaInicio(productos) {
     return producto.disponible !== false;
   });
 
-  const contar = filtro => {
+  const contarCategoria = categoriaBuscada => {
     return disponibles.filter(producto => {
       const categoria = normalizarTexto(producto.categoria);
-      const subcategoria = normalizarTexto(producto.subcategoria);
-
-      return filtro(categoria, subcategoria);
+      return categoria === normalizarTexto(categoriaBuscada);
     }).length;
   };
 
-  const cantidadCeyfa = contar(categoria => {
-    return categoria.includes("ceyfa");
-  });
-
-  const cantidadGuantes = contar((categoria, subcategoria) => {
-    return (
-      categoria.includes("guante") ||
-      subcategoria.includes("guante")
-    );
-  });
-
-  const cantidadRg = contar(categoria => {
-    return (
-      categoria.includes("rg") &&
-      !categoria.includes("guante")
-    );
-  });
+  const cantidadCeyfa = contarCategoria("ceyfa");
+  const cantidadGuantesRg = contarCategoria("guantes-rg");
+  const cantidadTodoRg = contarCategoria("todo-rg");
 
   const tarjetaCeyfa = seccion.querySelector(
-    ".area-indumentaria .tag-secondary-custom"
+    'a[href*="categoria=ceyfa"] .tag-secondary-custom'
   );
 
-  const tarjetaGuantes = seccion.querySelector(
-    ".area-guantes .tag-secondary-custom"
+  const tarjetaGuantesRg = seccion.querySelector(
+    'a[href*="categoria=guantes-rg"] .tag-secondary-custom'
   );
 
-  const tarjetaRg = seccion.querySelector(
-    ".area-accesorios .tag-secondary-custom"
+  const tarjetaTodoRg = seccion.querySelector(
+    'a[href*="categoria=todo-rg"] .tag-secondary-custom'
   );
 
   if (tarjetaCeyfa) {
     tarjetaCeyfa.textContent = `${cantidadCeyfa} PRODUCTOS`;
   }
 
-  if (tarjetaGuantes) {
-    tarjetaGuantes.textContent = `${cantidadGuantes} PRODUCTOS`;
+  if (tarjetaGuantesRg) {
+    tarjetaGuantesRg.textContent = `${cantidadGuantesRg} PRODUCTOS`;
   }
 
-  if (tarjetaRg) {
-    tarjetaRg.textContent = `${cantidadRg} PRODUCTOS`;
+  if (tarjetaTodoRg) {
+    tarjetaTodoRg.textContent = `${cantidadTodoRg} PRODUCTOS`;
   }
 }
 
