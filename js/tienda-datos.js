@@ -404,6 +404,10 @@ async function cargarDatosTienda() {
 
     const datos = await respuesta.json();
 
+    if (Array.isArray(datos.footer) && datos.footer.length) {
+      renderizarFooter(datos.footer);
+    }
+
     if (!Array.isArray(datos.tienda)) return;
 
     const productos = datos.tienda.filter(producto =>
