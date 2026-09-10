@@ -19,9 +19,26 @@ async function cargarDatos() {
 
     if (Array.isArray(datos.planes) && datos.planes.length) renderizarPlanes(datos.planes);
 
-    if (Array.isArray(datos.eventos) && datos.eventos.length) {
-      renderizarEvento(datos.eventos[0]);
-      actualizarMarqueeEvento(datos.eventos[0]);
+    const eventosActivos = Array.isArray(datos.eventos)
+      ? datos.eventos.filter(evento => {
+          const activo = normalizarTexto(evento.activo);
+          return activo === "si" || activo === "true" || activo === "1";
+        })
+      : [];
+    
+    const tiraMarquee = document.getElementById("tira-marquee");
+    
+    if (eventosActivos.length) {
+      renderizarEvento(eventosActivos[0]);
+      actualizarMarqueeEvento(eventosActivos[0]);
+    
+      if (tiraMarquee) {
+        tiraMarquee.style.display = "";
+      }
+    } else {
+      if (tiraMarquee) {
+        tiraMarquee.style.display = "none";
+      }
     }
 
     if (Array.isArray(datos.tienda)) actualizarTiendaInicio(datos.tienda);
