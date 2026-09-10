@@ -56,33 +56,6 @@ async function cargarDatos() {
   }
 }
 
-function obtenerIdYoutube(url) {
-  try {
-    const enlace = new URL(url);
-
-    if (enlace.hostname.includes("youtu.be")) {
-      return enlace.pathname.split("/").filter(Boolean)[0] || "";
-    }
-
-    if (enlace.hostname.includes("youtube.com")) {
-      if (enlace.pathname === "/watch") {
-        return enlace.searchParams.get("v") || "";
-      }
-
-      if (
-        enlace.pathname.startsWith("/embed/") ||
-        enlace.pathname.startsWith("/shorts/")
-      ) {
-        return enlace.pathname.split("/")[2] || "";
-      }
-    }
-  } catch (error) {
-    return "";
-  }
-
-  return "";
-}
-
 function obtenerVideoDrive(driveId) {
   return `https://www.googleapis.com/drive/v3/files/${driveId}?alt=media&key=${DRIVE_API_KEY}`;
 }
@@ -119,11 +92,14 @@ function renderizarEscuela(escuela) {
       slide.setAttribute("data-bs-interval", "6000");
       const imagen = document.createElement("img");
       imagen.alt = "Entrenamiento de Arqueros CEYFA";
-      imagen.src = item.url;
+      imagen.src =
+        item.esDrive && item.driveId
+          ? obtenerImagenDrive(item.driveId)
+          : item.url;
       slide.appendChild(imagen);
-    } else if (item.tipo === "video") {
+    } 
+    else if (item.tipo === "video") {
       slide.setAttribute("data-bs-interval", "false");
-
       const video = document.createElement("video");
       video.muted = true;
       video.defaultMuted = true;
@@ -140,8 +116,6 @@ function renderizarEscuela(escuela) {
       source.type = "video/mp4";
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
-
-      // Al terminar el video, avanza el carrusel
       video.addEventListener("ended", () => {
         const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
         instancia.next();
@@ -188,6 +162,7 @@ function inicializarSincroniaVideosEscuela(carrusel) {
     carrusel.dataset.videoSyncActivo = "true";
     carrusel.addEventListener("slid.bs.carousel", reproducirSoloActivo);
   }
+
   reproducirSoloActivo();
 }
 
@@ -218,7 +193,10 @@ function renderizarFundamentos(fundamentos) {
     if (item.tipo === "img" || item.tipo === "imagen") {
       const imagen = document.createElement("img");
       imagen.alt = "Entrenamiento de goleros CEYFA UY";
-      imagen.src = item.url;
+      imagen.src =
+        item.esDrive && item.driveId
+          ? obtenerImagenDrive(item.driveId)
+          : item.url;
       tarjeta.appendChild(imagen);
     } else if (item.tipo === "video") {
       const video = document.createElement("video");
