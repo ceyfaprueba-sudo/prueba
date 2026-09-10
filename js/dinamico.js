@@ -1,4 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
+const API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 async function cargarDatos() {
   try {
@@ -193,16 +194,24 @@ function renderizarEscuela(escuela) {
       }
 
       else if (item.esDrive && item.driveId) {
-        const iframe = document.createElement("iframe");
+        const video = document.createElement("video");
+        video.src = `https://googleapis.com{item.driveId}?key=${API_KEY}&alt=media`;
 
-        iframe.src = obtenerPreviewDrive(item.driveId);
-        iframe.setAttribute("allow", "autoplay; fullscreen");
-        iframe.setAttribute("allowfullscreen", "");
-        iframe.setAttribute("frameborder", "0");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
+        video.loop = true;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("preload", "metadata");
+        video.setAttribute("loop", "");
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        
+        if (indice === 0) {
+          video.autoplay = true;
+          video.setAttribute("autoplay", "");
+        }
 
-        slide.appendChild(iframe);
+        slide.appendChild(video);
       }
 
       else {
@@ -243,6 +252,21 @@ function renderizarEscuela(escuela) {
     indicadores.appendChild(boton);
     interior.appendChild(slide);
   });
+
+  if (!carrusel.dataset.reproductorAsignado) {
+    carrusel.addEventListener('slid.bs.carousel', (event) => {
+      const todosLosVideos = carrusel.querySelectorAll('video');
+      todosLosVideos.forEach(v => v.pause());
+      const slideActivo = event.relatedTarget;
+      const videoActivo = slideActivo.querySelector('video');
+      if (videoActivo) {
+        videoActivo.play().catch(err => console.log("Autoplay bloqueado en transición:", err));
+      }
+    });
+
+    carrusel.dataset.reproductorAsignado = "true";
+  }
+
 }
 
 function renderizarFundamentos(fundamentos) {
