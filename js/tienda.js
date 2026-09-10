@@ -206,7 +206,6 @@ function derivarCompraWhatsApp(buttonElement) {
   }
   const botonTalleActivo = card.querySelector(".value-sizes-custom:not([style*='display: none']) .btn-size-item.active");
   const talleElegido = botonTalleActivo ? `Talle ${botonTalleActivo.textContent.trim()}` : "No especificado";
-  const numeroWhatsApp = "59899449480"; 
   const textoPedido = `¡Hola Tienda CEYFA UY!
   Vengo de la web y quiero consultar/comprar el siguiente artículo:${ganchoMarketing}
   Producto: ${modelo} (${lineaTexto})
@@ -214,7 +213,7 @@ function derivarCompraWhatsApp(buttonElement) {
   Talle Seleccionado: ${talleElegido}
   Precio: ${precioActual}
   ¿Tienen stock disponible para coordinar el retiro o envío? ¡Gracias!`;
-  window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoPedido)}`, "_blank");
+  window.open(`https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoPedido)}`, "_blank");
 }
 function renderizarFooter(footer) {
   const pie = document.getElementById("pie-pagina");
