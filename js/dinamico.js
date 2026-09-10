@@ -56,6 +56,33 @@ async function cargarDatos() {
   }
 }
 
+function obtenerIdYoutube(url) {
+  try {
+    const enlace = new URL(url);
+
+    if (enlace.hostname.includes("youtu.be")) {
+      return enlace.pathname.split("/").filter(Boolean)[0] || "";
+    }
+
+    if (enlace.hostname.includes("youtube.com")) {
+      if (enlace.pathname === "/watch") {
+        return enlace.searchParams.get("v") || "";
+      }
+
+      if (
+        enlace.pathname.startsWith("/embed/") ||
+        enlace.pathname.startsWith("/shorts/")
+      ) {
+        return enlace.pathname.split("/")[2] || "";
+      }
+    }
+  } catch (error) {
+    return "";
+  }
+
+  return "";
+}
+
 function obtenerVideoDrive(driveId) {
   return `https://www.googleapis.com/drive/v3/files/${driveId}?alt=media&key=${DRIVE_API_KEY}`;
 }
