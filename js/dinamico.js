@@ -122,7 +122,7 @@ function renderizarEscuela(escuela) {
     .map(item => {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
-      const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
+      const driveId = (item.driveId || obtenerIdDrive(url) || "").trim();
       const youtubeId = obtenerIdYoutube(url);
 
       return {
