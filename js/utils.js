@@ -1,3 +1,5 @@
+const WHATSAPP_CEYFA = "59899449480";
+
 function limpiarTexto(valor) {
   if (valor === null || valor === undefined) return "";
   return String(valor).trim();
