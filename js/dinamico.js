@@ -1,4 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
+const APi_ = "";
 
 async function cargarDatos() {
   try {
@@ -121,7 +122,7 @@ function renderizarEscuela(escuela) {
     .map(item => {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
-      const driveId = (item.driveId || obtenerIdDrive(url) || "").trim();
+      const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
       const youtubeId = obtenerIdYoutube(url);
 
       return {
@@ -193,24 +194,16 @@ function renderizarEscuela(escuela) {
       }
 
       else if (item.esDrive && item.driveId) {
-        const video = document.createElement("video");
-        video.src = `https://google.com${item.driveId}`;
+        const iframe = document.createElement("iframe");
 
-        video.loop = true;
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute("preload", "metadata");
-        video.setAttribute("loop", "");
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        
-        if (indice === 0) {
-          video.autoplay = true;
-          video.setAttribute("autoplay", "");
-        }
+        iframe.src = obtenerPreviewDrive(item.driveId);
+        iframe.setAttribute("allow", "autoplay; fullscreen");
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.setAttribute("frameborder", "0");
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
 
-        slide.appendChild(video);
+        slide.appendChild(iframe);
       }
 
       else {
