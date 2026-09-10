@@ -499,11 +499,15 @@ function renderizarPlanes(planes) {
     wrapper.className = "plan";
     wrapper.setAttribute("data-category", limpiarTexto(plan.nivel));
 
-    const esPopular = normalizarTexto(plan.nivel).includes("popular");
+    const esDestacado =
+     normalizarTexto(plan.destacado) === "si" ||
+     normalizarTexto(plan.destacado) === "sí" ||
+     normalizarTexto(plan.destacado) === "true" ||
+     String(plan.destacado).trim() === "1";
 
-    if (esPopular) {
-      wrapper.classList.add("active");
-    }
+   if (esDestacado) {
+     wrapper.classList.add("active");
+   }
 
     const icono = obtenerIconoPlan(plan.nivel, indice);
     const cantidadSemana = Number(plan.cantidadSemana);
