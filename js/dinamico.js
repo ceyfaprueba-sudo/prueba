@@ -195,7 +195,7 @@ function renderizarEscuela(escuela) {
 
       else if (item.esDrive && item.driveId) {
         const video = document.createElement("video");
-        video.src = `https://googleapis.com${item.driveId}?key=${API_KEY}&alt=media`;
+        video.src = `https://googleapis.com/drive/v3/files/${item.driveId}?key=${API_KEY}&alt=media`;
 
         video.loop = true;
         video.muted = true;
