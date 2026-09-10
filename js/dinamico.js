@@ -1,4 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
+const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 async function cargarDatos() {
   try {
@@ -82,6 +83,10 @@ function obtenerIdYoutube(url) {
   return "";
 }
 
+function obtenerVideoDrive(driveId) {
+  return `https://www.googleapis.com/drive/v3/files/${driveId}?alt=media&key=${DRIVE_API_KEY}`;
+}
+
 function renderizarEscuela(escuela) {
   const carrusel = document.getElementById("carouselEscuela");
   if (!carrusel) return;
@@ -90,50 +95,15 @@ function renderizarEscuela(escuela) {
   const interior = carrusel.querySelector(".carousel-inner");
   if (!indicadores || !interior) return;
 
-  const obtenerIdYoutube = url => {
-    try {
-      const enlace = new URL(url);
-
-      if (enlace.hostname.includes("youtu.be")) {
-        return enlace.pathname.split("/").filter(Boolean)[0] || "";
-      }
-
-      if (enlace.hostname.includes("youtube.com")) {
-        if (enlace.pathname === "/watch") {
-          return enlace.searchParams.get("v") || "";
-        }
-
-        if (
-          enlace.pathname.startsWith("/embed/") ||
-          enlace.pathname.startsWith("/shorts/")
-        ) {
-          return enlace.pathname.split("/")[2] || "";
-        }
-      }
-    } catch (error) {
-      return "";
-    }
-
-    return "";
-  };
-
   const elementos = escuela
     .map(item => {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
       const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
-      const youtubeId = obtenerIdYoutube(url);
-
-      return {
-        tipo,
-        url,
-        driveId,
-        youtubeId,
-        esDrive: item.esDrive === true || Boolean(driveId),
-        esYoutube: Boolean(youtubeId)
-      };
+      const esDrive = item.esDrive === true || Boolean(driveId);
+      return { tipo, url, driveId, esDrive };
     })
-    .filter(item => item.tipo && item.url);
+    .filter(item => item.tipo && (item.url || item.driveId));
 
   if (!elementos.length) return;
 
@@ -143,96 +113,50 @@ function renderizarEscuela(escuela) {
   elementos.forEach((item, indice) => {
     const slide = document.createElement("div");
     slide.className = "carousel-item";
-
     if (indice === 0) slide.classList.add("active");
 
     if (item.tipo === "img" || item.tipo === "imagen") {
       slide.setAttribute("data-bs-interval", "6000");
-
       const imagen = document.createElement("img");
       imagen.alt = "Entrenamiento de Arqueros CEYFA";
-
-      if (item.esDrive && item.driveId) {
-        imagen.src = obtenerImagenDrive(item.driveId);
-      } else {
-        imagen.src = item.url;
-      }
-
+      imagen.src = item.url;
       slide.appendChild(imagen);
-    }
-
-    else if (item.tipo === "video") {
+    } else if (item.tipo === "video") {
       slide.setAttribute("data-bs-interval", "false");
 
-      if (item.esYoutube && item.youtubeId) {
-        const iframe = document.createElement("iframe");
+      const video = document.createElement("video");
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.loop = false;
 
-        iframe.src =
-        `https://www.youtube.com/embed/${item.youtubeId}` +
-        `?autoplay=1` +
-        `&mute=1` +
-        `&loop=1` +
-        `&playlist=${item.youtubeId}` +
-        `&playsinline=1` +
-        `&controls=0` +
-        `&disablekb=1` +
-        `&fs=0` +
-        `&rel=0` +
-        `&modestbranding=1`;
+      const source = document.createElement("source");
+      source.src =
+        item.esDrive && item.driveId
+          ? obtenerVideoDrive(item.driveId)
+          : item.url;
+      source.type = "video/mp4";
+      video.appendChild(source);
+      video.append("Tu navegador no soporta videos HTML5.");
 
-        iframe.setAttribute(
-          "allow",
-          "autoplay; encrypted-media; picture-in-picture; fullscreen"
-        );
-        iframe.setAttribute("frameborder", "0");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
+      // Al terminar el video, avanza el carrusel
+      video.addEventListener("ended", () => {
+        const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
+        instancia.next();
+      });
 
-        slide.appendChild(iframe);
-      }
-
-      else if (item.esDrive && item.driveId) {
-        const iframe = document.createElement("iframe");
-
-        iframe.src = obtenerPreviewDrive(item.driveId);
-        iframe.setAttribute("allow", "autoplay; fullscreen");
-        iframe.setAttribute("frameborder", "0");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-
-        slide.appendChild(iframe);
-      }
-
-      else {
-        const video = document.createElement("video");
-
-        video.src = item.url;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-
-        video.setAttribute("autoplay", "");
-        video.setAttribute("loop", "");
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-
-        slide.appendChild(video);
-      }
-    }
-
-    else {
+      slide.appendChild(video);
+    } else {
       return;
     }
 
     const boton = document.createElement("button");
-
     boton.type = "button";
     boton.setAttribute("data-bs-target", "#carouselEscuela");
     boton.setAttribute("data-bs-slide-to", indice);
     boton.setAttribute("aria-label", "Slide " + (indice + 1));
-
     if (indice === 0) {
       boton.classList.add("active");
       boton.setAttribute("aria-current", "true");
@@ -241,6 +165,30 @@ function renderizarEscuela(escuela) {
     indicadores.appendChild(boton);
     interior.appendChild(slide);
   });
+
+  inicializarSincroniaVideosEscuela(carrusel);
+}
+
+function inicializarSincroniaVideosEscuela(carrusel) {
+  const reproducirSoloActivo = () => {
+    carrusel.querySelectorAll(".carousel-item").forEach(slide => {
+      const video = slide.querySelector("video");
+      if (!video) return;
+      if (slide.classList.contains("active")) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  };
+
+  if (carrusel.dataset.videoSyncActivo !== "true") {
+    carrusel.dataset.videoSyncActivo = "true";
+    carrusel.addEventListener("slid.bs.carousel", reproducirSoloActivo);
+  }
+  reproducirSoloActivo();
 }
 
 function renderizarFundamentos(fundamentos) {
@@ -252,18 +200,10 @@ function renderizarFundamentos(fundamentos) {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
       const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
-      const youtubeId = obtenerIdYoutube(url);
-
-      return {
-        tipo,
-        url,
-        driveId,
-        youtubeId,
-        esDrive: item.esDrive === true || Boolean(driveId),
-        esYoutube: Boolean(youtubeId)
-      };
+      const esDrive = item.esDrive === true || Boolean(driveId);
+      return { tipo, url, driveId, esDrive };
     })
-    .filter(item => item.tipo && item.url);
+    .filter(item => item.tipo && (item.url || item.driveId));
 
   if (!elementos.length) return;
 
@@ -272,81 +212,37 @@ function renderizarFundamentos(fundamentos) {
   elementos.forEach((item, indice) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "card-custom card-media";
-
     if (indice === 0) tarjeta.classList.add("first-card");
     if (indice === elementos.length - 1) tarjeta.classList.add("last-card");
 
     if (item.tipo === "img" || item.tipo === "imagen") {
       const imagen = document.createElement("img");
-
       imagen.alt = "Entrenamiento de goleros CEYFA UY";
-      imagen.src = item.esDrive && item.driveId
-        ? obtenerImagenDrive(item.driveId)
-        : item.url;
-
+      imagen.src = item.url;
       tarjeta.appendChild(imagen);
-    }
+    } else if (item.tipo === "video") {
+      const video = document.createElement("video");
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("loop", "");
+      video.setAttribute("autoplay", "");
 
-    else if (item.tipo === "video") {
-      if (item.esYoutube && item.youtubeId) {
-        const iframe = document.createElement("iframe");
+      const source = document.createElement("source");
+      source.src =
+        item.esDrive && item.driveId
+          ? obtenerVideoDrive(item.driveId)
+          : item.url;
+      source.type = "video/mp4";
+      video.appendChild(source);
+      video.append("Tu navegador no soporta videos HTML5.");
 
-        iframe.src =
-          `https://www.youtube.com/embed/${item.youtubeId}` +
-          `?autoplay=1` +
-          `&mute=1` +
-          `&loop=1` +
-          `&playlist=${item.youtubeId}` +
-          `&playsinline=1` +
-          `&controls=0` +
-          `&disablekb=1` +
-          `&fs=0` +
-          `&rel=0` +
-          `&modestbranding=1`;
-
-        iframe.setAttribute(
-          "allow",
-          "autoplay; encrypted-media; picture-in-picture; fullscreen"
-        );
-        iframe.setAttribute("frameborder", "0");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-
-        tarjeta.appendChild(iframe);
-      }
-
-      else if (item.esDrive && item.driveId) {
-        const iframe = document.createElement("iframe");
-
-        iframe.src = obtenerPreviewDrive(item.driveId);
-        iframe.setAttribute("allow", "autoplay; fullscreen");
-        iframe.setAttribute("frameborder", "0");
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-
-        tarjeta.appendChild(iframe);
-      }
-
-      else {
-        const video = document.createElement("video");
-
-        video.src = item.url;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-
-        video.setAttribute("autoplay", "");
-        video.setAttribute("loop", "");
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-
-        tarjeta.appendChild(video);
-      }
-    }
-
-    else {
+      tarjeta.appendChild(video);
+    } else {
       return;
     }
 
