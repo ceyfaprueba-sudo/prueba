@@ -184,7 +184,6 @@ function renderizarEscuela(escuela) {
           "allow",
           "autoplay; encrypted-media; picture-in-picture; fullscreen"
         );
-        iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("frameborder", "0");
         iframe.style.width = "100%";
         iframe.style.height = "100%";
@@ -309,7 +308,6 @@ function renderizarFundamentos(fundamentos) {
           "allow",
           "autoplay; encrypted-media; picture-in-picture; fullscreen"
         );
-        iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("frameborder", "0");
         iframe.style.width = "100%";
         iframe.style.height = "100%";
@@ -322,7 +320,6 @@ function renderizarFundamentos(fundamentos) {
 
         iframe.src = obtenerPreviewDrive(item.driveId);
         iframe.setAttribute("allow", "autoplay; fullscreen");
-        iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("frameborder", "0");
         iframe.style.width = "100%";
         iframe.style.height = "100%";
@@ -807,7 +804,6 @@ function renderizarEvento(evento) {
         "allow",
         "autoplay; encrypted-media; picture-in-picture; fullscreen"
       );
-      iframe.setAttribute("allowfullscreen", "");
       iframe.setAttribute("frameborder", "0");
       iframe.style.width = "100%";
       iframe.style.height = "100%";
@@ -820,7 +816,6 @@ function renderizarEvento(evento) {
   
       iframe.src = obtenerPreviewDrive(driveId);
       iframe.setAttribute("allow", "autoplay; fullscreen");
-      iframe.setAttribute("allowfullscreen", "");
       iframe.setAttribute("frameborder", "0");
       iframe.style.width = "100%";
       iframe.style.height = "100%";
