@@ -1,5 +1,13 @@
 const WHATSAPP_CEYFA = "59899449480";
 
+function actualizarWhatsappGlobal() {
+  document.querySelectorAll("[data-whatsapp]").forEach(enlace => {
+    enlace.href = `https://wa.me/${WHATSAPP_CEYFA}`;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", actualizarWhatsappGlobal);
+
 function limpiarTexto(valor) {
   if (valor === null || valor === undefined) return "";
   return String(valor).trim();
