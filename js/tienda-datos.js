@@ -128,20 +128,35 @@ function crearTarjetaTienda(producto) {
 
   let ofertaHtml = "";
 
-  if (
+ if (
     precioViejoNumero > 0 &&
     precioActualNumero > 0 &&
     precioViejoNumero > precioActualNumero
   ) {
-    const porcentaje = Math.round(
-      ((precioViejoNumero - precioActualNumero) / precioViejoNumero) * 100
-    );
 
-    ofertaHtml = `
-      <span class="tag-custom tag-secondary-custom tag-oferta tag-percentage">
-        ${porcentaje}% OFF
-      </span>
-    `;
+    if (slugTienda(categoria) === "ceyfa") {
+  
+      const porcentaje = Math.round(
+        ((precioViejoNumero - precioActualNumero) / precioViejoNumero) * 100
+      );
+  
+      ofertaHtml = `
+        <span class="tag-custom tag-secondary-custom tag-oferta tag-percentage">
+          ${porcentaje}% OFF
+        </span>
+      `;
+  
+    }
+  
+    else {
+  
+      ofertaHtml = `
+        <span class="tag-custom tag-secondary-custom tag-oferta">
+          ¡OFERTA!
+        </span>
+      `;
+  
+    }
   }
 
   const botonesKids = tallesKids
