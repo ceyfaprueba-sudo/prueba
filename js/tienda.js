@@ -251,5 +251,5 @@ document.addEventListener("DOMContentLoaded", function () {
       ejecutarFiltradoCombinadoTienda();
     }
   }
-  renderizarFooter();
+  //renderizarFooter();
 });
