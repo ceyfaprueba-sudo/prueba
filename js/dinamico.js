@@ -252,21 +252,6 @@ function renderizarEscuela(escuela) {
     indicadores.appendChild(boton);
     interior.appendChild(slide);
   });
-
-  if (!carrusel.dataset.reproductorAsignado) {
-    carrusel.addEventListener('slid.bs.carousel', (event) => {
-      const todosLosVideos = carrusel.querySelectorAll('video');
-      todosLosVideos.forEach(v => v.pause());
-      const slideActivo = event.relatedTarget;
-      const videoActivo = slideActivo.querySelector('video');
-      if (videoActivo) {
-        videoActivo.play().catch(err => console.log("Autoplay bloqueado en transición:", err));
-      }
-    });
-
-    carrusel.dataset.reproductorAsignado = "true";
-  }
-
 }
 
 function renderizarFundamentos(fundamentos) {
