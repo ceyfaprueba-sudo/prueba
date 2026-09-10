@@ -1,5 +1,4 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
-const API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 async function cargarDatos() {
   try {
@@ -195,7 +194,7 @@ function renderizarEscuela(escuela) {
 
       else if (item.esDrive && item.driveId) {
         const video = document.createElement("video");
-        video.src = `https://googleapis.com/drive/v3/files/${item.driveId}?key=${API_KEY}&alt=media`;
+        video.src = `https://google.com${item.driveId}`;
 
         video.loop = true;
         video.muted = true;
