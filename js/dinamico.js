@@ -19,9 +19,31 @@ async function cargarDatos() {
 
     if (Array.isArray(datos.planes) && datos.planes.length) renderizarPlanes(datos.planes);
 
-    if (Array.isArray(datos.eventos) && datos.eventos.length) {
-      renderizarEvento(datos.eventos[0]);
-      actualizarMarqueeEvento(datos.eventos[0]);
+    const eventos = Array.isArray(datos.eventos) ? datos.eventos : [];
+
+    const eventosAbiertos = eventos.filter(
+      evento => evento.inscripcionesAbiertas === true
+    );
+    
+    const tiraMarquee = document.getElementById("tira-marquee");
+    
+    if (eventosAbiertos.length) {
+      const evento = eventosAbiertos[0];
+    
+      renderizarEvento(evento);
+      actualizarMarqueeEvento(evento);
+    
+      if (tiraMarquee) {
+        tiraMarquee.style.display = "";
+      }
+    } else {
+      if (tiraMarquee) {
+        tiraMarquee.style.display = "none";
+      }
+    
+      if (eventos.length) {
+        renderizarEvento(eventos[0]);
+      }
     }
 
     if (Array.isArray(datos.tienda)) actualizarTiendaInicio(datos.tienda);
