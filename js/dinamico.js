@@ -1,5 +1,4 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
-const APi_ = "";
 
 async function cargarDatos() {
   try {
@@ -198,7 +197,6 @@ function renderizarEscuela(escuela) {
 
         iframe.src = obtenerPreviewDrive(item.driveId);
         iframe.setAttribute("allow", "autoplay; fullscreen");
-        iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("frameborder", "0");
         iframe.style.width = "100%";
         iframe.style.height = "100%";
