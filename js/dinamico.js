@@ -41,17 +41,47 @@ function renderizarEscuela(escuela) {
   const interior = carrusel.querySelector(".carousel-inner");
   if (!indicadores || !interior) return;
 
+  const obtenerIdYoutube = url => {
+    try {
+      const enlace = new URL(url);
+
+      if (enlace.hostname.includes("youtu.be")) {
+        return enlace.pathname.split("/").filter(Boolean)[0] || "";
+      }
+
+      if (enlace.hostname.includes("youtube.com")) {
+        if (enlace.pathname === "/watch") {
+          return enlace.searchParams.get("v") || "";
+        }
+
+        if (
+          enlace.pathname.startsWith("/embed/") ||
+          enlace.pathname.startsWith("/shorts/")
+        ) {
+          return enlace.pathname.split("/")[2] || "";
+        }
+      }
+    } catch (error) {
+      return "";
+    }
+
+    return "";
+  };
+
   const elementos = escuela
     .map(item => {
       const tipo = normalizarTexto(item.tipo ?? item.Tipo);
       const url = limpiarTexto(item.url ?? item.Url);
       const driveId = limpiarTexto(item.driveId) || obtenerIdDrive(url);
+      const youtubeId = obtenerIdYoutube(url);
 
       return {
-        tipo: tipo,
-        url: url,
-        driveId: driveId,
-        esDrive: item.esDrive === true || Boolean(driveId)
+        tipo,
+        url,
+        driveId,
+        youtubeId,
+        esDrive: item.esDrive === true || Boolean(driveId),
+        esYoutube: Boolean(youtubeId)
       };
     })
     .filter(item => item.tipo && item.url);
@@ -85,7 +115,31 @@ function renderizarEscuela(escuela) {
     else if (item.tipo === "video") {
       slide.setAttribute("data-bs-interval", "false");
 
-      if (item.esDrive && item.driveId) {
+      if (item.esYoutube && item.youtubeId) {
+        const iframe = document.createElement("iframe");
+
+        iframe.src =
+          `https://www.youtube.com/embed/${item.youtubeId}` +
+          `?autoplay=1` +
+          `&mute=1` +
+          `&loop=1` +
+          `&playlist=${item.youtubeId}` +
+          `&playsinline=1` +
+          `&rel=0`;
+
+        iframe.setAttribute(
+          "allow",
+          "autoplay; encrypted-media; picture-in-picture; fullscreen"
+        );
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.setAttribute("frameborder", "0");
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+
+        slide.appendChild(iframe);
+      }
+
+      else if (item.esDrive && item.driveId) {
         const iframe = document.createElement("iframe");
 
         iframe.src = obtenerPreviewDrive(item.driveId);
