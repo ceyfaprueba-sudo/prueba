@@ -119,13 +119,17 @@ function renderizarEscuela(escuela) {
         const iframe = document.createElement("iframe");
 
         iframe.src =
-          `https://www.youtube.com/embed/${item.youtubeId}` +
-          `?autoplay=1` +
-          `&mute=1` +
-          `&loop=1` +
-          `&playlist=${item.youtubeId}` +
-          `&playsinline=1` +
-          `&rel=0`;
+        `https://www.youtube.com/embed/${item.youtubeId}` +
+        `?autoplay=1` +
+        `&mute=1` +
+        `&loop=1` +
+        `&playlist=${item.youtubeId}` +
+        `&playsinline=1` +
+        `&controls=0` +
+        `&disablekb=1` +
+        `&fs=0` +
+        `&rel=0` +
+        `&modestbranding=1`;
 
         iframe.setAttribute(
           "allow",
