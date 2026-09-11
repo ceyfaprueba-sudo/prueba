@@ -181,16 +181,19 @@ function ejecutarDesvioWhatsApp() {
   const telefono = document.getElementById("input-telefono").value.trim();
   const email = document.getElementById("input-email").value.trim() || "No especificado";
   const mensaje = document.getElementById("input-mensaje").value.trim() || "Sin comentarios adicionales.";
-  const textoMensaje = `¡Hola CEYFA UY!
-Quiero coordinar mi clase de prueba. Dejo mis datos:
+  const textoMensaje =
+  `¡Hola CEYFA! 🧤⚽
+  Quiero coordinar mi clase de prueba. 
 
-Nombre: ${nombre}
-Sede de Interés: ${sedeTexto}
-Teléfono: ${telefono}
-Correo: ${email}
+  Dejo mis datos:
+  👤 Nombre: ${nombre}
+  📍 Sede de Interés: ${sedeTexto}
+  ☎️ Teléfono: ${telefono}
+  ✉️ Correo: ${email}
 
-Consulta o Experiencia:
-${mensaje}`;
+  🗣️ Consulta o Experiencia:
+  ${mensaje}`;
+  
   const urlFinal = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
   window.open(urlFinal, "_blank");
 }
