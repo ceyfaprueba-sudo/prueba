@@ -2328,3 +2328,13 @@ body.menu-abierto-block .btn-whatsapp-floating {
   align-items: center;
   padding-top: 5rem;
 }
+
+@media (max-width: 767.98px) {
+  .banner-secundario {
+    height: 300px;
+  }
+
+  .banner-secundario .encabezado-section_doble {
+    margin-bottom: 0;
+  }
+}
