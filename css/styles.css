@@ -1912,6 +1912,9 @@ body.menu-abierto-block::before {
 }
 
 @media (max-width: 991.98px) {
+  #contacto-section .box-column-custom p br {
+    display: none !important;
+  }
   #contacto-section .btn-group-custom {
     margin-top: 1rem;
   }
