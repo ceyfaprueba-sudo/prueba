@@ -201,7 +201,11 @@ function renderizarFundamentos(fundamentos) {
           ? obtenerImagenDrive(item.driveId)
           : item.url;
       tarjeta.appendChild(imagen);
+    } 
+    
     } else if (item.tipo === "video") {
+      tarjeta.style.position = "relative";
+    
       const video = document.createElement("video");
       video.muted = true;
       video.defaultMuted = true;
@@ -212,7 +216,7 @@ function renderizarFundamentos(fundamentos) {
       video.setAttribute("playsinline", "");
       video.setAttribute("loop", "");
       video.setAttribute("autoplay", "");
-
+    
       const source = document.createElement("source");
       source.src =
         item.esDrive && item.driveId
@@ -223,8 +227,33 @@ function renderizarFundamentos(fundamentos) {
       video.append("Tu navegador no soporta videos HTML5.");
       video.load();
       video.play().catch(() => {});
-
+    
+      const botonPlay = document.createElement("button");
+      botonPlay.type = "button";
+      botonPlay.className = "btn-video-toggle d-md-none";
+      botonPlay.setAttribute("aria-label", "Reproducir o pausar video");
+      botonPlay.innerHTML = '<i class="bi bi-pause-fill"></i>';
+    
+      botonPlay.addEventListener("click", () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    
+      video.addEventListener("play", () => {
+        botonPlay.innerHTML = '<i class="bi bi-pause-fill"></i>';
+        botonPlay.classList.add("is-playing");
+      });
+    
+      video.addEventListener("pause", () => {
+        botonPlay.innerHTML = '<i class="bi bi-play-fill"></i>';
+        botonPlay.classList.remove("is-playing");
+      });
+    
       tarjeta.appendChild(video);
+      tarjeta.appendChild(botonPlay);
     } else {
       return;
     }
