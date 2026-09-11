@@ -789,7 +789,7 @@ body.menu-abierto-block::before {
     justify-content: center;
     margin: 1rem 0 0.5rem 0;
     width: 100%;
-    height: 46px;
+    height: 45px;
     background-color: var(--cyan-custom);
     color: black;
     font-family: var(--font-titulos);
