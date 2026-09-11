@@ -1,4 +1,4 @@
-const WHATSAPP_CEYFA = "59899449480";
+let WHATSAPP_CEYFA = "";
 
 function actualizarWhatsappGlobal() {
   document.querySelectorAll("[data-whatsapp]").forEach(enlace => {
