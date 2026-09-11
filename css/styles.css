@@ -1632,6 +1632,10 @@ body.menu-abierto-block::before {
     grid-row: 3;
     margin: 0;
   }
+  
+  .card-plan .card-row-item h6 span {
+    display: block;
+  }
 
   .card-plan .price-month {
     grid-column: 1 / span 2;
