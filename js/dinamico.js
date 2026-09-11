@@ -650,14 +650,14 @@ function renderizarEvento(evento) {
     const horaEvento = limpiarTexto(evento.hora) || "A confirmar";
     const sedeEvento = limpiarTexto(evento.sede) || "A confirmar";
     const textoMensaje =
-    `¡Hola CEYFA! 🧤⚽
-    Quiero inscribirme a la próxima Clínica de Goleros:
+`¡Hola CEYFA! 🧤⚽
+Quiero inscribirme a la próxima Clínica de Goleros:
 
-    📆 Fecha: ${fechaEvento}
-    ⏱️ Horario: ${horaEvento}
-    📍 Sede: ${sedeEvento}
+📆 Fecha: ${fechaEvento}
+⏱️ Horario: ${horaEvento}
+📍 Sede: ${sedeEvento}
 
-    ¡Gracias!`;
+¡Gracias!`;
     
     botonWhatsapp.href = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
   }
