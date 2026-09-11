@@ -118,6 +118,7 @@ function renderizarEscuela(escuela) {
       video.append("Tu navegador no soporta videos HTML5.");
       video.load();
 
+      // Al terminar el video, avanza el carrusel
       video.addEventListener("ended", () => {
         const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
         instancia.next();
