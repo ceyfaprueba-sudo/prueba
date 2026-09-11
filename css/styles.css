@@ -1163,6 +1163,40 @@ body.menu-abierto-block::before {
   width: 300px;
 }
 
+.carousel-fluid-custom .card-media {
+  position: relative;
+}
+
+.carousel-fluid-custom .btn-video-toggle {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: var(--transition-smooth);
+}
+
+.carousel-fluid-custom .btn-video-toggle:hover {
+  opacity: 1;
+  background-color: var(--cyan-custom);
+  color: black;
+}
+
+.carousel-fluid-custom .btn-video-toggle.is-playing {
+  opacity: 0.5;
+}
+
 @media (min-width: 1200px) {
   .card-fundamentos .card-title {
     font-size: 2rem;
@@ -1238,6 +1272,10 @@ body.menu-abierto-block::before {
   justify-content: flex-end;
   align-items: flex-start;
   row-gap: 0.75rem;
+}
+
+#carouselEquipo.carousel-fluid-custom .card-title {
+  hyphens: none;
 }
 
 #carouselEquipo.carousel-fluid-custom .tag-custom {
