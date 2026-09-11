@@ -709,6 +709,34 @@ Quiero inscribirme a la próxima Clínica de Goleros:
   }
 }
 
+function renderizarComentarios(comentarios) {
+  const carrusel = document.getElementById("carouselComentarios");
+  if (!carrusel) return;
+
+  const validos = comentarios.filter(item => limpiarTexto(item.comentario));
+  if (!validos.length) return;
+
+  carrusel.innerHTML = "";
+
+  validos.forEach((item, indice) => {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "card-custom card-comentario";
+    if (indice === 0) tarjeta.classList.add("first-card");
+    if (indice === validos.length - 1) tarjeta.classList.add("last-card");
+
+    const nombre = limpiarTexto(item.nombre) || "Anónimo";
+
+    tarjeta.innerHTML = `
+      <p class="comentario-nombre">${escaparHtml(nombre)}</p>
+      <p class="comentario-texto">${escaparHtml(item.comentario)}</p>
+    `;
+
+    carrusel.appendChild(tarjeta);
+  });
+
+  carrusel.scrollLeft = 0;
+}
+
 function actualizarMarqueeEvento(evento) {
   const fecha = formatearFechaVisible(evento.fecha);
   const hora = limpiarTexto(evento.hora);
