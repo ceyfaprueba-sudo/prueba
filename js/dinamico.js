@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec";
 const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 async function cargarDatos() {
@@ -8,6 +8,9 @@ async function cargarDatos() {
 
     const datos = await respuesta.json();
     if (datos.error) return;
+
+    WHATSAPP_CEYFA = String(datos.footer?.[0]?.whatsapp || "").replace(/\D/g, "");
+    actualizarWhatsappGlobal();
 
     if (Array.isArray(datos.escuela) && datos.escuela.length) renderizarEscuela(datos.escuela);
     if (Array.isArray(datos.fundamentos) && datos.fundamentos.length) renderizarFundamentos(datos.fundamentos);
