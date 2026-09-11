@@ -781,6 +781,24 @@ body.menu-abierto-block::before {
     border-bottom-color: var(--cyan-custom) !important;
     border-bottom-width: 2px !important;
   }
+
+  .nav-item .btn {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cyan-custom);
+    color: black;
+    font-family: var(--font-titulos);
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 50rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    margin: 1rem 0 0.5rem 0;
+  }
   
 }
 
