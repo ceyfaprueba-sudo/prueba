@@ -1026,6 +1026,10 @@ body.menu-abierto-block::before {
 }
 
 /* ESCUELA */
+#escuela-section .encabezado-section_titulo {
+  hyphens: none;
+}
+
 #escuela-section .btn-square-custom:hover {
   background-color: var(--cyan-custom);
   border-color: var(--cyan-custom);
