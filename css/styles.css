@@ -1609,9 +1609,8 @@ body.menu-abierto-block::before {
   .card-plan {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: end;
-    row-gap: 1rem;
-    column-gap: 1rem;
+    align-items: center;
+    gap: 1rem;
   }
 
   .card-plan .plan-holder,
@@ -1619,6 +1618,10 @@ body.menu-abierto-block::before {
     display: contents;
   }
 
+  .card-plan .plan-holder .btn-form-custom {
+    margin-left: auto;
+  }
+  
   .card-plan .price-day {
     grid-column: 1;
     grid-row: 3;
