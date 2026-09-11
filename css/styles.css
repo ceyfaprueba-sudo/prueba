@@ -16,6 +16,12 @@
   --tracking-widest: 0.15em;
 }
 
+@media (max-width: 767.98px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+}
+
 /* GLOBALES */
 body {
   background-color: black;
