@@ -192,7 +192,9 @@ function ejecutarDesvioWhatsApp() {
   ✉️ Correo: ${email}
 
   🗣️ Consulta o Experiencia:
-  ${mensaje}`;
+  ${mensaje}
+  
+  ¡Gracias!`;
   
   const urlFinal = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
   window.open(urlFinal, "_blank");
