@@ -223,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inicializarBloqueoScrollMenu();
   inicializarControlesCarrusel('carouselFundamentos');
   inicializarControlesCarrusel('carouselEquipo');
+  inicializarControlesCarrusel('carouselComentarios');
   inicializarFiltrosSedes();
   inicializarValidadorContacto();
   activarTopeWhatsAppFloating();
