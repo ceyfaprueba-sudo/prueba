@@ -657,7 +657,6 @@ function renderizarEvento(evento) {
     ⏱️ Horario: ${horaEvento}
     📍 Sede: ${sedeEvento}
 
-    ⚠️ ¿Me podrían pasar los detalles para asegurar mi lugar?
     ¡Gracias!`;
     
     botonWhatsapp.href = `https://wa.me/${WHATSAPP_CEYFA}?text=${encodeURIComponent(textoMensaje)}`;
