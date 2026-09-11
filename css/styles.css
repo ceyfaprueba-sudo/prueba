@@ -899,7 +899,8 @@ body.menu-abierto-block::before {
   height: 100%;
 }
 
-#inicio .hero-overlay>video {
+#inicio .hero-overlay>video,
+#inicio .hero-overlay>img {
   z-index: 1;
   position: absolute;
   top: 50%;
