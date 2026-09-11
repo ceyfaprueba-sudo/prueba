@@ -1001,6 +1001,7 @@ body.menu-abierto-block::before {
 @media (max-width: 576px) {
   #inicio>.container {
     gap: 1.75rem;
+    padding-top: 0;
   }
 
   #inicio h1 {
