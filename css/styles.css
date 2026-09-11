@@ -1788,6 +1788,35 @@ body.menu-abierto-block::before {
   }
 }
 
+/* EVENTO PASADO */
+.carousel-fluid-custom .card-comentario {
+  width: 280px;
+  flex: 0 0 auto;
+  padding: 1.25rem !important;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.card-comentario .comentario-nombre {
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--cyan-custom);
+  margin: 0;
+}
+
+.card-comentario .comentario-texto {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--bs-gray-300);
+  margin: 0;
+  white-space: pre-line;
+}
+
 /* TIENDA */
 #tienda-section .btn-primary-custom {
   font-weight: 500;
