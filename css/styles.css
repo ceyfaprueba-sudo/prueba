@@ -1610,7 +1610,7 @@ body.menu-abierto-block::before {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .card-plan .plan-holder,
