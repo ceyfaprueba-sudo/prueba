@@ -1,4 +1,4 @@
-const API_TIENDA_DATOS_URL = "https://script.google.com/macros/s/AKfycbyF31_AjEGP6MNa87S2uFd9R-rbxd0MN3rgLEipbF8UlOunkLaFpJjdK6_Td4c3olVYrg/exec?seccion=tienda";
+const API_TIENDA_DATOS_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec?seccion=tienda";
 
 function escaparHtmlTienda(valor) {
   return String(valor ?? "")
@@ -418,6 +418,10 @@ async function cargarDatosTienda() {
     }
 
     const datos = await respuesta.json();
+
+     WHATSAPP_CEYFA = String(datos.footer?.[0]?.whatsapp || "").replace(/\D/g, "");
+
+  actualizarWhatsappGlobal();
 
     if (Array.isArray(datos.footer) && datos.footer.length) {
       renderizarFooter(datos.footer);
