@@ -1640,6 +1640,7 @@ body.menu-abierto-block::before {
   .card-plan .price-month {
     grid-column: 1 / span 2;
     grid-row: 4;
+    margin-top: 0.75rem;
   }
 }
 
