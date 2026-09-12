@@ -108,15 +108,7 @@ function ejecutarFiltradoCombinadoTienda() {
       card.style.transform = "translateY(12px) scale(0.97)";
       card.style.display = "none";
     }
-  }
-  const gridProductos = document.getElementById("grid-productos-tienda");
-    if (gridProductos) {
-      gridProductos.classList.toggle(
-        "sin-paginador",
-        totalProductosFiltrados <= PRODUCTOS_POR_PAGINA
-      );
-    }
-  );
+  });
 }
 function cambiarPagina(direccion) {
   paginaActual += direccion;
