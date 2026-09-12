@@ -10,6 +10,11 @@ function actualizarWhatsappGlobal() {
 
 document.addEventListener("DOMContentLoaded", actualizarWhatsappGlobal);
 
+function configurarWhatsappDesdeFooter(footer) {
+  WHATSAPP_CEYFA = String(footer?.[0]?.whatsapp || "").replace(/\D/g, "");
+  actualizarWhatsappGlobal();
+}
+
 function limpiarTexto(valor) {
   if (valor === null || valor === undefined) return "";
   return String(valor).trim();
