@@ -385,6 +385,36 @@
     color: black;
 }
 
+/* SIN BUSQUEDA */
+.tienda-sin-resultados {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 4rem 1rem;
+  color: var(--bs-gray-500);
+}
+
+.tienda-sin-resultados i {
+  font-size: 2rem;
+  color: var(--cyan-custom);
+  margin-bottom: 0.5rem;
+}
+
+.tienda-sin-resultados_titulo {
+  color: white;
+  font-family: var(--font-titulos);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.tienda-sin-resultados_texto {
+  font-size: 0.9rem;
+}
+
 /* PAGINADOR */
 #tienda-paginacion {
     width: 100%;
