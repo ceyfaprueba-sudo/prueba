@@ -1,5 +1,3 @@
-const API_TIENDA_DATOS_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec?seccion=tienda";
-
 function escaparHtmlTienda(valor) {
   return String(valor ?? "")
     .replaceAll("&", "&amp;")
@@ -411,7 +409,7 @@ async function cargarDatosTienda() {
   if (!grid) return;
 
   try {
-    const respuesta = await fetch(API_TIENDA_DATOS_URL);
+    const respuesta = await fetch(`${API_CEYFA_URL}?seccion=tienda`);
 
     if (!respuesta.ok) {
       throw new Error("HTTP " + respuesta.status);
