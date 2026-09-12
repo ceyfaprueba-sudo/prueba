@@ -1,12 +1,3 @@
-function escaparHtmlTienda(valor) {
-  return String(valor ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 function slugTienda(valor) {
   return String(valor ?? "")
     .trim()
@@ -170,7 +161,7 @@ function crearTarjetaTienda(producto) {
         }"
         onclick="seleccionarTalleFijo(this)"
       >
-        ${escaparHtmlTienda(talle)}
+        ${escaparHtml(talle)}
       </button>
     `)
     .join("");
@@ -188,7 +179,7 @@ function crearTarjetaTienda(producto) {
         }"
         onclick="seleccionarTalleFijo(this)"
       >
-        ${escaparHtmlTienda(talle)}
+        ${escaparHtml(talle)}
       </button>
     `)
     .join("");
@@ -308,11 +299,11 @@ function crearTarjetaTienda(producto) {
       <div class="box-price">
 
         <p class="product-price">
-          ${escaparHtmlTienda(precioRango)}
+          ${escaparHtml(precioRango)}
         </p>
 
         <span class="product-price-old">
-          $${escaparHtmlTienda(precioViejo)}
+          $${escaparHtml(precioViejo)}
         </span>
 
       </div>
@@ -322,7 +313,7 @@ function crearTarjetaTienda(producto) {
   else {
     precioHtml = `
       <p class="product-price">
-        ${escaparHtmlTienda(precioRango)}
+        ${escaparHtml(precioRango)}
       </p>
     `;
   }
@@ -342,11 +333,11 @@ function crearTarjetaTienda(producto) {
   return `
     <div
       class="col producto-item"
-      data-category="${escaparHtmlTienda(slugTienda(categoria))}"
-      data-subcategory="${escaparHtmlTienda(subcategoriaData)}"
-      data-precio-rango="${escaparHtmlTienda(precioRango)}"
-      data-precio-kids="${escaparHtmlTienda(dataPrecioKids)}"
-      data-precio-adultos="${escaparHtmlTienda(dataPrecioAdultos)}"
+      data-category="${escaparHtml(slugTienda(categoria))}"
+      data-subcategory="${escaparHtml(subcategoriaData)}"
+      data-precio-rango="${escaparHtml(precioRango)}"
+      data-precio-kids="${escaparHtml(dataPrecioKids)}"
+      data-precio-adultos="${escaparHtml(dataPrecioAdultos)}"
     >
 
       <div class="card-custom card-motion card-product">
@@ -356,8 +347,8 @@ function crearTarjetaTienda(producto) {
         <div class="product-img">
 
           <img
-            src="${escaparHtmlTienda(imagen)}"
-            alt="${escaparHtmlTienda(nombre)}"
+            src="${escaparHtml(imagen)}"
+            alt="${escaparHtml(nombre)}"
             onerror="this.onerror=null; this.src='img/logo.png';"
           >
 
@@ -368,11 +359,11 @@ function crearTarjetaTienda(producto) {
           <div class="box-column-custom">
 
             <span class="label-custom product-category">
-              ${escaparHtmlTienda(categoria)}
+              ${escaparHtml(categoria)}
             </span>
 
             <h3 class="card-title product-title">
-              ${escaparHtmlTienda(nombre)}
+              ${escaparHtml(nombre)}
             </h3>
 
           </div>
