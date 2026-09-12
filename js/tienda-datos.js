@@ -423,7 +423,7 @@ async function cargarDatosTienda() {
 
   actualizarWhatsappGlobal();
 
-    if (Array.isArray(datos.footer) && datos.footer.length) {
+    if (typeof renderizarFooter === "function" && Array.isArray(datos.footer) && datos.footer.length) {
       renderizarFooter(datos.footer);
     }
 
