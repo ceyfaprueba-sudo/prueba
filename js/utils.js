@@ -135,7 +135,10 @@ function obtenerDiasFiltro(horarios) {
     });
   });
 
-  function renderizarFooter(footer) {
+  return Array.from(encontrados).join(",");
+}
+
+function renderizarFooter(footer) {
     const pie = document.getElementById("pie-pagina");
     if (!pie) return;
   
@@ -161,6 +164,3 @@ function obtenerDiasFiltro(horarios) {
       `;
     }
   }
-
-  return Array.from(encontrados).join(",");
-}
