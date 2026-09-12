@@ -83,6 +83,13 @@ function ejecutarFiltradoCombinadoTienda() {
   } else {
     contenedorPaginacion.style.setProperty("display", "none", "important");
   }
+  const gridProductos = document.getElementById("grid-productos-tienda");
+  if (gridProductos) {
+    gridProductos.classList.toggle(
+      "sin-paginador",
+      totalProductosFiltrados <= PRODUCTOS_POR_PAGINA
+    );
+  }
   productosFiltrados.forEach((card, index) => {
     const indiceInicio = (paginaActual - 1) * PRODUCTOS_POR_PAGINA;
     const indiceFin = indiceInicio + PRODUCTOS_POR_PAGINA;
