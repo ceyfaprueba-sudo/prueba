@@ -69,6 +69,10 @@ function ejecutarFiltradoCombinadoTienda() {
   });
   const contenedorPaginacion = document.getElementById("tienda-paginacion");
   const totalProductosFiltrados = productosFiltrados.length;
+  const sinResultados = document.getElementById("tienda-sin-resultados");
+  if (sinResultados) {
+    sinResultados.style.display = totalProductosFiltrados === 0 ? "flex" : "none";
+  }
   const totalPaginas = Math.ceil(totalProductosFiltrados / PRODUCTOS_POR_PAGINA);
   if (paginaActual > totalPaginas) paginaActual = Math.max(1, totalPaginas);
   if (totalProductosFiltrados > PRODUCTOS_POR_PAGINA) {
