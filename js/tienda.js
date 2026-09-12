@@ -1,6 +1,3 @@
-const API_TIENDA_URL =
-  "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec";
-
 const shopTimeouts = new Map();
 let filtroCategoriaActual = "all";
 let filtroSubcategoriaActual = "all"; 
