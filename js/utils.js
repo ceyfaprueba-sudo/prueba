@@ -1,3 +1,5 @@
+const API_CEYFA_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec";
+
 let WHATSAPP_CEYFA = "";
 
 function actualizarWhatsappGlobal() {
