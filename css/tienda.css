@@ -445,6 +445,9 @@
 }
 
 @media (max-width: 768px) {
+    #grid-productos-tienda.sin-paginador {
+        margin-bottom: 5rem;
+      }
     .btn-text {
         display: none;
     }
