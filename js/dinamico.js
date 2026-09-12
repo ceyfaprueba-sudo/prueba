@@ -9,6 +9,7 @@ async function cargarDatos() {
     if (datos.error) return;
 
     configurarWhatsappDesdeFooter(datos.footer);
+    renderizarFooter(datos.footer);
 
     if (Array.isArray(datos.escuela) && datos.escuela.length) renderizarEscuela(datos.escuela);
     if (Array.isArray(datos.fundamentos) && datos.fundamentos.length) renderizarFundamentos(datos.fundamentos);
