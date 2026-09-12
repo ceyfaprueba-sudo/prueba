@@ -51,7 +51,6 @@ async function cargarDatos() {
 
     if (Array.isArray(datos.tienda)) actualizarTiendaInicio(datos.tienda);
     if (Array.isArray(datos.marcas) && datos.marcas.length) renderizarMarcas(datos.marcas);
-    if (Array.isArray(datos.footer) && datos.footer.length) renderizarFooter(datos.footer);
   }
   catch (error) {
     console.error("Error al cargar los datos:", error);
