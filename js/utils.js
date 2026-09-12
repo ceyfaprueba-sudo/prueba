@@ -1,4 +1,4 @@
-const API_CEYFA_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec";
+const API_CEYFA_URL = "https://script.google.com/macros/s/AKfycbwQhlr8Gfu1yKJ5rh8H56d-rMs6-TaVtYWgTWN9OqILqbpc7IUbWxcenSDlYn9WRN0Y8Q/exec";
 
 let WHATSAPP_CEYFA = "";
 
