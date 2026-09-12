@@ -1,9 +1,8 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbzrCvwh6anDvJu8GIrWwLRhnHMeA_fjTzqR1jdVi0lc8w868qhMDxw3bg3JUxj4kLHcAg/exec";
 const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 async function cargarDatos() {
   try {
-    const respuesta = await fetch(API_URL);
+    const respuesta = await fetch(API_CEYFA_URL);
     if (!respuesta.ok) throw new Error("Error HTTP: " + respuesta.status);
 
     const datos = await respuesta.json();
