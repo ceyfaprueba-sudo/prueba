@@ -8,8 +8,7 @@ async function cargarDatos() {
     const datos = await respuesta.json();
     if (datos.error) return;
 
-    WHATSAPP_CEYFA = String(datos.footer?.[0]?.whatsapp || "").replace(/\D/g, "");
-    actualizarWhatsappGlobal();
+    configurarWhatsappDesdeFooter(datos.footer);
 
     if (Array.isArray(datos.escuela) && datos.escuela.length) renderizarEscuela(datos.escuela);
     if (Array.isArray(datos.fundamentos) && datos.fundamentos.length) renderizarFundamentos(datos.fundamentos);
