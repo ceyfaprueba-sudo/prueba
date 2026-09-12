@@ -417,9 +417,7 @@ async function cargarDatosTienda() {
 
     const datos = await respuesta.json();
 
-     WHATSAPP_CEYFA = String(datos.footer?.[0]?.whatsapp || "").replace(/\D/g, "");
-
-  actualizarWhatsappGlobal();
+     configurarWhatsappDesdeFooter(datos.footer);
 
     if (typeof renderizarFooter === "function" && Array.isArray(datos.footer) && datos.footer.length) {
       renderizarFooter(datos.footer);
