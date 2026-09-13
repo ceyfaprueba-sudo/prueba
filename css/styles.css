@@ -1807,7 +1807,7 @@ body.menu-abierto-block::before {
 }
 
 #carouselComentarios {
-  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 #evento-pasado-section .btn-group-custom {
