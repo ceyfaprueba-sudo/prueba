@@ -1789,9 +1789,8 @@ body.menu-abierto-block::before {
 
 /* EVENTO PASADO */
 .carousel-fluid-custom .card-comentario {
-  width: 280px;
+  width: 375px;
   flex: 0 0 auto;
-  padding: 1.25rem !important;
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
@@ -1814,6 +1813,14 @@ body.menu-abierto-block::before {
   color: var(--bs-gray-300);
   margin: 0;
   white-space: pre-line;
+}
+
+#carouselComentarios {
+  marging-top: 3rem;
+}
+
+#evento-pasado-section .btn-group-custom {
+  justify-content: flex-end;
 }
 
 /* TIENDA */
