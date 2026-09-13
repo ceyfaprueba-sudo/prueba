@@ -58,6 +58,8 @@ function inicializarBloqueoScrollMenu() {
 function inicializarControlesCarrusel(carruselId) {
   const carousel = document.getElementById(carruselId);
   if (!carousel) return;
+  if (carousel.dataset.controlesActivos === "true") return;
+  carousel.dataset.controlesActivos = "true";
   const btnPrev = document.querySelector(`.btn-prev[data-carrusel-id="${carruselId}"]`);
   const btnNext = document.querySelector(`.btn-next[data-carrusel-id="${carruselId}"]`);
   if (!btnPrev || !btnNext) return;
@@ -221,9 +223,6 @@ function activarTopeWhatsAppFloating() {
 document.addEventListener("DOMContentLoaded", function () {
   activarScrollSpyMenu();
   inicializarBloqueoScrollMenu();
-  inicializarControlesCarrusel('carouselFundamentos');
-  inicializarControlesCarrusel('carouselEquipo');
-  inicializarControlesCarrusel('carouselComentarios');
   inicializarFiltrosSedes();
   inicializarValidadorContacto();
   activarTopeWhatsAppFloating();
