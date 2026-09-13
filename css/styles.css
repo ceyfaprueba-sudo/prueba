@@ -1788,6 +1788,10 @@ body.menu-abierto-block::before {
 }
 
 /* EVENTO PASADO */
+#carouselComentarios {
+  padding-top: 3rem;
+}
+
 .carousel-fluid-custom .card-comentario {
   width: 380px;
   flex: 0 0 auto;
@@ -1806,8 +1810,8 @@ body.menu-abierto-block::before {
   font-style: italic;
 }
 
-#carouselComentarios {
-  padding-top: 3rem;
+.card-comentario:hover .comentario-texto {
+  color: white;
 }
 
 #evento-pasado-section .btn-group-custom {
