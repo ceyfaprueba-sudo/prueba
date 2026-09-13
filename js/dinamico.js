@@ -859,15 +859,15 @@ function renderizarComentarios(comentarios) {
 
   validos.forEach((item, indice) => {
     const tarjeta = document.createElement("div");
-    tarjeta.className = "card-custom card-comentario";
+    tarjeta.className = "card-custom card-motion card-comentario";
     if (indice === 0) tarjeta.classList.add("first-card");
     if (indice === validos.length - 1) tarjeta.classList.add("last-card");
 
     const nombre = limpiarTexto(item.nombre) || "Anónimo";
 
     tarjeta.innerHTML = `
-      <p class="comentario-nombre">${escaparHtml(nombre)}</p>
-      <p class="comentario-texto"><span>“</span> ${escaparHtml(item.comentario)} <span>”</span></p>
+      <p class="card-title comentario-nombre">${escaparHtml(nombre)}</p>
+      <p class="comentario-texto">“ ${escaparHtml(item.comentario)} ”</p>
     `;
 
     carrusel.appendChild(tarjeta);
