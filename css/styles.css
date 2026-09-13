@@ -1798,20 +1798,12 @@ body.menu-abierto-block::before {
 }
 
 .card-comentario .comentario-nombre {
-  font-family: var(--font-titulos);
-  color: white;
-  font-weight: 800;
   text-transform: uppercase;
 }
 
 .card-comentario .comentario-texto {
   font-size: 0.85rem;
   font-style: italic;
-}
-
-.card-comentario .comentario-texto span {
-  color: var(--cyan-custom);
-  font-size: 1.25rem;
 }
 
 #carouselComentarios {
