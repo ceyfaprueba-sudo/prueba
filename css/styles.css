@@ -1803,6 +1803,8 @@ body.menu-abierto-block::before {
 
 .card-comentario .comentario-nombre {
   text-transform: uppercase;
+  text-align: end;
+  margin-top: auto;
 }
 
 .card-comentario .comentario-texto {
