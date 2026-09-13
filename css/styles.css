@@ -1809,7 +1809,7 @@ body.menu-abierto-block::before {
   font-style: italic;
 }
 
-.card-comentario .comentario-texto spam {
+.card-comentario .comentario-texto span {
   color: var(--cyan-custom);
   font-size: 1.25rem;
 }
