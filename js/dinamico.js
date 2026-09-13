@@ -139,6 +139,7 @@ function renderizarEscuela(escuela) {
       slide.setAttribute("data-bs-interval", "6000");
       const imagen = document.createElement("img");
       imagen.alt = "Entrenamiento de Arqueros CEYFA";
+      if (indice > 0) imagen.loading = "lazy";
       imagen.src =
         item.esDrive && item.driveId
           ? obtenerImagenDrive(item.driveId)
@@ -156,15 +157,15 @@ function renderizarEscuela(escuela) {
       video.loop = false;
 
       const source = document.createElement("source");
-      source.src =
+      source.dataset.src =
         item.esDrive && item.driveId
           ? obtenerVideoDrive(item.driveId)
           : item.url;
       source.type = "video/mp4";
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
-      video.load();
-      
+      if (indice === 0) cargarVideoSiHaceFalta(video);
+
       video.addEventListener("ended", () => {
         const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
         instancia.next();
@@ -192,12 +193,22 @@ function renderizarEscuela(escuela) {
   inicializarSincroniaVideosEscuela(carrusel);
 }
 
+function cargarVideoSiHaceFalta(video) {
+  if (!video) return;
+  const source = video.querySelector("source");
+  if (source && source.dataset.src && !source.getAttribute("src")) {
+    source.src = source.dataset.src;
+    video.load();
+  }
+}
+
 function inicializarSincroniaVideosEscuela(carrusel) {
   const reproducirSoloActivo = () => {
     carrusel.querySelectorAll(".carousel-item").forEach(slide => {
       const video = slide.querySelector("video");
       if (!video) return;
       if (slide.classList.contains("active")) {
+        cargarVideoSiHaceFalta(video);
         video.currentTime = 0;
         video.play().catch(() => {});
       } else {
@@ -207,9 +218,18 @@ function inicializarSincroniaVideosEscuela(carrusel) {
     });
   };
 
+  const precargarProximoSlide = () => {
+    const activo = carrusel.querySelector(".carousel-item.active");
+    if (!activo) return;
+    const siguiente = activo.nextElementSibling || carrusel.querySelector(".carousel-item");
+    const video = siguiente && siguiente.querySelector("video");
+    if (video) cargarVideoSiHaceFalta(video);
+  };
+
   if (carrusel.dataset.videoSyncActivo !== "true") {
     carrusel.dataset.videoSyncActivo = "true";
     carrusel.addEventListener("slid.bs.carousel", reproducirSoloActivo);
+    carrusel.addEventListener("slide.bs.carousel", precargarProximoSlide);
   }
 
   reproducirSoloActivo();
@@ -242,6 +262,7 @@ function renderizarFundamentos(fundamentos) {
     if (item.tipo === "img" || item.tipo === "imagen") {
       const imagen = document.createElement("img");
       imagen.alt = "Entrenamiento de goleros CEYFA UY";
+      if (indice > 0) imagen.loading = "lazy";
       imagen.src =
         item.esDrive && item.driveId
           ? obtenerImagenDrive(item.driveId)
@@ -262,15 +283,14 @@ function renderizarFundamentos(fundamentos) {
       video.setAttribute("autoplay", "");
 
       const source = document.createElement("source");
-      source.src =
+      source.dataset.src =
         item.esDrive && item.driveId
           ? obtenerVideoDrive(item.driveId)
           : item.url;
       source.type = "video/mp4";
       video.appendChild(source);
       video.append("Tu navegador no soporta videos HTML5.");
-      video.load();
-      video.play().catch(() => {});
+      video.preload = "none";
 
       const botonPlay = document.createElement("button");
       botonPlay.type = "button";
@@ -280,6 +300,7 @@ function renderizarFundamentos(fundamentos) {
 
       botonPlay.addEventListener("click", () => {
         if (video.paused) {
+          cargarVideoSiHaceFalta(video);
           video.play().catch(() => {});
         } else {
           video.pause();
@@ -308,6 +329,29 @@ function renderizarFundamentos(fundamentos) {
   carrusel.scrollLeft = 0;
 
   inicializarControlesCarrusel("carouselFundamentos");
+  inicializarLazyVideosFundamentos(carrusel);
+}
+
+function inicializarLazyVideosFundamentos(carrusel) {
+  const videos = carrusel.querySelectorAll("video");
+  if (!videos.length) return;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          cargarVideoSiHaceFalta(video);
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    { root: carrusel, threshold: 0.5 }
+  );
+
+  videos.forEach(video => observer.observe(video));
 }
 
 function renderizarEquipo(equipo) {
@@ -328,6 +372,8 @@ function renderizarEquipo(equipo) {
 
     const imagen = document.createElement("img");
     const fotoDriveId = limpiarTexto(persona.fotoDriveId) || obtenerIdDrive(persona.fotoUrl);
+
+    if (indice > 0) imagen.loading = "lazy";
 
     imagen.src = fotoDriveId
       ? obtenerImagenDrive(fotoDriveId)
@@ -811,6 +857,7 @@ function renderizarEventoPasado(mediaPasada, comentarios, extras) {
           slide.setAttribute("data-bs-interval", "6000");
           const imagen = document.createElement("img");
           imagen.alt = "Clínica de Goleros CEYFA";
+          if (indice > 0) imagen.loading = "lazy";
           imagen.src =
             item.esDrive && item.driveId
               ? obtenerImagenDrive(item.driveId)
@@ -828,14 +875,14 @@ function renderizarEventoPasado(mediaPasada, comentarios, extras) {
           video.loop = false;
 
           const source = document.createElement("source");
-          source.src =
+          source.dataset.src =
             item.esDrive && item.driveId
               ? obtenerVideoDrive(item.driveId)
               : item.url;
           source.type = "video/mp4";
           video.appendChild(source);
           video.append("Tu navegador no soporta videos HTML5.");
-          video.load();
+          if (indice === 0) cargarVideoSiHaceFalta(video);
 
           video.addEventListener("ended", () => {
             const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
@@ -994,6 +1041,7 @@ function renderizarMarcas(marcas) {
         item.className = "marquee-item-sponsor";
 
         const imagen = document.createElement("img");
+        imagen.loading = "lazy";
 
         const driveId = limpiarTexto(marca.logoDriveId) ||
           obtenerIdDrive(marca.logoUrl);
