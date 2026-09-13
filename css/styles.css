@@ -1799,20 +1799,19 @@ body.menu-abierto-block::before {
 
 .card-comentario .comentario-nombre {
   font-family: var(--font-titulos);
+  color: white;
   font-weight: 800;
-  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--cyan-custom);
-  margin: 0;
 }
 
 .card-comentario .comentario-texto {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--bs-gray-300);
-  margin: 0;
-  white-space: pre-line;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.card-comentario .comentario-texto spam {
+  color: var(--cyan-custom);
+  font-size: 1.25rem;
 }
 
 #carouselComentarios {
