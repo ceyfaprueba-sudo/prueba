@@ -776,8 +776,8 @@ function renderizarEventoPasado(mediaPasada, comentarios, departamento) {
     const indicadores = carrusel.querySelector(".carousel-indicators");
     const interior = carrusel.querySelector(".carousel-inner");
 
-    if (indicadores && interior) {
-      indicadores.innerHTML = "";
+    if (interior) {
+      if (indicadores) indicadores.innerHTML = "";
       interior.innerHTML = "";
 
       elementos.forEach((item, indice) => {
@@ -825,17 +825,19 @@ function renderizarEventoPasado(mediaPasada, comentarios, departamento) {
           return;
         }
 
-        const boton = document.createElement("button");
-        boton.type = "button";
-        boton.setAttribute("data-bs-target", "#carouselEventoPasado");
-        boton.setAttribute("data-bs-slide-to", indice);
-        boton.setAttribute("aria-label", "Slide " + (indice + 1));
-        if (indice === 0) {
-          boton.classList.add("active");
-          boton.setAttribute("aria-current", "true");
+        if (indicadores) {
+          const boton = document.createElement("button");
+          boton.type = "button";
+          boton.setAttribute("data-bs-target", "#carouselEventoPasado");
+          boton.setAttribute("data-bs-slide-to", indice);
+          boton.setAttribute("aria-label", "Slide " + (indice + 1));
+          if (indice === 0) {
+            boton.classList.add("active");
+            boton.setAttribute("aria-current", "true");
+          }
+          indicadores.appendChild(boton);
         }
 
-        indicadores.appendChild(boton);
         interior.appendChild(slide);
       });
 
