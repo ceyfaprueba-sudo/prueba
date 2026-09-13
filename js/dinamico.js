@@ -306,6 +306,8 @@ function renderizarFundamentos(fundamentos) {
   });
 
   carrusel.scrollLeft = 0;
+
+  inicializarControlesCarrusel("carouselFundamentos");
 }
 
 function renderizarEquipo(equipo) {
@@ -359,6 +361,8 @@ function renderizarEquipo(equipo) {
   });
 
   carrusel.scrollLeft = 0;
+
+  inicializarControlesCarrusel("carouselEquipo");
 }
 
 function renderizarSedes(sedes) {
@@ -892,6 +896,8 @@ function renderizarComentarios(comentarios) {
   });
 
   carrusel.scrollLeft = 0;
+
+  inicializarControlesCarrusel("carouselComentarios");
 }
 
 function actualizarMarqueeEvento(evento) {
