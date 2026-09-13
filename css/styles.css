@@ -159,8 +159,7 @@ body>section {
   }
 }
 
-main section:nth-of-type(odd),
-body>section:nth-of-type(odd) {
+section.bg-alt {
   background-color: var(--dark-custom) !important;
 }
 
