@@ -866,8 +866,8 @@ function renderizarComentarios(comentarios) {
     const nombre = limpiarTexto(item.nombre) || "Anónimo";
 
     tarjeta.innerHTML = `
-      <p class="card-title comentario-nombre">${escaparHtml(nombre)}</p>
       <p class="comentario-texto">“ ${escaparHtml(item.comentario)} ”</p>
+      <p class="card-title comentario-nombre">${escaparHtml(nombre)}</p>
     `;
 
     carrusel.appendChild(tarjeta);
