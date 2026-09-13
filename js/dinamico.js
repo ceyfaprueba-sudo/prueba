@@ -1,5 +1,23 @@
 const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
+function aplicarFondosAlternados() {
+  const secciones = document.querySelectorAll("main section, body > section");
+  let contadorVisibles = 0;
+
+  secciones.forEach(seccion => {
+    const oculta = window.getComputedStyle(seccion).display === "none";
+    seccion.classList.remove("bg-alt");
+
+    if (oculta) return;
+
+    if (contadorVisibles % 2 === 0) {
+      seccion.classList.add("bg-alt");
+    }
+
+    contadorVisibles++;
+  });
+}
+
 async function cargarDatos() {
   try {
     const respuesta = await fetch(API_CEYFA_URL);
@@ -77,6 +95,8 @@ async function cargarDatos() {
 
     if (Array.isArray(datos.tienda)) actualizarTiendaInicio(datos.tienda);
     if (Array.isArray(datos.marcas) && datos.marcas.length) renderizarMarcas(datos.marcas);
+
+    aplicarFondosAlternados();
   }
   catch (error) {
     console.error("Error al cargar los datos:", error);
