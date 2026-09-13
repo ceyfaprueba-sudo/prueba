@@ -62,7 +62,7 @@ async function cargarDatos() {
       renderizarEventoPasado(
         datos.eventosPasados,
         datos.comentarios,
-        datos.eventoPasadoDepartamento
+        datos.eventoPasadoExtras
       );
     } else {
       if (seccionEventoPasado) seccionEventoPasado.style.display = "none";
@@ -756,15 +756,33 @@ Quiero inscribirme a la próxima Clínica de Goleros:
   }
 }
 
-function renderizarEventoPasado(mediaPasada, comentarios, departamento) {
+function renderizarEventoPasado(mediaPasada, comentarios, extras) {
   const seccion = document.getElementById("evento-pasado-section");
   if (!seccion) return;
+
+  const datosExtras = extras || {};
 
   const spanDepartamento = seccion.querySelector(
     ".encabezado-section_titulo .text-gradient"
   );
   if (spanDepartamento) {
-    spanDepartamento.textContent = limpiarTexto(departamento);
+    spanDepartamento.textContent = limpiarTexto(datosExtras.departamento);
+  }
+
+  const spanFechaYSede = document.getElementById("evento-pasado-fecha-sede");
+  if (spanFechaYSede) {
+    spanFechaYSede.textContent = limpiarTexto(datosExtras.diaYSede);
+  }
+
+  const botonFotos = document.getElementById("boton-fotos-evento-pasado");
+  if (botonFotos) {
+    const urlCarpeta = limpiarTexto(datosExtras.urlCarpeta);
+    if (urlCarpeta) {
+      botonFotos.href = urlCarpeta;
+      botonFotos.style.display = "";
+    } else {
+      botonFotos.style.display = "none";
+    }
   }
 
   const carrusel = document.getElementById("carouselEventoPasado");
