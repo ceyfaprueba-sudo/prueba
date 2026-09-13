@@ -464,20 +464,39 @@
               </div>
               <div class="col-lg-6">
                 <div class="carousel slide card-custom carousel-card-custom" data-bs-ride="false" id="carouselEventoPasado">
-                  <div class="carousel-indicators"><!-- DINÁMICO: indicadores Evento pasado --></div>
                   <div class="carousel-inner"><!-- DINÁMICO: slides Evento pasado --></div>
                 </div>
                 <div class="box-row-custom align-items-center mt-3">
-                  <a class="btn rounded-pill btn-primary-custom btn-nav-action"
+                  <a class="btn rounded-pill btn-secondary-custom btn-nav-action"
                     href="https://drive.google.com/drive/folders/1s8Q-OkybQRYIGrb3viFuiW0o-hLwk2tk"
                     target="_blank" rel="noopener noreferrer" >
                     <i class="bi bi-images me-2"></i> Ver todas las fotos
                   </a>
+                    <div class="btn-group-custom">
+                        <button aria-label="Anterior" class="btn-form-custom btn-circle-custom"
+                            data-bs-slide="prev" data-bs-target="#carouselEventoPasado" type="button">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+                        <button aria-label="Siguiente" class="btn-form-custom btn-circle-custom"
+                            data-bs-slide="next" data-bs-target="#carouseEventoPasado" type="button">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="container-fluid carousel-fluid-custom" id="carouselComentarios"><!-- DINÁMICO: Comentarios --></div>
+            <div class="container btn-group-custom">
+                <button aria-label="Anterior" class="btn-form-custom btn-circle-custom btn-prev"
+                    data-carrusel-id="carouselComentarios" type="button">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button aria-label="Siguiente" class="btn-form-custom btn-circle-custom btn-next"
+                    data-carrusel-id="carouselComentarios" type="button">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
         </section>
         <!-- SECCION: TIENDA -->
         <section id="tienda-section">
