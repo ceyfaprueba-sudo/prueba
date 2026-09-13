@@ -23,29 +23,55 @@ async function cargarDatos() {
     if (Array.isArray(datos.planes) && datos.planes.length) renderizarPlanes(datos.planes);
 
     const eventos = Array.isArray(datos.eventos) ? datos.eventos : [];
+    const eventoActual = eventos[0];
+    const estaVencido =
+      eventoActual &&
+      normalizarTexto(eventoActual.estado) === "vencido";
 
-    const eventosAbiertos = eventos.filter(
-      evento => evento.inscripcionesAbiertas === true
-    );
-    
+    const seccionEvento = document.getElementById("evento-section");
+    const seccionEventoPasado = document.getElementById("evento-pasado-section");
     const tiraMarquee = document.getElementById("tira-marquee");
-    
-    if (eventosAbiertos.length) {
-      const evento = eventosAbiertos[0];
-    
-      renderizarEvento(evento);
-      actualizarMarqueeEvento(evento);
-    
-      if (tiraMarquee) {
-        tiraMarquee.style.display = "";
-      }
+    const linkEvento = document.querySelector(
+      'a.nav-link[href="#evento-section"], a.nav-link[href="#evento-pasado-section"]'
+    );
+
+    if (estaVencido) {
+      if (seccionEvento) seccionEvento.style.display = "none";
+      if (seccionEventoPasado) seccionEventoPasado.style.display = "";
+      if (tiraMarquee) tiraMarquee.style.display = "none";
+      if (linkEvento) linkEvento.setAttribute("href", "#evento-pasado-section");
+
+      renderizarEventoPasado(
+        datos.eventosPasados,
+        datos.comentarios,
+        datos.eventoPasadoDepartamento
+      );
     } else {
-      if (tiraMarquee) {
-        tiraMarquee.style.display = "none";
-      }
-    
-      if (eventos.length) {
-        renderizarEvento(eventos[0]);
+      if (seccionEventoPasado) seccionEventoPasado.style.display = "none";
+      if (seccionEvento) seccionEvento.style.display = "";
+      if (linkEvento) linkEvento.setAttribute("href", "#evento-section");
+
+      const eventosAbiertos = eventos.filter(
+        evento => evento.inscripcionesAbiertas === true
+      );
+
+      if (eventosAbiertos.length) {
+        const evento = eventosAbiertos[0];
+
+        renderizarEvento(evento);
+        actualizarMarqueeEvento(evento);
+
+        if (tiraMarquee) {
+          tiraMarquee.style.display = "";
+        }
+      } else {
+        if (tiraMarquee) {
+          tiraMarquee.style.display = "none";
+        }
+
+        if (eventos.length) {
+          renderizarEvento(eventos[0]);
+        }
       }
     }
 
@@ -708,6 +734,96 @@ Quiero inscribirme a la próxima Clínica de Goleros:
       }
     }
   }
+}
+
+function renderizarEventoPasado(mediaPasada, comentarios, departamento) {
+  const seccion = document.getElementById("evento-pasado-section");
+  if (!seccion) return;
+
+  const spanDepartamento = seccion.querySelector(
+    ".encabezado-section_titulo .text-gradient"
+  );
+  if (spanDepartamento) {
+    spanDepartamento.textContent = limpiarTexto(departamento);
+  }
+
+  const carrusel = document.getElementById("carouselEventoPasado");
+  const elementos = Array.isArray(mediaPasada)
+    ? mediaPasada.filter(item => item.tipo && (item.url || item.driveId))
+    : [];
+
+  if (carrusel && elementos.length) {
+    const indicadores = carrusel.querySelector(".carousel-indicators");
+    const interior = carrusel.querySelector(".carousel-inner");
+
+    if (indicadores && interior) {
+      indicadores.innerHTML = "";
+      interior.innerHTML = "";
+
+      elementos.forEach((item, indice) => {
+        const slide = document.createElement("div");
+        slide.className = "carousel-item";
+        if (indice === 0) slide.classList.add("active");
+
+        if (item.tipo === "img" || item.tipo === "imagen") {
+          slide.setAttribute("data-bs-interval", "6000");
+          const imagen = document.createElement("img");
+          imagen.alt = "Clínica de Goleros CEYFA";
+          imagen.src =
+            item.esDrive && item.driveId
+              ? obtenerImagenDrive(item.driveId)
+              : item.url;
+          slide.appendChild(imagen);
+        } else if (item.tipo === "video") {
+          slide.setAttribute("data-bs-interval", "false");
+
+          const video = document.createElement("video");
+          video.muted = true;
+          video.defaultMuted = true;
+          video.playsInline = true;
+          video.setAttribute("muted", "");
+          video.setAttribute("playsinline", "");
+          video.loop = false;
+
+          const source = document.createElement("source");
+          source.src =
+            item.esDrive && item.driveId
+              ? obtenerVideoDrive(item.driveId)
+              : item.url;
+          source.type = "video/mp4";
+          video.appendChild(source);
+          video.append("Tu navegador no soporta videos HTML5.");
+          video.load();
+
+          video.addEventListener("ended", () => {
+            const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
+            instancia.next();
+          });
+
+          slide.appendChild(video);
+        } else {
+          return;
+        }
+
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.setAttribute("data-bs-target", "#carouselEventoPasado");
+        boton.setAttribute("data-bs-slide-to", indice);
+        boton.setAttribute("aria-label", "Slide " + (indice + 1));
+        if (indice === 0) {
+          boton.classList.add("active");
+          boton.setAttribute("aria-current", "true");
+        }
+
+        indicadores.appendChild(boton);
+        interior.appendChild(slide);
+      });
+
+      inicializarSincroniaVideosEscuela(carrusel);
+    }
+  }
+
+  renderizarComentarios(Array.isArray(comentarios) ? comentarios : []);
 }
 
 function renderizarComentarios(comentarios) {
