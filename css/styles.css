@@ -1792,7 +1792,7 @@ body.menu-abierto-block::before {
   padding-top: 3rem;
 }
 
-.carousel-fluid-custom .card-comentario {
+.card-comentario {
   width: 380px;
   flex: 0 0 auto;
   display: flex;
@@ -1818,6 +1818,12 @@ body.menu-abierto-block::before {
 
 #evento-pasado-section .btn-group-custom {
   justify-content: flex-end;
+}
+
+@media (max-width: 767.98px) {
+  .card-comentario {
+    width: 70%;
+  }
 }
 
 /* TIENDA */
