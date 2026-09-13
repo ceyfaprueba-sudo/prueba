@@ -57,6 +57,10 @@ strong {
   font-weight: 600;
 }
 
+.txt-cyan {
+  color: var(--cyan-custom) !important;
+}
+
 .text-gradient {
   display: inline-block;
   vertical-align: bottom;
