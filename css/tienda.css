@@ -195,6 +195,7 @@
     flex-direction: column;
     will-change: transform, opacity;
     padding: 1rem;
+    position: relative;
 }
 
 .card-product:has(.product-price-old) {
@@ -224,6 +225,13 @@
     background-color: rgba(184, 134, 11, 0.3);
     border-color: #b8860b;
     color: #b8860b;
+}
+
+.card-product .tag-colores-varios {
+    z-index: 3;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
 }
 
 .card-product .product-img {
