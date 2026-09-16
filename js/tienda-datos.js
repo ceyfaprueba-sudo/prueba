@@ -323,6 +323,16 @@ function crearTarjetaTienda(producto) {
       ? `$${precioActual}`
       : "";
 
+  const preciosParaOrdenar = [
+  precioActualNumero,
+  precioKidsNumero,
+  precioAdultosNumero
+    ].filter(precio => precio > 0);
+    
+    const precioOrden = preciosParaOrdenar.length
+      ? Math.min(...preciosParaOrdenar)
+      : 0;
+
   return `
     <div
       class="col producto-item"
@@ -331,6 +341,7 @@ function crearTarjetaTienda(producto) {
       data-precio-rango="${escaparHtml(precioRango)}"
       data-precio-kids="${escaparHtml(dataPrecioKids)}"
       data-precio-adultos="${escaparHtml(dataPrecioAdultos)}"
+      data-precio-orden="${precioOrden}"
     >
 
       <div class="card-custom card-motion card-product">
