@@ -193,17 +193,20 @@ function crearTarjetaTienda(producto) {
     .join("");
 
   let bloqueTalles = "";
-
-  if (esAmbos) {
+  
+  if (
+    subcategoria === "ambos" &&
+    (tallesKids.length > 0 || tallesAdultos.length > 0)
+  ) {
     bloqueTalles = `
       <div class="box-column-custom">
-
+  
         <span class="label-custom">
           Elegí tu talle:
         </span>
-
+  
         <div class="value-sizes-custom talles-todos">
-
+  
           <button
             type="button"
             class="btn-form-custom btn-size-item active"
@@ -211,9 +214,9 @@ function crearTarjetaTienda(producto) {
           >
             VARIOS
           </button>
-
+  
         </div>
-
+  
         ${
           botonesAdultos
             ? `
@@ -226,7 +229,7 @@ function crearTarjetaTienda(producto) {
             `
             : ""
         }
-
+  
         ${
           botonesKids
             ? `
@@ -239,63 +242,45 @@ function crearTarjetaTienda(producto) {
             `
             : ""
         }
-
+  
       </div>
     `;
   }
-
-  else if (subcategoria === "kids" && botonesKids) {
+  
+  else if (
+    subcategoria === "kids" &&
+    tallesKids.length > 0
+  ) {
     bloqueTalles = `
       <div class="box-column-custom">
-
+  
         <span class="label-custom">
           Elegí tu talle:
         </span>
-
+  
         <div class="value-sizes-custom talles-kids">
           ${botonesKids}
         </div>
-
+  
       </div>
     `;
   }
-
-  else if (subcategoria === "adultos" && botonesAdultos) {
+  
+  else if (
+    subcategoria === "adultos" &&
+    tallesAdultos.length > 0
+  ) {
     bloqueTalles = `
       <div class="box-column-custom">
-
+  
         <span class="label-custom">
           Elegí tu talle:
         </span>
-
+  
         <div class="value-sizes-custom talles-adultos">
           ${botonesAdultos}
         </div>
-
-      </div>
-    `;
-  }
-
-  else if (todosLosTalles) {
-    bloqueTalles = `
-      <div class="box-column-custom">
-
-        <span class="label-custom">
-          Elegí tu talle:
-        </span>
-
-        <div class="value-sizes-custom talles-todos">
-
-          <button
-            type="button"
-            class="btn-form-custom btn-size-item active"
-            onclick="seleccionarTalleFijo(this)"
-          >
-            TODOS
-          </button>
-
-        </div>
-
+  
       </div>
     `;
   }
