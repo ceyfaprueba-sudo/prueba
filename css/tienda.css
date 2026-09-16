@@ -231,7 +231,10 @@
     z-index: 3;
     position: absolute;
     top: 1.5rem;
-    left: 1.5rem;
+    right: 1.5rem;
+    background-color: rgba(253, 126, 20, 0.3);
+    border-color: ##fd7e14;
+    color: ##fd7e14;
 }
 
 .card-product .product-img {
