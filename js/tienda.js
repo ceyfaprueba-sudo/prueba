@@ -2,12 +2,20 @@ const shopTimeouts = new Map();
 let filtroCategoriaActual = "all";
 let filtroSubcategoriaActual = "all"; 
 let textoBusquedaActual = "";
+let ordenarPorPrecio = false;
 let paginaActual = 1;
 const PRODUCTOS_POR_PAGINA = 12;
 
 function ejecutarFiltradoCombinadoTienda() {
   const productos = document.querySelectorAll("#grid-productos-tienda .producto-item");
   if (productos.length === 0) return;
+
+  productos.forEach((producto, indice) => {
+    if (!producto.hasAttribute("data-orden-original")) {
+      producto.setAttribute("data-orden-original", indice);
+    }
+  });
+  
   let productosFiltrados = [];
   productos.forEach((card) => {
     const categoryAttr = card.getAttribute("data-category");
@@ -66,6 +74,37 @@ function ejecutarFiltradoCombinadoTienda() {
       card.style.transform = "translateY(12px) scale(0.97)";
       card.style.display = "none"; 
     }
+  });
+    productosFiltrados.sort((a, b) => {
+    if (ordenarPorPrecio) {
+      const precioA = Number(a.getAttribute("data-precio-orden")) || 0;
+      const precioB = Number(b.getAttribute("data-precio-orden")) || 0;
+  
+      if (precioA === 0 && precioB === 0) {
+        return (
+          Number(a.getAttribute("data-orden-original")) -
+          Number(b.getAttribute("data-orden-original"))
+        );
+      }
+  
+      if (precioA === 0) return 1;
+      if (precioB === 0) return -1;
+  
+      if (precioA !== precioB) {
+        return precioA - precioB;
+      }
+    }
+  
+    return (
+      Number(a.getAttribute("data-orden-original")) -
+      Number(b.getAttribute("data-orden-original"))
+    );
+  });
+    
+  const grid = document.getElementById("grid-productos-tienda");
+  
+  productosFiltrados.forEach(producto => {
+    grid.appendChild(producto);
   });
   const contenedorPaginacion = document.getElementById("tienda-paginacion");
   const totalProductosFiltrados = productosFiltrados.length;
