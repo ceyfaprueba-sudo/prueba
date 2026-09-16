@@ -209,6 +209,23 @@ function inicializarSubfiltrosTalles() {
     });
   }
 }
+function inicializarOrdenPrecio() {
+  const botones = document.querySelectorAll(".btn-orden-precio");
+  if (botones.length === 0) return;
+
+  botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      botones.forEach((btn) => btn.classList.remove("active"));
+      boton.classList.add("active");
+
+      ordenarPorPrecio =
+        boton.getAttribute("data-orden-precio") === "si";
+
+      paginaActual = 1;
+      ejecutarFiltradoCombinadoTienda();
+    });
+  });
+}
 function inicializarBuscadorTienda() {
   const inputBusqueda = document.getElementById("search-product-input");
   const btnLimpiar = document.getElementById("btn-clear-search");
@@ -271,6 +288,7 @@ ${ganchoMarketing}
 document.addEventListener("DOMContentLoaded", function () {
   inicializarPestañasTienda();
   inicializarSubfiltrosTalles(); 
+  inicializarOrdenPrecio();
   inicializarBuscadorTienda();
   ejecutarFiltradoCombinadoTienda();
   const parametrosURL = new URLSearchParams(window.location.search);
