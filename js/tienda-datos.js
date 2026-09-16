@@ -148,6 +148,14 @@ function crearTarjetaTienda(producto) {
     }
   }
 
+  const coloresVariosHtml = producto.coloresVarios === true
+    ? `
+      <span class="tag-custom tag-secondary-custom tag-colores-varios">
+        Varios colores
+      </span>
+    `
+    : "";
+
   const botonesKids = tallesKids
     .map((talle, indice) => `
       <button
@@ -343,6 +351,7 @@ function crearTarjetaTienda(producto) {
       <div class="card-custom card-motion card-product">
 
         ${ofertaHtml}
+        ${coloresVariosHtml}
 
         <div class="product-img">
 
