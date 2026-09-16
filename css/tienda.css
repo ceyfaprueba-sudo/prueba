@@ -236,6 +236,10 @@
     border-color: #fd7e14;
     color: #fd7e14;
 }
+.card-product:hover .tag-oferta {
+    background-color: #fd7e14;
+    color: white;
+}
 
 .card-product .product-img {
     width: 100%;
