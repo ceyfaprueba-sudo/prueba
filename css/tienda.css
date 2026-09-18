@@ -475,42 +475,17 @@
     }
 }
 
-.orden-precio-tienda{
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    margin-left:1rem;
+.input-orden-tienda {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 0.9rem;
+    width: 100%;
+    cursor: pointer;
 }
 
-.orden-precio-tienda>span{
-    color:var(--bs-gray-500);
-    font-size:.75rem;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:var(--tracking-widest);
-    white-space:nowrap;
-}
-
-.btn-group-filters .btn-orden-precio{
-    white-space:nowrap;
-    background:transparent;
-    border:none;
-    color:var(--bs-gray-500);
-    font-size:.75rem;
-    font-weight:800;
-    text-transform:uppercase;
-    letter-spacing:var(--tracking-widest);
-    padding:.5rem 1.25rem;
-    border-radius:50rem;
-    transition:var(--transition-smooth);
-}
-
-.btn-group-filters .btn-orden-precio:hover{
-    background-color:rgba(0,168,255,.05);
-    color:var(--cyan-custom);
-}
-
-.btn-group-filters .btn-orden-precio.active{
-    background-color:var(--cyan-custom);
-    color:black;
+.input-orden-tienda option {
+    background-color: var(--dark-custom);
+    color: white;
 }
