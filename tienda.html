@@ -57,8 +57,8 @@
         <!-- TIENDA -->
         <section id="tienda">
             <div class="container">
-                <div class="box-column-custom" id="tienda-controles">
-                    <div class="box-row-custom" id="filtro-buscador">
+                <div class="tienda-controles-grid" id="tienda-controles">
+                    <div class="box-column-custom">
                         <div class="btn-group-filters shadow-lg" id="contenedor-filtro-tienda">
                             <div class="filter-scroll-rail">
                                 <button class="btn-filter active" data-filter="all">Todos</button>
@@ -68,6 +68,15 @@
                                 <button class="btn-filter" data-filter="otros">Otros</button>
                             </div>
                         </div>
+                        <div class="btn-group-custom btn-group-subfilters" id="contenedor-subfiltro-tienda">
+                            <button class="btn-subfilter" data-subfilter="kids">Línea Infantil</button>
+                            <button class="btn-subfilter" data-subfilter="adultos">Línea Adulto</button>
+                            <button class="btn-subfilter btn-clear-subfilter" data-subfilter="all" disabled="">
+                                <i class="bi bi-x-lg me-1"></i> Borrar Subfiltro
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-column-custom">
                         <div class="search-shop shadow-lg">
                             <div class="search-input-inner">
                                 <i class="bi bi-search search-icon-shop"></i>
@@ -78,31 +87,24 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="search-shop shadow-lg" id="orden-shop-wrapper">
-                            <div class="search-input-inner">
-                                <i class="bi bi-sort-down search-icon-shop"></i>
-                                <select id="select-orden-tienda" class="input-orden-tienda">
-                                    <option value="">Ordenar por</option>
-                                    <option value="precio-asc">Precio: menor a mayor</option>
-                                    <option value="precio-desc">Precio: mayor a menor</option>
-                                    <option value="nombre-asc">Nombre: A-Z</option>
-                                    <option value="nombre-desc">Nombre: Z-A</option>
-                                </select>
+                        <div class="box-row-custom" id="subfiltro-guia">
+                            <div class="search-shop shadow-lg" id="orden-shop-wrapper">
+                                <div class="search-input-inner">
+                                    <i class="bi bi-sort-down search-icon-shop"></i>
+                                    <select id="select-orden-tienda" class="input-orden-tienda">
+                                        <option value="">Ordenar por</option>
+                                        <option value="precio-asc">Precio: menor a mayor</option>
+                                        <option value="precio-desc">Precio: mayor a menor</option>
+                                        <option value="nombre-asc">Nombre: A-Z</option>
+                                        <option value="nombre-desc">Nombre: Z-A</option>
+                                    </select>
+                                </div>
                             </div>
+                            <button class="btn btn-trigger-sizes-global" data-bs-target="#modal-guia-talles"
+                                data-bs-toggle="modal" type="button">
+                                Guía de Talles <i class="bi bi-bounding-box ms-1"></i>
+                            </button>
                         </div>
-                    </div>
-                    <div class="box-row-custom" id="subfiltro-guia">
-                        <div class="btn-group-custom btn-group-subfilters" id="contenedor-subfiltro-tienda">
-                            <button class="btn-subfilter" data-subfilter="kids">Línea Infantil</button>
-                            <button class="btn-subfilter" data-subfilter="adultos">Línea Adulto</button>
-                            <button class="btn-subfilter btn-clear-subfilter" data-subfilter="all" disabled="">
-                                <i class="bi bi-x-lg me-1"></i> Borrar Subfiltro
-                            </button>  
-                        </div>
-                        <button class="btn btn-trigger-sizes-global" data-bs-target="#modal-guia-talles"
-                            data-bs-toggle="modal" type="button">
-                            Guía de Talles <i class="bi bi-bounding-box ms-1"></i>
-                        </button>
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" id="grid-productos-tienda">
