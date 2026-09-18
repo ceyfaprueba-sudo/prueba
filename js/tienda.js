@@ -2,7 +2,7 @@ const shopTimeouts = new Map();
 let filtroCategoriaActual = "all";
 let filtroSubcategoriaActual = "all"; 
 let textoBusquedaActual = "";
-let ordenarPorPrecio = false;
+let ordenActual = "";
 let paginaActual = 1;
 const PRODUCTOS_POR_PAGINA = 12;
 
@@ -76,25 +76,34 @@ function ejecutarFiltradoCombinadoTienda() {
     }
   });
     productosFiltrados.sort((a, b) => {
-    if (ordenarPorPrecio) {
+    if (ordenActual === "precio-asc" || ordenActual === "precio-desc") {
       const precioA = Number(a.getAttribute("data-precio-orden")) || 0;
       const precioB = Number(b.getAttribute("data-precio-orden")) || 0;
-  
+
+      // Los productos sin precio cargado siempre van al final, sea cual sea la dirección
       if (precioA === 0 && precioB === 0) {
         return (
           Number(a.getAttribute("data-orden-original")) -
           Number(b.getAttribute("data-orden-original"))
         );
       }
-  
       if (precioA === 0) return 1;
       if (precioB === 0) return -1;
-  
+
       if (precioA !== precioB) {
-        return precioA - precioB;
+        return ordenActual === "precio-asc" ? precioA - precioB : precioB - precioA;
       }
     }
-  
+
+    if (ordenActual === "nombre-asc" || ordenActual === "nombre-desc") {
+      const nombreA = a.getAttribute("data-nombre-orden") || "";
+      const nombreB = b.getAttribute("data-nombre-orden") || "";
+      const comparacion = nombreA.localeCompare(nombreB, "es", { sensitivity: "base" });
+      if (comparacion !== 0) {
+        return ordenActual === "nombre-asc" ? comparacion : -comparacion;
+      }
+    }
+
     return (
       Number(a.getAttribute("data-orden-original")) -
       Number(b.getAttribute("data-orden-original"))
@@ -209,21 +218,14 @@ function inicializarSubfiltrosTalles() {
     });
   }
 }
-function inicializarOrdenPrecio() {
-  const botones = document.querySelectorAll(".btn-orden-precio");
-  if (botones.length === 0) return;
+function inicializarOrdenTienda() {
+  const selectOrden = document.getElementById("select-orden-tienda");
+  if (!selectOrden) return;
 
-  botones.forEach((boton) => {
-    boton.addEventListener("click", () => {
-      botones.forEach((btn) => btn.classList.remove("active"));
-      boton.classList.add("active");
-
-      ordenarPorPrecio =
-        boton.getAttribute("data-orden-precio") === "si";
-
-      paginaActual = 1;
-      ejecutarFiltradoCombinadoTienda();
-    });
+  selectOrden.addEventListener("change", () => {
+    ordenActual = selectOrden.value;
+    paginaActual = 1;
+    ejecutarFiltradoCombinadoTienda();
   });
 }
 function inicializarBuscadorTienda() {
@@ -288,7 +290,7 @@ ${ganchoMarketing}
 document.addEventListener("DOMContentLoaded", function () {
   inicializarPestañasTienda();
   inicializarSubfiltrosTalles(); 
-  inicializarOrdenPrecio();
+  inicializarOrdenTienda();
   inicializarBuscadorTienda();
   ejecutarFiltradoCombinadoTienda();
   const parametrosURL = new URLSearchParams(window.location.search);
