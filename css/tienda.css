@@ -2,6 +2,14 @@
 #tienda-controles {
     width: 100%;
     margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+#tienda-controles > .box-column-custom {
+    gap: 0.75rem;
 }
 
 /* BUSCADOR */
@@ -168,18 +176,26 @@
 
 @media (max-width: 767.98px) {
 
-    #filtro-buscador,
+    #tienda-controles {
+        grid-template-columns: 1fr;
+    }
+
+    /* En mobile, el buscador y el orden quedan primero (columna derecha) */
+    #tienda-controles > .box-column-custom:first-child {
+        order: 2;
+    }
+
+    #tienda-controles > .box-column-custom:last-child {
+        order: 1;
+    }
+
     #subfiltro-guia {
         flex-direction: column !important;
         align-items: stretch !important;
     }
 
-    #contenedor-filtro-tienda {
-        order: 2;
-    }
-
-    .search-shop {
-        order: 1;
+    .search-shop,
+    #orden-shop-wrapper {
         max-width: 100%;
     }
 
