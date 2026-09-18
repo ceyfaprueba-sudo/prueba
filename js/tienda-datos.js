@@ -342,6 +342,7 @@ function crearTarjetaTienda(producto) {
       data-precio-kids="${escaparHtml(dataPrecioKids)}"
       data-precio-adultos="${escaparHtml(dataPrecioAdultos)}"
       data-precio-orden="${precioOrden}"
+      data-nombre-orden="${escaparHtml(nombre)}"
     >
 
       <div class="card-custom card-motion card-product">
