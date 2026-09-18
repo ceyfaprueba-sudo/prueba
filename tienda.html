@@ -78,6 +78,18 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="search-shop shadow-lg" id="orden-shop-wrapper">
+                            <div class="search-input-inner">
+                                <i class="bi bi-sort-down search-icon-shop"></i>
+                                <select id="select-orden-tienda" class="input-orden-tienda">
+                                    <option value="">Ordenar por</option>
+                                    <option value="precio-asc">Precio: menor a mayor</option>
+                                    <option value="precio-desc">Precio: mayor a menor</option>
+                                    <option value="nombre-asc">Nombre: A-Z</option>
+                                    <option value="nombre-desc">Nombre: Z-A</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="box-row-custom" id="subfiltro-guia">
                         <div class="btn-group-custom btn-group-subfilters" id="contenedor-subfiltro-tienda">
@@ -86,15 +98,6 @@
                             <button class="btn-subfilter btn-clear-subfilter" data-subfilter="all" disabled="">
                                 <i class="bi bi-x-lg me-1"></i> Borrar Subfiltro
                             </button>  
-                        </div>
-                        <div class="orden-precio-tienda">
-                            <span>Ordenar por precio</span>                        
-                            <div class="btn-group-filters">
-                                <div class="filter-scroll-rail">
-                                    <button type="button" class="btn-orden-precio active" data-orden-precio="no">No</button>
-                                    <button type="button" class="btn-orden-precio" data-orden-precio="si">Sí</button>
-                                </div>
-                            </div>
                         </div>
                         <button class="btn btn-trigger-sizes-global" data-bs-target="#modal-guia-talles"
                             data-bs-toggle="modal" type="button">
