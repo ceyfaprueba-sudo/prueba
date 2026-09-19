@@ -488,24 +488,8 @@
         flex-direction: column;
     }
 
-    .search-shop {
-        order: 1;
-    }
-
-    #contenedor-filtro-tienda {
-        order: 2;
-    }
-
-    #contenedor-subfiltro-tienda {
-        order: 3;
-    }
-
-    .btn-group-subfilters {
+    .btn-group-subfilters, #orden-guia {
         flex-wrap: wrap;
-    }
-
-    #orden-guia {
-        order: 4;
     }
 
     #grid-productos-tienda.sin-paginador {
