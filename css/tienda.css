@@ -2,20 +2,6 @@
 #tienda-controles {
     width: 100%;
     margin-bottom: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: start;
-}
-
-#tienda-controles > .box-column-custom {
-    gap: 0.75rem;
-}
-
-#subfiltro-guia {
-    justify-content: flex-end;
-    gap: 1rem;
-    flex-wrap: wrap;
 }
 
 /* BUSCADOR */
@@ -133,6 +119,54 @@
     background-color: var(--cyan-custom-10) !important;
     border-color: var(--cyan-custom);
     color: var(--cyan-custom) !important;
+}
+
+#subfiltro-guia {
+    justify-content: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ORDENADOR */
+.input-orden-tienda {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    max-width: 170px;
+}
+
+.input-orden-tienda option {
+    background-color: var(--dark-custom);
+    color: white;
+}
+
+.select-orden-tienda-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    border-radius: 50rem;
+    padding: 0.5rem 1.25rem;
+    color: var(--bs-gray-500);
+    transition: var(--transition-smooth);
+}
+
+.select-orden-tienda-wrapper i {
+    font-size: 0.85rem;
+}
+
+.select-orden-tienda-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--bs-gray-300);
+}
+
+.select-orden-tienda-wrapper:has(select:focus-visible) {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
 }
 
 /* MODAL DE TALLES */
@@ -498,45 +532,4 @@
         height: 35px;
         padding: 0;
     }
-}
-
-.input-orden-tienda {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: inherit;
-    font-size: 0.75rem;
-    cursor: pointer;
-    max-width: 170px;
-}
-
-.input-orden-tienda option {
-    background-color: var(--dark-custom);
-    color: white;
-}
-
-.select-orden-tienda-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid transparent;
-    border-radius: 50rem;
-    padding: 0.5rem 1.25rem;
-    color: var(--bs-gray-500);
-    transition: var(--transition-smooth);
-}
-
-.select-orden-tienda-wrapper i {
-    font-size: 0.85rem;
-}
-
-.select-orden-tienda-wrapper:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: var(--bs-gray-300);
-}
-
-.select-orden-tienda-wrapper:has(select:focus-visible) {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: white;
 }
