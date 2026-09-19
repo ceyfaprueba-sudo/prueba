@@ -7,7 +7,6 @@
 /* BUSCADOR */
 .search-shop {
     width: 100%;
-    max-width: 320px;
     background-color: rgba(18, 20, 28, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
