@@ -483,6 +483,30 @@
     opacity: 0.25;
 }
 
+@media (max-width: 991.98px) {
+  #contenedor-filtro-tienda {
+    display: block;
+    width: 100% !important;
+    border-radius: 1.5rem;
+    padding: 0.4rem;
+  }
+
+  #contenedor-filtro-tienda .filter-scroll-rail {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  #contenedor-filtro-tienda .filter-scroll-rail::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @media (max-width: 767.98px) {
     #tienda-controles {
         flex-direction: column;
