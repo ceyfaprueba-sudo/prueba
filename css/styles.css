@@ -171,6 +171,15 @@ section.bg-alt {
   background-color: var(--dark-custom) !important;
 }
 
+.seccion-dinamica {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.seccion-dinamica.cargada {
+  opacity: 1;
+}
+
 .box-center-custom {
   display: flex;
   justify-content: center;
