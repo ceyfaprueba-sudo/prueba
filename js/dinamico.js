@@ -101,6 +101,15 @@ async function cargarDatos() {
   catch (error) {
     console.error("Error al cargar los datos:", error);
   }
+  finally {
+    revelarSecciones();
+  }
+}
+
+function revelarSecciones() {
+  document.querySelectorAll(".seccion-dinamica").forEach(seccion => {
+    seccion.classList.add("cargada");
+  });
 }
 
 function obtenerVideoDrive(driveId) {
