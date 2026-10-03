@@ -212,7 +212,7 @@ function cargarVideoSiHaceFalta(video) {
 }
 
 function inicializarSincroniaVideosEscuela(carrusel) {
-  const reproducirSoloActivo = () => {
+  const reproducirYPrecargar = () => {
     carrusel.querySelectorAll(".carousel-item").forEach(slide => {
       const video = slide.querySelector("video");
       if (!video) return;
@@ -225,23 +225,21 @@ function inicializarSincroniaVideosEscuela(carrusel) {
         video.currentTime = 0;
       }
     });
-  };
 
-  const precargarProximoSlide = () => {
     const activo = carrusel.querySelector(".carousel-item.active");
-    if (!activo) return;
-    const siguiente = activo.nextElementSibling || carrusel.querySelector(".carousel-item");
-    const video = siguiente && siguiente.querySelector("video");
-    if (video) cargarVideoSiHaceFalta(video);
+    if (activo) {
+      const siguiente = activo.nextElementSibling || carrusel.querySelector(".carousel-item");
+      const videoSiguiente = siguiente && siguiente.querySelector("video");
+      if (videoSiguiente) cargarVideoSiHaceFalta(videoSiguiente);
+    }
   };
 
   if (carrusel.dataset.videoSyncActivo !== "true") {
     carrusel.dataset.videoSyncActivo = "true";
-    carrusel.addEventListener("slid.bs.carousel", reproducirSoloActivo);
-    carrusel.addEventListener("slide.bs.carousel", precargarProximoSlide);
+    carrusel.addEventListener("slid.bs.carousel", reproducirYPrecargar);
   }
 
-  reproducirSoloActivo();
+  reproducirYPrecargar();
 }
 
 function renderizarFundamentos(fundamentos) {
@@ -345,7 +343,16 @@ function inicializarLazyVideosFundamentos(carrusel) {
   const videos = carrusel.querySelectorAll("video");
   if (!videos.length) return;
 
-  const observer = new IntersectionObserver(
+  const observerPrecarga = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) cargarVideoSiHaceFalta(entry.target);
+      });
+    },
+    { root: carrusel, rootMargin: "0px 400px 0px 400px", threshold: 0 }
+  );
+
+  const observerReproduccion = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         const video = entry.target;
@@ -360,7 +367,10 @@ function inicializarLazyVideosFundamentos(carrusel) {
     { root: carrusel, threshold: 0.5 }
   );
 
-  videos.forEach(video => observer.observe(video));
+  videos.forEach(video => {
+    observerPrecarga.observe(video);
+    observerReproduccion.observe(video);
+  });
 }
 
 function renderizarEquipo(equipo) {
