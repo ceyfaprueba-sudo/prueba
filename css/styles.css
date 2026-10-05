@@ -191,6 +191,38 @@ video::-webkit-media-controls-start-playback-button {
   opacity: 1;
 }
 
+#pantalla-carga {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-custom);
+  transition: opacity 0.5s ease;
+}
+
+#pantalla-carga img {
+  width: 90px;
+  animation: pulso-logo 1.4s ease-in-out infinite;
+}
+
+#pantalla-carga.oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes pulso-logo {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .box-center-custom {
   display: flex;
   justify-content: center;
