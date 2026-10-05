@@ -110,6 +110,16 @@ function revelarSecciones() {
   document.querySelectorAll(".seccion-dinamica").forEach(seccion => {
     seccion.classList.add("cargada");
   });
+
+  const pantallaCarga = document.getElementById("pantalla-carga");
+  if (pantallaCarga) {
+    pantallaCarga.classList.add("oculto");
+    pantallaCarga.addEventListener(
+      "transitionend",
+      () => pantallaCarga.remove(),
+      { once: true }
+    );
+  }
 }
 
 function obtenerVideoDrive(driveId) {
