@@ -2436,3 +2436,27 @@ body.menu-abierto-block .btn-whatsapp-floating {
     margin-bottom: 0;
   }
 }
+
+/* Reproductor de Google Drive */
+iframe.video-drive {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border: 0;
+  background: #000;
+  pointer-events: auto;
+}
+
+/* Escuela, Evento pasado y Fundamentos */
+.carousel-card-custom .carousel-item > iframe.video-drive,
+.carousel-fluid-custom .card-media > iframe.video-drive {
+  position: relative;
+  z-index: 3;
+}
+
+/* Evento actual */
+#evento-section iframe.video-drive {
+  position: absolute;
+  inset: 0;
+}
