@@ -1,4 +1,4 @@
-const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
+//const DRIVE_API_KEY = "AIzaSyCSQS87izdjU6TQN2bhHMnsCbUVXrsBjL0";
 
 function aplicarFondosAlternados() {
   const secciones = document.querySelectorAll("main section, body > section");
@@ -122,8 +122,19 @@ function revelarSecciones() {
   }
 }
 
-function obtenerVideoDrive(driveId) {
+/* function obtenerVideoDrive(driveId) {
   return `https://www.googleapis.com/drive/v3/files/${driveId}?alt=media&key=${DRIVE_API_KEY}`;
+} */
+
+function crearReproductorDrive(driveId) {
+  const iframe = document.createElement("iframe");
+  iframe.className = "video-drive";
+  iframe.src = obtenerPreviewDrive(driveId);
+  iframe.title = "Video CEYFA: pulsa Play para reproducir";
+  iframe.allow = "autoplay; fullscreen";
+  iframe.allowFullscreen = true;
+  iframe.loading = "lazy";
+  return iframe;
 }
 
 function renderizarEscuela(escuela) {
@@ -167,30 +178,36 @@ function renderizarEscuela(escuela) {
     } else if (item.tipo === "video") {
       slide.setAttribute("data-bs-interval", "false");
 
-      const video = document.createElement("video");
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.loop = false;
+      if (item.driveId) {
+        slide.appendChild(crearReproductorDrive(item.driveId));
+      } else {
+        const video = document.createElement("video");
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.loop = false;
 
-      const source = document.createElement("source");
-      source.dataset.src =
-        item.esDrive && item.driveId
-          ? obtenerVideoDrive(item.driveId)
-          : item.url;
-      source.type = "video/mp4";
-      video.appendChild(source);
-      video.append("Tu navegador no soporta videos HTML5.");
-      if (indice === 0) cargarVideoSiHaceFalta(video);
+        const source = document.createElement("source");
+        source.dataset.src = item.url;
+        source.type = "video/mp4";
 
-      video.addEventListener("ended", () => {
-        const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
-        instancia.next();
-      });
+        video.appendChild(source);
+        video.append("Tu navegador no soporta videos HTML5.");
 
-      slide.appendChild(video);
+        if (indice === 0) {
+          cargarVideoSiHaceFalta(video);
+        }
+
+        video.addEventListener("ended", () => {
+          const instancia =
+            bootstrap.Carousel.getOrCreateInstance(carrusel);
+          instancia.next();
+        });
+
+        slide.appendChild(video);
+      }
     } else {
       return;
     }
@@ -285,57 +302,62 @@ function renderizarFundamentos(fundamentos) {
           ? obtenerImagenDrive(item.driveId)
           : item.url;
       tarjeta.appendChild(imagen);
-    } else if (item.tipo === "video") {
+        } else if (item.tipo === "video") {
       tarjeta.style.position = "relative";
 
-      const video = document.createElement("video");
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-      video.loop = true;
-      video.autoplay = true;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.setAttribute("loop", "");
-      video.setAttribute("autoplay", "");
+      if (item.driveId) {
+        tarjeta.appendChild(crearReproductorDrive(item.driveId));
+      } else {
+        const video = document.createElement("video");
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("loop", "");
+        video.setAttribute("autoplay", "");
+        video.preload = "none";
 
-      const source = document.createElement("source");
-      source.dataset.src =
-        item.esDrive && item.driveId
-          ? obtenerVideoDrive(item.driveId)
-          : item.url;
-      source.type = "video/mp4";
-      video.appendChild(source);
-      video.append("Tu navegador no soporta videos HTML5.");
-      video.preload = "none";
+        const source = document.createElement("source");
+        source.dataset.src = item.url;
+        source.type = "video/mp4";
 
-      const botonPlay = document.createElement("button");
-      botonPlay.type = "button";
-      botonPlay.className = "btn-video-toggle d-md-none";
-      botonPlay.setAttribute("aria-label", "Reproducir o pausar video");
-      botonPlay.innerHTML = '<i class="bi bi-pause-fill"></i>';
+        video.appendChild(source);
+        video.append("Tu navegador no soporta videos HTML5.");
 
-      botonPlay.addEventListener("click", () => {
-        if (video.paused) {
-          cargarVideoSiHaceFalta(video);
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      });
-
-      video.addEventListener("play", () => {
+        const botonPlay = document.createElement("button");
+        botonPlay.type = "button";
+        botonPlay.className = "btn-video-toggle d-md-none";
+        botonPlay.setAttribute(
+          "aria-label",
+          "Reproducir o pausar video"
+        );
         botonPlay.innerHTML = '<i class="bi bi-pause-fill"></i>';
-        botonPlay.classList.add("is-playing");
-      });
 
-      video.addEventListener("pause", () => {
-        botonPlay.innerHTML = '<i class="bi bi-play-fill"></i>';
-        botonPlay.classList.remove("is-playing");
-      });
+        botonPlay.addEventListener("click", () => {
+          if (video.paused) {
+            cargarVideoSiHaceFalta(video);
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
 
-      tarjeta.appendChild(video);
-      tarjeta.appendChild(botonPlay);
+        video.addEventListener("play", () => {
+          botonPlay.innerHTML = '<i class="bi bi-pause-fill"></i>';
+          botonPlay.classList.add("is-playing");
+        });
+
+        video.addEventListener("pause", () => {
+          botonPlay.innerHTML = '<i class="bi bi-play-fill"></i>';
+          botonPlay.classList.remove("is-playing");
+        });
+
+        tarjeta.appendChild(video);
+        tarjeta.appendChild(botonPlay);
+      }
     } else {
       return;
     }
@@ -799,24 +821,29 @@ Quiero inscribirme a la próxima Clínica de Goleros:
     const driveId = limpiarTexto(evento.videoDriveId) || obtenerIdDrive(videoUrl);
 
     if (driveId || videoUrl) {
-      const video = document.createElement("video");
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-      video.loop = true;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.setAttribute("loop", "");
+      if (driveId) {
+        cardEvento.prepend(crearReproductorDrive(driveId));
+      } else {
+        const video = document.createElement("video");
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("loop", "");
 
-      const source = document.createElement("source");
-      source.src = driveId ? obtenerVideoDrive(driveId) : videoUrl;
-      source.type = "video/mp4";
-      video.appendChild(source);
-      video.append("Tu navegador no soporta videos HTML5.");
+        const source = document.createElement("source");
+        source.src = videoUrl;
+        source.type = "video/mp4";
 
-      cardEvento.prepend(video);
-      video.load();
-      video.play().catch(() => {});
+        video.appendChild(source);
+        video.append("Tu navegador no soporta videos HTML5.");
+
+        cardEvento.prepend(video);
+        video.load();
+        video.play().catch(() => {});
+      }
     }
 
     const tags = cardEvento.querySelectorAll(".tag-floating .tag-custom");
@@ -895,30 +922,36 @@ function renderizarEventoPasado(mediaPasada, comentarios, extras) {
         } else if (item.tipo === "video") {
           slide.setAttribute("data-bs-interval", "false");
 
-          const video = document.createElement("video");
-          video.muted = true;
-          video.defaultMuted = true;
-          video.playsInline = true;
-          video.setAttribute("muted", "");
-          video.setAttribute("playsinline", "");
-          video.loop = false;
+          if (item.driveId) {
+            slide.appendChild(crearReproductorDrive(item.driveId));
+          } else {
+            const video = document.createElement("video");
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            video.loop = false;
 
-          const source = document.createElement("source");
-          source.dataset.src =
-            item.esDrive && item.driveId
-              ? obtenerVideoDrive(item.driveId)
-              : item.url;
-          source.type = "video/mp4";
-          video.appendChild(source);
-          video.append("Tu navegador no soporta videos HTML5.");
-          if (indice === 0) cargarVideoSiHaceFalta(video);
+            const source = document.createElement("source");
+            source.dataset.src = item.url;
+            source.type = "video/mp4";
 
-          video.addEventListener("ended", () => {
-            const instancia = bootstrap.Carousel.getOrCreateInstance(carrusel);
-            instancia.next();
-          });
+            video.appendChild(source);
+            video.append("Tu navegador no soporta videos HTML5.");
 
-          slide.appendChild(video);
+            if (indice === 0) {
+              cargarVideoSiHaceFalta(video);
+            }
+
+            video.addEventListener("ended", () => {
+              const instancia =
+                bootstrap.Carousel.getOrCreateInstance(carrusel);
+              instancia.next();
+            });
+
+            slide.appendChild(video);
+          }
         } else {
           return;
         }
