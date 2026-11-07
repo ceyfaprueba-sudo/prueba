@@ -2460,3 +2460,34 @@ iframe.video-drive {
   position: absolute;
   inset: 0;
 }
+
+#evento-section .imagen-evento {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Fotos del evento actual. Mantener el afiche completo también en móvil. */
+#evento-section .card-evento.card-evento-fotos {
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#evento-section .card-evento-fotos::after {
+  display: none;
+}
+
+#carouselFotosEventoActual img {
+  height: auto;
+}
+
+#evento-section .card-evento-fotos .tag-floating {
+  position: static;
+  display: inline-block;
+  margin: 0.25rem 0.5rem 0.5rem;
+}
+
