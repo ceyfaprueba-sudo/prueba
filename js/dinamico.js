@@ -41,10 +41,12 @@ async function cargarDatos() {
     if (Array.isArray(datos.planes) && datos.planes.length) renderizarPlanes(datos.planes);
 
     const eventos = Array.isArray(datos.eventos) ? datos.eventos : [];
-    const eventoActual = eventos[0];
-    const estaVencido =
-      eventoActual &&
-      normalizarTexto(eventoActual.estado) === "vencido";
+    const eventosVigentes = eventos.filter(
+      evento => normalizarTexto(evento.estado) !== "vencido"
+    );
+    const eventoActual = eventosVigentes.find(
+      evento => evento.inscripcionesAbiertas === true
+    ) || eventosVigentes[0];
 
     const seccionEvento = document.getElementById("evento-section");
     const seccionEventoPasado = document.getElementById("evento-pasado-section");
@@ -53,43 +55,30 @@ async function cargarDatos() {
       'a.nav-link[href="#evento-section"], a.nav-link[href="#evento-pasado-section"]'
     );
 
-    if (estaVencido) {
-      if (seccionEvento) seccionEvento.style.display = "none";
-      if (seccionEventoPasado) seccionEventoPasado.style.display = "";
-      if (tiraMarquee) tiraMarquee.style.display = "none";
-      if (linkEvento) linkEvento.setAttribute("href", "#evento-pasado-section");
+    // El historial permanece visible aunque haya un evento actual.
+    if (seccionEventoPasado) seccionEventoPasado.style.display = "";
+    renderizarEventoPasado(
+      datos.eventosPasados,
+      datos.comentarios,
+      datos.eventoPasadoExtras
+    );
 
-      renderizarEventoPasado(
-        datos.eventosPasados,
-        datos.comentarios,
-        datos.eventoPasadoExtras
+    if (seccionEvento) {
+      seccionEvento.style.display = eventoActual ? "" : "none";
+    }
+    if (linkEvento) {
+      linkEvento.setAttribute(
+        "href",
+        eventoActual ? "#evento-section" : "#evento-pasado-section"
       );
-    } else {
-      if (seccionEventoPasado) seccionEventoPasado.style.display = "none";
-      if (seccionEvento) seccionEvento.style.display = "";
-      if (linkEvento) linkEvento.setAttribute("href", "#evento-section");
+    }
+    if (tiraMarquee) tiraMarquee.style.display = "none";
 
-      const eventosAbiertos = eventos.filter(
-        evento => evento.inscripcionesAbiertas === true
-      );
-
-      if (eventosAbiertos.length) {
-        const evento = eventosAbiertos[0];
-
-        renderizarEvento(evento);
-        actualizarMarqueeEvento(evento);
-
-        if (tiraMarquee) {
-          tiraMarquee.style.display = "";
-        }
-      } else {
-        if (tiraMarquee) {
-          tiraMarquee.style.display = "none";
-        }
-
-        if (eventos.length) {
-          renderizarEvento(eventos[0]);
-        }
+    if (eventoActual) {
+      renderizarEvento(eventoActual);
+      if (eventoActual.inscripcionesAbiertas === true) {
+        actualizarMarqueeEvento(eventoActual);
+        if (tiraMarquee) tiraMarquee.style.display = "";
       }
     }
 
@@ -817,50 +806,38 @@ Quiero inscribirme a la próxima Clínica de Goleros:
     if (videoViejo) videoViejo.remove();
     if (iframeViejo) iframeViejo.remove();
 
-    const videoUrl = limpiarTexto(evento.videoUrl);
-    const driveId = limpiarTexto(evento.videoDriveId) || obtenerIdDrive(videoUrl);
+  const imagenAnterior = cardEvento.querySelector(".imagen-evento");
+  if (imagenAnterior) imagenAnterior.remove();
 
-    if (driveId || videoUrl) {
-      if (driveId) {
-        cardEvento.prepend(crearReproductorDrive(driveId));
-      } else {
-        const video = document.createElement("video");
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.loop = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("loop", "");
+  const imagenUrl = limpiarTexto(evento.videoUrl);
+  const driveId = obtenerIdDrive(imagenUrl);
 
-        const source = document.createElement("source");
-        source.src = videoUrl;
-        source.type = "video/mp4";
+  if (imagenUrl) {
+    const imagen = document.createElement("img");
+    imagen.className = "imagen-evento";
+    imagen.alt = "Próximo evento CEYFA";
+    imagen.src = driveId
+      ? obtenerImagenDrive(driveId)
+      : imagenUrl;
 
-        video.appendChild(source);
-        video.append("Tu navegador no soporta videos HTML5.");
+    cardEvento.prepend(imagen);
+  }
 
-        cardEvento.prepend(video);
-        video.load();
-        video.play().catch(() => {});
-      }
-    }
-
-    const tags = cardEvento.querySelectorAll(".tag-floating .tag-custom");
-    if (tags[0]) tags[0].textContent = limpiarTexto(evento.departamento);
-    if (tags[1]) {
-      if (evento.inscripcionesAbiertas) {
-        tags[1].innerHTML = `
-          <span class="pulse-dot-live me-2"></span>
-          ¡Inscripciones Abiertas!
-        `;
-        tags[1].closest(".tag-floating").style.display = "";
-      } else {
-        tags[1].innerHTML = "Inscripciones cerradas";
+      const tags = cardEvento.querySelectorAll(".tag-floating .tag-custom");
+      if (tags[0]) tags[0].textContent = limpiarTexto(evento.departamento);
+      if (tags[1]) {
+        if (evento.inscripcionesAbiertas) {
+          tags[1].innerHTML = `
+            <span class="pulse-dot-live me-2"></span>
+            ¡Inscripciones Abiertas!
+          `;
+          tags[1].closest(".tag-floating").style.display = "";
+        } else {
+          tags[1].innerHTML = "Inscripciones cerradas";
+        }
       }
     }
   }
-}
 
 function renderizarEventoPasado(mediaPasada, comentarios, extras) {
   const seccion = document.getElementById("evento-pasado-section");
